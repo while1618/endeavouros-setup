@@ -82,12 +82,12 @@
 # Partitions:
 # 	- swap to file
 
+skel
 mirror
 update
 upall
 yay
 cleanup
-skel
 hblock
 sudo systemctl enable fstrim.timer
 sudo ufw enable

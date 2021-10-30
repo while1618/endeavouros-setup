@@ -119,10 +119,9 @@ sudo mysql_secure_installation
 sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
 sudo mysql -e "FLUSH PRIVILEGES;"
 
-# postgres
+# postgres (pass: root)
 sudo pacman -S postgresql
-sudo su - postgres
-# execute: initdb -D '/var/lib/postgres/data'
+sudo su - postgres "initdb -D '/var/lib/postgres/data'"
 sudo systemctl enable postgresql
 sudo systemctl start postgresql
 sudo psql -U postgres -c "\password postgres"

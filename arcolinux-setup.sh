@@ -9,7 +9,7 @@
 #	- zen
 #	- amd/intel ucode(depends on the cpu)
 # Drivers:
-#	- nvidia proprietary/intel open-source/AMD proprietary or open-source
+#	- nvidia proprietary + nvidia-dkms/intel open-source/AMD proprietary or open-source
 # Login:
 #	- whatever suits you(currently at Sddm)
 # Desktop:
@@ -49,7 +49,7 @@
 #	- whatever suits you(currently all)
 # Gaming:
 #	- meta-steam
-#   - wine
+#	- wine
 #	- lutris
 #	- steam-buddy
 #	- steam-tweaks

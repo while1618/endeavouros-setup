@@ -49,8 +49,8 @@
 #	- whatever suits you(currently all)
 # Gaming:
 #	- meta-steam
-#	- lutris
 #   - wine
+#	- lutris
 #	- steam-buddy
 #	- steam-tweaks
 # Terminals:

@@ -137,6 +137,7 @@ sudo systemctl enable --now mongodb
 
 # java
 sudo pacman -S jre-openjdk
+sudo pacman -S jdk-openjdk
 sudo pacman -S maven
 
 # node

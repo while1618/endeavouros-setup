@@ -145,7 +145,7 @@ yay nvm
 source /usr/share/nvm/init-nvm.sh
 echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.zshrc
 nvm install --lts
-npm install -g angular nx
+npm install -g @angular/cli nx
 
 # pip
 sudo pacman -S python-pip

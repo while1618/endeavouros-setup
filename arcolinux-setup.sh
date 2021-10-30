@@ -117,7 +117,6 @@ sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 sudo systemctl enable --now mariadb
 sudo mysql_secure_installation
 sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
-sudo mysql -e "FLUSH PRIVILEGES;"
 
 # postgres (pass: root)
 sudo pacman -S postgresql

@@ -120,7 +120,7 @@ sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
 
 # postgres (pass: root)
 sudo pacman -S postgresql
-sudo su - postgres "initdb -D '/var/lib/postgres/data'"
+sudo su - postgres -c "initdb -D '/var/lib/postgres/data'"
 sudo systemctl enable postgresql
 sudo systemctl start postgresql
 sudo psql -U postgres -c "\password postgres"

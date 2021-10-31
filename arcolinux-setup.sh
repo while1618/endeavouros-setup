@@ -98,10 +98,6 @@ sudo pacman -Syyu # alias -> update
 paru -Syu --noconfirm # alias -> upall
 yay
 
-# clean system
-sudo pacman -Rns $(pacman -Qtdq) # alias -> cleanup
-yay -Sc
-
 # enable utilities
 hblock
 sudo systemctl enable fstrim.timer
@@ -180,6 +176,10 @@ then
     # rgb config (r: 200, g: 140: b:255)
     yay openrgb
 fi
+
+# clean system
+sudo pacman -Rns $(pacman -Qtdq) # alias -> cleanup
+yay -Sc
 
 echo "Done!"
 

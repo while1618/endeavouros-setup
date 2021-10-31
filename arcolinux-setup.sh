@@ -137,6 +137,12 @@ redis-cli config set requirepass root
 yay mongodb-bin
 sudo systemctl enable --now mongodb
 
+#docker
+sudo pacman -S docker
+sudo systemctl start docker.service
+sudo systemctl enable docker.service
+sudo usermod -aG docker $USER
+
 # java
 sudo pacman -S jre-openjdk
 sudo pacman -S jdk-openjdk

@@ -158,8 +158,8 @@ yay jetbrains-toolbox
 
 if [[ "$wm" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
-    # fix for not starting jetbrains products in tiling window manager (e.g. bspwm, xmonad...)
-    echo 'export _JAVA_AWT_WM_NONREPARENTING=1' >> ~/.zshrc
+    # fix for not starting java based apps in tiling window manager (e.g. bspwm, xmonad...)
+    echo "export _JAVA_AWT_WM_NONREPARENTING=1" | sudo tee -a /etc/profile
 fi
 
 if [[ "$nvidia" =~ ^([yY][eE][sS]|[yY])$ ]]

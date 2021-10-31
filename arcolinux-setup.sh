@@ -153,8 +153,7 @@ sudo pacman -S python-pip
 
 # apps
 yay postman-bin
-yay intellij-idea-ultimate-edition
-yay pycharm-professional
+yay jetbrains-toolbox
 
 if [[ "$nvidia" =~ ^([yY][eE][sS]|[yY])$ ]]
 then

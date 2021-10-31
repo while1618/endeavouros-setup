@@ -90,14 +90,17 @@ read -r -p "Are you on NVIDIA gpu? [y/N]" nvidia
 read -r -p "Are you on tiling window manager? (e.g. bspwm, xmonad...) [y/N]" wm
 
 # load custom arcolinux scripts
-skel
+[ -d ~/.config ] || mkdir ~/.config && cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S) && cp -rf /etc/skel/* ~ # alias -> skel
 
 # update system
-mirror
-update
-upall
+sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist # alias -> mirror
+sudo pacman -Syyu # alias -> update
+paru -Syu --noconfirm # alias -> upall
 yay
-cleanup
+
+# clean system
+sudo pacman -Rns $(pacman -Qtdq) # alias -> cleanup
+yay -Sc
 
 # enable utilities
 hblock

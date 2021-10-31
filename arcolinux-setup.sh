@@ -87,6 +87,7 @@ then
 fi
 
 read -r -p "Are you on NVIDIA gpu? [y/N]" nvidia
+read -r -p "Are you on tiling window manager? (e.g. bspwm, xmonad...) [y/N]" wm
 
 # load custom arcolinux scripts
 skel
@@ -154,6 +155,12 @@ sudo pacman -S python-pip
 # apps
 yay postman-bin
 yay jetbrains-toolbox
+
+if [[ "$wm" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    # fix for not starting jetbrains products in tiling window manager (e.g. bspwm, xmonad...)
+    echo 'export _JAVA_AWT_WM_NONREPARENTING=1' >> ~/.zshrc
+fi
 
 if [[ "$nvidia" =~ ^([yY][eE][sS]|[yY])$ ]]
 then

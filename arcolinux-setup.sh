@@ -136,7 +136,7 @@ redis-cli config set requirepass root
 yay mongodb-bin
 sudo systemctl enable --now mongodb
 
-#docker
+# docker
 sudo pacman -S docker
 sudo systemctl start docker.service
 sudo systemctl enable docker.service
@@ -159,7 +159,8 @@ sudo pacman -S python-pip
 
 # apps
 yay postman-bin
-yay jetbrains-toolbox
+yay intellij-idea-ultimate-edition
+yay pycharm-professional
 
 if [[ "$wm" =~ ^([yY][eE][sS]|[yY])$ ]]
 then

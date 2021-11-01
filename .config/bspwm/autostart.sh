@@ -29,15 +29,15 @@ fi
 
 #Some ways to set your wallpaper besides variety or nitrogen
 #feh --bg-scale ~/.config/bspwm/wall.png &
-feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
+feh --bg-fill ~/Pictures/arch.png &
 #feh --randomize --bg-fill ~/Képek/*
 #feh --randomize --bg-fill ~/Dropbox/Apps/Desktoppr/*
 
 dex $HOME/.config/autostart/arcolinux-welcome-app.desktop
 xsetroot -cursor_name left_ptr &
 
-#conky -c $HOME/.config/bspwm/system-overview &
-run variety &
+# conky -c $HOME/.config/bspwm/system-overview &
+# run variety &
 run nm-applet &
 run pamac-tray &
 run xfce4-power-manager &

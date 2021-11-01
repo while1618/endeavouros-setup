@@ -10,6 +10,10 @@ super + Return
 super + @space
 	dmenu_run
 
+# app finder
+super + shift + @space
+	xfce4-appfinder
+
 # file explorer
 super + e
 	dolphin ~/

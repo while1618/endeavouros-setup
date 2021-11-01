@@ -265,6 +265,7 @@ echo "#######################"
 cp -rf ~/GitHub/linux-setup-scripts/.bashrc ~/
 cp -rf ~/GitHub/linux-setup-scripts/.zshrc ~/
 cp -rf ~/GitHub/linux-setup-scripts/.p10k.zsh ~/
+cp -rf ~/GitHub/linux-setup-scripts/.config/alacritty/alacritty.yml ~/.config/alacritty
 
 echo "#####################"
 echo "## System cleanup. ##"

@@ -1,83 +1,5 @@
 #!/bin/sh
 
-# Download link: https://www.arcolinux.info/downloads/
-# Pick arcolinuxB
-#
-# Things to pick during installation:
-# Kernel:
-# 	- default
-#	- zen
-#	- amd/intel ucode(depends on the cpu)
-# Drivers:
-#	- nvidia proprietary + nvidia-dkms/intel open-source/AMD proprietary or open-source(depends on the gpu)
-# Login:
-#	- whatever suits you(currently at Sddm)
-# Desktop:
-#	- whatever suits you(currently at bspwm)
-# ArcoLinuxTools:
-#	- fun
-#	- sddm-themes
-#	- steam(if gaming)
-#	- utilities
-# Communication:
-#	- discord
-#	- skype
-#	- signal
-# Development:
-# 	- visual-studio-code-bin
-# Office:
-#	- WPS
-#	- okular
-# Fonts:
-# 	- awesome-terminal-fonts
-#	- fira-code
-#	- font-awesome
-#	- jetbrains-mono
-#	- powerlevel10k
-#	- ms-fonts
-# Multimedia:
-#	- obs-studio
-#	- vlc
-#	- youtube-dl
-# Internet:
-#	- firefox
-#	- ublock-origin
-#	- google-chrome
-#	- qbittorrent
-#	- mailspring
-# Theming:
-#	- whatever suits you(currently all)
-# Gaming:(optional)
-#	- meta-steam
-#	- wine
-#	- lutris
-#	- steam-buddy
-#	- steam-tweaks
-# Terminals:
-#	- alacritty
-#	- oh-my-zsh
-#	- powerlevel10k
-# Filemanagers:
-#	- dolphin
-#	- ranger
-# Utilities:
-#	- etcher-bin
-#	- woeusb
-#	- flatpak
-#	- snapd
-#	- htop
-#	- lm_sensors
-#	- galculator
-#	- gufw
-#	- stacer
-# Applications:
-#	- bitwarden
-#	- tor-browser
-#	- tor
-#	- virtualbox for linux kernel
-# Partitions:
-# 	- swap to file
-
 if [ "$(id -u)" = 0 ]; then
     echo "##################################################################"
     echo "This script MUST NOT be run as root user since it makes changes"
@@ -253,6 +175,11 @@ sudo swapoff -a
 sudo dd if=/dev/zero of=/swapfile bs=1G count=8 # 8gb
 sudo mkswap /swapfile
 sudo swapon /swapfile
+
+echo "#######################"
+echo "## Generate ssh keys ##"
+echo "#######################"
+ssh-keygen
 
 echo "#######################"
 echo "## Edit config files ##"

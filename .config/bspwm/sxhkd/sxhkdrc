@@ -18,6 +18,10 @@ super + e
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# logout
+super + x
+	arcolinux-logout
+
 #
 # bspwm hotkeys
 #
@@ -123,3 +127,7 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#Move window to selected desktop
+super + shift + {1-9,0}
+    id=$(bspc query -N -n); bspc node -d ^{1-9,10}; bspc node -f ${id}}

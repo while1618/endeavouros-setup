@@ -15,7 +15,7 @@
 # Desktop:
 #	- whatever suits you(currently at bspwm)
 # ArcoLinuxTools:
-#   - fun
+#	- fun
 #	- sddm-themes
 #	- steam(if gaming)
 #	- utilities
@@ -94,16 +94,17 @@ echo "## Before running check the following link: https://arcolinux.com/things-t
 echo "###############################################################################################################"
 
 read -r -p "Have you checked the installation script before running? [Y/n] " check
-if [[ "$check" =~ ^([nN][eE][sS]|[nN])$ ]]
-then
+if [[ "$check" =~ ^([nN][eE][sS]|[nN])$ ]]; then
     echo "######################"
     echo "## Please check it. ##"
     echo "######################"
     exit 1
 fi
-
-read -r -p "Are you on NVIDIA gpu? [y/N]" nvidia
 read -r -p "Are you on tiling window manager? (e.g. bspwm, xmonad...) [y/N]" wm
+if [[ "$wm" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    read -r -p "On witch? If you have multiple, divide them with 'space'. (e.g. bspwm xmonad): " wms
+fi
+read -r -p "Are you on NVIDIA gpu? [y/N]" nvidia
 read -r -p "Enter your name for git: " git_name
 read -r -p "Enter your email for git: " git_email
 
@@ -115,13 +116,13 @@ echo "####################################"
 echo "#####################"
 echo "## Update mirrors. ##"
 echo "#####################"
-sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist # alias -> mirror
+sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist
 
 echo "####################"
 echo "## Update system. ##"
 echo "####################"
-sudo pacman -Syyu # alias -> update
-paru -Syu --noconfirm # alias -> upall
+sudo pacman -Syyu
+paru -Syu --noconfirm
 yay -Su
 
 echo "#######################"
@@ -225,31 +226,25 @@ echo "## Install pycharm. ##"
 echo "######################"
 yay pycharm-professional
 
-if [[ "$wm" =~ ^([yY][eE][sS]|[yY])$ ]]
-then
+if [[ "$wm" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     echo "###########################################################################################"
     echo "## Fix for not starting java based apps in tiling window manager (e.g. bspwm, xmonad...) ##"
     echo "###########################################################################################"
     echo "export _JAVA_AWT_WM_NONREPARENTING=1" | sudo tee -a /etc/profile
 fi
 
-if [[ "$nvidia" =~ ^([yY][eE][sS]|[yY])$ ]]
-then
-    echo "#################"
-    echo "## GPU config. ##"
-    echo "#################"
+if [[ "$nvidia" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    echo "########################"
+    echo "## NVIDIA GPU config. ##"
+    echo "########################"
     sudo nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
     yay gwe
-    echo "############################################"
-    echo "## RGB config. -> (r: 200, g: 140: b:255) ##"
-    echo "############################################"
-    yay openrgb
 fi
 
-echo "##################################"
-echo "## Remove conky from autostart. ##"
-echo "##################################"
-rm ~/.config/autostart/am-conky-session.desktop
+echo "############################################"
+echo "## RGB config. -> (r: 200, g: 140: b:255) ##"
+echo "############################################"
+yay openrgb
 
 echo "####################################"
 echo "## Increase the size of swap file ##"
@@ -260,17 +255,30 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 
 echo "#######################"
-echo "## Copy config files ##"
+echo "## Edit config files ##"
 echo "#######################"
 cp -rf ~/GitHub/linux-setup-scripts/.bashrc ~/
 cp -rf ~/GitHub/linux-setup-scripts/.zshrc ~/
 cp -rf ~/GitHub/linux-setup-scripts/.p10k.zsh ~/
-cp -rf ~/GitHub/linux-setup-scripts/.config/alacritty/alacritty.yml ~/.config/alacritty
+cp -rf ~/GitHub/linux-setup-scripts/.config/alacritty/alacritty.yml ~/.config/alacritty/
+
+echo "########################"
+echo "## bspwm config files ##"
+echo "########################"
+if [[ $wms == *"bspwm"* ]]; then
+    rm ~/.config/autostart/am-conky-session.desktop
+    cp -rf ~/GitHub/linux-setup-scripts/.config/bspwm/autostart.sh ~/.config/bspwm/
+    cp -rf ~/GitHub/linux-setup-scripts/.config/bspwm/bspwmrc ~/.config/bspwm/
+    cp -rf ~/GitHub/linux-setup-scripts/.config/bspwm/sxhkd/sxhkdrc ~/.config/bspwm/sxhkd/
+    cp -rf ~/GitHub/linux-setup-scripts/.config/polybar/config ~/.config/polybar/
+fi
+
+# TODO: config for multiple tiling window managers
 
 echo "#####################"
 echo "## System cleanup. ##"
 echo "#####################"
-sudo pacman -Rns $(pacman -Qtdq) # alias -> cleanup
+sudo pacman -Rns $(pacman -Qtdq)
 paru -Sc
 yay -Sc
 
@@ -279,7 +287,6 @@ echo "## Done! You should customize your theme and change default apps if needed
 echo "##############################################################################"
 
 read -r -p "Do you want to reboot now? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-then
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     reboot
 fi

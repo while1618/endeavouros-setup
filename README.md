@@ -91,9 +91,9 @@ Choose "Advance installation" when asked and pick desired software.
 
 After the installation is done, boot to your system, and run following commands:
 
-```
-    $ git clone https://github.com/while1618/linux-setup-scripts.git
-    $ cd linux-setup-scripts
-    $ sudo chmod +x arcolinux-setup.sh
-    $ ./arcolinux-setup.sh
+``` 
+$ git clone https://github.com/while1618/linux-setup-scripts.git 
+$ cd linux-setup-scripts 
+$ sudo chmod +x arcolinux-setup.sh
+$ ./arcolinux-setup.sh
 ```

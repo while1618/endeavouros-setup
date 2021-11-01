@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Download link: https://www.arcolinux.info/downloads/
+# Pick arcolinuxB
+#
 # Things to pick during installation:
 # Kernel:
 # 	- default

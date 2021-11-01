@@ -110,7 +110,7 @@ read -r -p "Enter your email for git: " git_email
 echo "####################################"
 echo "## Load custom arcolinux scripts. ##"
 echo "####################################"
-[ -d ~/.config ] || mkdir ~/.config && cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S) && cp -rf /etc/skel/* ~ # alias -> skel
+[ -d ~/.config ] || mkdir ~/.config && cp -rf /etc/skel/* ~
 
 echo "#####################"
 echo "## Update mirrors. ##"
@@ -202,7 +202,6 @@ echo "## Install node. ##"
 echo "###################"
 yay nvm
 source /usr/share/nvm/init-nvm.sh
-echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.zshrc
 nvm install --lts
 npm install -g @angular/cli nx
 
@@ -259,6 +258,13 @@ sudo swapoff -a
 sudo dd if=/dev/zero of=/swapfile bs=1G count=8 # 8gb
 sudo mkswap /swapfile
 sudo swapon /swapfile
+
+echo "#######################"
+echo "## Copy config files ##"
+echo "#######################"
+cp -rf ~/GitHub/linux-setup-scripts/.bashrc ~/
+cp -rf ~/GitHub/linux-setup-scripts/.zshrc ~/
+cp -rf ~/GitHub/linux-setup-scripts/.p10k.zsh ~/
 
 echo "#####################"
 echo "## System cleanup. ##"

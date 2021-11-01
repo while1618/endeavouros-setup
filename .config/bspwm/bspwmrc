@@ -8,7 +8,7 @@ $HOME/.config/bspwm/autostart.sh
 #BSPWM configuration
 #bspc config border_radius       8
 bspc config border_width         2
-bspc config window_gap           10
+bspc config window_gap           5
 bspc config top_padding          30
 bspc config bottom_padding       0
 bspc config left_padding         0

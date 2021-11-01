@@ -249,6 +249,14 @@ echo "## Remove conky from autostart. ##"
 echo "##################################"
 rm ~/.config/autostart/am-conky-session.desktop
 
+echo "####################################"
+echo "## Increase the size of swap file ##"
+echo "####################################"
+sudo swapoff -a
+sudo dd if=/dev/zero of=/swapfile bs=1G count=8 # 8gb
+sudo mkswap /swapfile
+sudo swapon /swapfile
+
 echo "#####################"
 echo "## System cleanup. ##"
 echo "#####################"

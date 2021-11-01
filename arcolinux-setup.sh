@@ -12,6 +12,7 @@
 # Desktop:
 #	- whatever suits you(currently at bspwm)
 # ArcoLinuxTools:
+#   - fun
 #	- sddm-themes
 #	- steam(if gaming)
 #	- utilities

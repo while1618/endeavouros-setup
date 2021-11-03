@@ -47,72 +47,11 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/mainbar-bspwm]
-; monitor = ${env:MONITOR}
-; ; monitor-fallback = HDMI1
-; width = 100%
-; height = 25
-; ; offset-x = 1%
-; ; offset-y = 1%
-; radius = 0.0
-; fixed-center = true
-; bottom = false
-; separator = 
-
-; background = ${colors.background}
-; foreground = ${colors.foreground}
-
-; line-size = 2
-; line-color = #f00
-
-; wm-restack = bspwm
-; override-redirect = true
-
-; ; Enable support for inter-process messaging
-; ; See the Messaging wiki page for more details.
-; enable-ipc = true
-
-; border-size = 0
-; ; border-left-size = 0
-; ; border-right-size = 25
-; ; border-top-size = 0
-; ; border-bottom-size = 25
-; border-color = #00000000
-
-; padding-left = 1
-; padding-right = 1
-
-; module-margin-left = 0
-; module-margin-right = 0
-
-; ; https://github.com/jaagr/polybar/wiki/Fonts
-; font-0 = "Noto Sans:size=11;0"
-; font-1 = "FontAwesome:size=12;0"
-; font-2 = "Noto Sans:size=11;0"
-; font-3 = "Noto Sans Mono:size=11;0"
-
-; modules-left = bspwm xwindow
-; modules-center = 
-; ; modules-right =  networkspeedup networkspeeddown kernel cpu memory pavolume battery date
-; modules-right =  arrow1 networkspeedup networkspeeddown arrow2 memory arrow3 cpu arrow2 pavolume arrow3 battery arrow2 date
-
-; ; tray-detached = false
-; ; tray-offset-x = 0
-; ; tray-offset-y = 0
-; ; tray-position = right
-; ; tray-padding = 2
-; ; tray-maxsize = 20
-; ; tray-scale = 1.0
-; ; tray-background = ${colors.background}
-
-; scroll-up = bspwm-desknext
-; scroll-down = bspwm-deskprev
-
 monitor = ${env:MONITOR}
-;monitor-fallback = HDMI1
 width = 100%
-height = 20
-;offset-x = 1%
-;offset-y = 1%
+height = 25
+offset-x = 0%
+offset-y = 0%
 radius = 0.0
 fixed-center = true
 bottom = false
@@ -144,18 +83,17 @@ padding-right = 1
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "UbuntuMono Nerd Font:size=10;2"
-font-1 = "UbuntuMono Nerd Font:size=16;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
-font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
+; https://github.com/jaagr/polybar/wiki/Fonts
+font-0 = "Noto Sans:size=11;1"
+font-1 = "FontAwesome:size=11;3"
+font-2 = "Noto Sans:size=11;4"
 
 modules-left = bspwm xwindow
 modules-center = 
-modules-right = arrow1 networkspeedup networkspeeddown arrow2 memory arrow3 cpu arrow2 pavolume arrow3 battery arrow2 date
+modules-right = arrow1 kernel arrow3 networkspeedup networkspeeddown arrow2 memory arrow3 cpu arrow2 pavolume arrow3 battery arrow2 date
 
 tray-detached = false
-tray-offset-x = -3
+tray-offset-x = -4
 tray-offset-y = 0
 tray-position = right
 tray-padding = 2
@@ -226,6 +164,19 @@ label-private-foreground = ${colors.foreground}
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
+[module/xwindow]
+; https://github.com/jaagr/polybar/wiki/Module:-xwindow
+type = internal/xwindow
+
+; Available tokens:
+;   %title%
+; Default: %title%
+label = "   %title%"
+label-maxlen = 50
+
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
 [module/arrow1]
 ; grey to Blue
 type = custom/text
@@ -250,6 +201,18 @@ content-font = 2
 content-foreground = #8b62a9
 content-background = #668bd7
 
+[module/date]
+; https://github.com/jaagr/polybar/wiki/Module:-date
+type = internal/date
+interval = 5
+date = "%d.%m.%Y."
+time = %H:%M
+format-prefix = "  "
+format-prefix-foreground = #fefefe
+format-foreground = #fefefe
+format-background = #8d62ad
+label = " %date% %time% "
+
 [module/battery]
 ; https://github.com/jaagr/polybar/wiki/Module:-battery
 type = internal/battery
@@ -260,17 +223,17 @@ full-at = 100
 format-charging = " <animation-charging> <label-charging> "
 label-charging = %percentage%%
 format-charging-foreground = #fefefe
-format-charging-background = #8d62ad
+format-charging-background = #668bd7
 
 format-discharging = " <ramp-capacity> <label-discharging> "
 label-discharging = %percentage%%
 format-discharging-foreground = #fefefe
-format-discharging-background = #8d62ad
+format-discharging-background = #668bd7
 
 format-full-prefix = " "
 format-full-prefix-foreground = #fefefe
 format-full-foreground = #fefefe
-format-full-background = #8d62ad
+format-full-background = #668bd7
 
 ramp-capacity-0 = " "
 ramp-capacity-1 = " "
@@ -287,6 +250,18 @@ animation-charging-4 = " "
 animation-charging-foreground = #fefefe
 animation-charging-framerate = 750
 
+[module/pavolume]
+type = custom/script
+tail = true
+label = " %output%  "
+exec = ~/.config/polybar/scripts/pavolume.sh --listen
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
+scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
+format-foreground = #fefefe
+format-background = #8d62ad
+
 [module/cpu]
 ; https://github.com/jaagr/polybar/wiki/Module:-cpu
 type = internal/cpu
@@ -294,42 +269,16 @@ interval = 1
 format-prefix = "  "
 format-prefix-foreground = #fefefe
 format-foreground = #fefefe
-format-background = #8d62ad
+format-background = #668bd7
 
 label-font = 1
-format = <label>
+format = " <label>  "
 
 ; Available tokens:
 ;   %percentage% (default) - total cpu load
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
 label = CPU %percentage:3%%
-
-[module/date]
-; https://github.com/jaagr/polybar/wiki/Module:-date
-type = internal/date
-interval = 5
-; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
-; NOTE: if you want to use syntax tags here you need to use %%{...}
-date = "%d.%m.%Y. "
-time = %H:%M
-format-prefix = "   "
-format-prefix-foreground = #fefefe
-format-foreground = #fefefe
-format-background = #668bd7
-label = %date% %time%
-
-[module/kernel]
-type = custom/script
-exec = uname -r
-tail = false
-interval = 1024
-
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-prefix = " "
-format-prefix-foreground = #0084FF
-format-underline = #0084FF
 
 [module/memory]
 ; https://github.com/jaagr/polybar/wiki/Module:-memory
@@ -346,55 +295,42 @@ interval = 1
 ;   %mb_total%
 label = %gb_used%/%gb_total%
 
-format = <label>
+format = " <label>  "
 format-prefix = "  "
 format-prefix-foreground = #fefefe
 format-foreground = #fefefe
-format-background = #668bd7
+format-background = #8d62ad
 
 [module/networkspeedup]
 ; https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
 interface = wlp2s0
 label-connected = "%upspeed:7%"
-format-connected = <label-connected>
+format-connected = " <label-connected> "
 format-connected-prefix = "  "
 format-connected-prefix-foreground = #fefefe
 format-connected-foreground = #fefefe
-format-connected-background = #8d62a9
+format-connected-background = #668bd7
 
 [module/networkspeeddown]
 ; https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
 interface = wlp2s0
 label-connected = "%downspeed:7%"
-format-connected = <label-connected>
+format-connected = "<label-connected>  "
 format-connected-prefix = "  "
 format-connected-prefix-foreground = #fefefe
 format-connected-foreground = #fefefe
-format-connected-background = #8d62ad
+format-connected-background = #668bd7
 
-[module/pavolume]
+[module/kernel]
 type = custom/script
+exec = uname -r
 tail = true
-label = " %output% "
-exec = ~/.config/polybar/scripts/pavolume.sh --listen
-click-right = exec pavucontrol
-click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
-scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
-scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
+label = " %output%  "
+interval = 1024
+
+format-prefix = "  "
+format-prefix-foreground = #fefefe
 format-foreground = #fefefe
-format-background = #668bd7
-
-[module/xwindow]
-; https://github.com/jaagr/polybar/wiki/Module:-xwindow
-type = internal/xwindow
-
-; Available tokens:
-;   %title%
-; Default: %title%
-label = %title%
-label-maxlen = 50
-
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+format-background = #8d62ad

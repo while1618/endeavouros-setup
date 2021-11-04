@@ -29,7 +29,7 @@ fi
 read -r -p "Are you on NVIDIA gpu? [y/N]" nvidia
 read -r -p "Are you on laptop? [y/N]" laptop
 echo "Your interfaces: "
-ip -o link show | awk -F': ' '{print $2}'
+ip -o link show | awk -F': ' '{print $2}' | paste -sd ' '
 read -r -p "Enter interface name: " interface
 read -r -p "Enter your name for git: " git_name
 read -r -p "Enter your email for git: " git_email

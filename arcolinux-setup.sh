@@ -11,11 +11,11 @@ if [ "$(id -u)" = 0 ]; then
     exit 1
 fi
 
-echo "###############################################################################################################"
-echo "## Before running check the following link: https://arcolinux.com/things-to-do-after-arcolinux-installation/ ##"
-echo "###############################################################################################################"
+echo "###########################################################################################################################################"
+echo "## Before running check the installation script and the following link: https://arcolinux.com/things-to-do-after-arcolinux-installation/ ##"
+echo "###########################################################################################################################################"
 
-read -r -p "Have you checked the installation script before running? [Y/n] " check
+read -r -p "Have you checked? [Y/n] " check
 if [[ "$check" =~ ^([nN][eE][sS]|[nN])$ ]]; then
     echo "######################"
     echo "## Please check it. ##"
@@ -123,6 +123,7 @@ echo "#############################"
 sudo pacman -S jre-openjdk
 sudo pacman -S jdk-openjdk
 sudo pacman -S maven
+yay google-java-format
 
 echo "###################"
 echo "## Install node. ##"

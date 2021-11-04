@@ -27,6 +27,10 @@ if [[ "$wm" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     read -r -p "On witch? If you have multiple, divide them with 'space'. (e.g. bspwm xmonad): " wms
 fi
 read -r -p "Are you on NVIDIA gpu? [y/N]" nvidia
+read -r -p "Are you on laptop? [y/N]" laptop
+echo "Your interfaces: "
+ip -o link show | awk -F': ' '{print $2}'
+read -r -p "Enter interface name: " interface
 read -r -p "Enter your name for git: " git_name
 read -r -p "Enter your email for git: " git_email
 
@@ -215,7 +219,13 @@ echo "########################"
 echo "## bspwm config files. ##"
 echo "########################"
 if [[ $wms == *"bspwm"* ]]; then
-    rm -rf ~/.config/bspwm/*
+    if [[ "$laptop" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+        sed -i "135s/.*/modules-right = cpu memory network updates pulseaudio battery date settings poweroff/" config/polybar/config.ini
+    fi
+    sed -i "213s/.*/interface = $interface/" config/polybar/modules.ini
+    cp -rf .config/bspwm/autostart.sh ~/.config/bspwm/
+    cp -rf .config/bspwm/bspwmrc ~/.config/bspwm/
+    cp -rf .config/bspwm/sxhkd/sxhkdrc ~/.config/bspwm/sxhkd/
     cp -rf .config/bspwm/. ~/.config/bspwm/
     rm -rf ~/.config/polybar/*
     cp -rf .config/polybar/. ~/.config/polybar/

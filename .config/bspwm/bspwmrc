@@ -37,7 +37,7 @@ bspc config urgent_border_color 	"#dd2727"
 
 
 #Single monitor
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+bspc monitor -d 1 2 3 4
 
 #Dual monitor
 #find out names with arandr or xrandr

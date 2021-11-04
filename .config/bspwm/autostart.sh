@@ -19,13 +19,7 @@ $HOME/.config/polybar/launch.sh &
 #change your keyboard if you need it
 #setxkbmap -layout be
 
-keybLayout=$(setxkbmap -v | awk -F "+" '/symbols/ {print $2}')
-
-if [ $keybLayout = "be" ]; then
-  run sxhkd -c ~/.config/bspwm/sxhkd/sxhkdrc-azerty &
-else
-  run sxhkd -c ~/.config/bspwm/sxhkd/sxhkdrc &
-fi
+run sxhkd -c ~/.config/bspwm/sxhkd/sxhkdrc &
 
 #Some ways to set your wallpaper besides variety or nitrogen
 #feh --bg-scale ~/.config/bspwm/wall.png &

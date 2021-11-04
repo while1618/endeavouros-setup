@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + @space
-	dmenu_run
+	rofi -modi drun -show drun -show-icons
 
 # app finder
 super + shift + @space

@@ -117,9 +117,9 @@ sudo systemctl start docker.service
 sudo systemctl enable docker.service
 sudo usermod -aG docker $USER
 
-echo "#############################"
-echo "## Install java and maven. ##"
-echo "#############################"
+echo "#################################################"
+echo "## Install java, maven and google-java-format. ##"
+echo "#################################################"
 sudo pacman -S jre-openjdk
 sudo pacman -S jdk-openjdk
 sudo pacman -S maven

@@ -125,9 +125,9 @@ sudo pacman -S jdk-openjdk
 sudo pacman -S maven
 yay google-java-format
 
-echo "###################"
-echo "## Install node. ##"
-echo "###################"
+echo "###########################"
+echo "## Install node via nvm. ##"
+echo "###########################"
 yay nvm
 source /usr/share/nvm/init-nvm.sh
 nvm install --lts

@@ -176,27 +176,38 @@ sudo dd if=/dev/zero of=/swapfile bs=1G count=8 # 8gb
 sudo mkswap /swapfile
 sudo swapon /swapfile
 
-echo "#######################"
-echo "## Generate ssh keys ##"
-echo "#######################"
+echo "########################"
+echo "## Generate ssh keys. ##"
+echo "########################"
 ssh-keygen
 
-echo "########################"
-echo "## Download wallpaper ##"
-echo "########################"
+echo "#########################"
+echo "## Download wallpaper. ##"
+echo "#########################"
 wget -P ~/Pictures/ https://github.com/dracula/wallpaper/archive/master.zip
 unzip ~/Pictures/master.zip
 mv ~/Pictures/wallpaper-master/arch.png ~/Pictures/
 rm ~/Pictures/master.zip
 rm -rf ~/Pictures/wallpaper-master/
 
+echo "####################"
+echo "## Install fonts. ##"
+echo "####################"
+FDIR="~/.local/share/fonts"
+if [[ -d "$FDIR" ]]; then
+    cp -rf fonts/* "$FDIR"
+else
+    mkdir -p "$FDIR"
+    cp -rf fonts/* "$FDIR"
+fi
+
 echo "#######################"
 echo "## Edit config files ##"
 echo "#######################"
-cp -rf ~/GitHub/linux-setup-scripts/.bashrc ~/
-cp -rf ~/GitHub/linux-setup-scripts/.zshrc ~/
-cp -rf ~/GitHub/linux-setup-scripts/.p10k.zsh ~/
-cp -rf ~/GitHub/linux-setup-scripts/.config/alacritty/alacritty.yml ~/.config/alacritty/
+cp -rf .bashrc ~/
+cp -rf .zshrc ~/
+cp -rf .p10k.zsh ~/
+cp -rf .config/alacritty/alacritty.yml ~/.config/alacritty/
 rm ~/.config/autostart/am-conky-session.desktop
 rm ~/.config/autostart/variety.desktop
 
@@ -204,10 +215,10 @@ echo "########################"
 echo "## bspwm config files ##"
 echo "########################"
 if [[ $wms == *"bspwm"* ]]; then
-    cp -rf ~/GitHub/linux-setup-scripts/.config/bspwm/autostart.sh ~/.config/bspwm/
-    cp -rf ~/GitHub/linux-setup-scripts/.config/bspwm/bspwmrc ~/.config/bspwm/
-    cp -rf ~/GitHub/linux-setup-scripts/.config/bspwm/sxhkd/sxhkdrc ~/.config/bspwm/sxhkd/
-    cp -rf ~/GitHub/linux-setup-scripts/.config/polybar/config ~/.config/polybar/
+    cp -rf .config/bspwm/autostart.sh ~/.config/bspwm/
+    cp -rf .config/bspwm/bspwmrc ~/.config/bspwm/
+    cp -rf .config/bspwm/sxhkd/sxhkdrc ~/.config/bspwm/sxhkd/
+    cp -rf .config/polybar/config ~/.config/polybar/
 fi
 
 # TODO: config for multiple tiling window managers

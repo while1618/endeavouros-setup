@@ -227,11 +227,11 @@ if [[ $wms == *"bspwm"* ]]; then
     cp -rf .config/bspwm/autostart.sh ~/.config/bspwm/
     cp -rf .config/bspwm/bspwmrc ~/.config/bspwm/
     cp -rf .config/bspwm/sxhkd/sxhkdrc ~/.config/bspwm/sxhkd/
-    cp -rf .config/bspwm/. ~/.config/bspwm/
+    cp -rf .config/bspwm/* ~/.config/bspwm/
     rm -rf ~/.config/polybar/*
-    cp -rf .config/polybar/. ~/.config/polybar/
+    cp -rf .config/polybar/* ~/.config/polybar/
     rm -rf ~/.config/rofi/*
-    cp -rf .config/rofi/. ~/.config/rofi/
+    cp -rf .config/rofi/* ~/.config/rofi/
 fi
 
 # TODO: config for multiple tiling window managers

@@ -227,7 +227,6 @@ if [[ $wms == *"bspwm"* ]]; then
     cp -rf .config/bspwm/autostart.sh ~/.config/bspwm/
     cp -rf .config/bspwm/bspwmrc ~/.config/bspwm/
     cp -rf .config/bspwm/sxhkd/sxhkdrc ~/.config/bspwm/sxhkd/
-    cp -rf .config/bspwm/* ~/.config/bspwm/
     rm -rf ~/.config/polybar/*
     cp -rf .config/polybar/* ~/.config/polybar/
     rm -rf ~/.config/rofi/*

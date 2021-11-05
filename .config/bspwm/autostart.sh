@@ -14,6 +14,10 @@ function run {
 #xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
 #autorandr horizontal
 
+if [[ $(xrandr -q | grep 'HDMI1 connected') ]]; then
+  xrandr --output eDP1 --primary --mode 1920x1080 --rotate normal --output HDMI1 --mode 1920x1080 --rotate normal --same-as eDP1
+fi
+
 $HOME/.config/polybar/launch.sh &
 
 #change your keyboard if you need it

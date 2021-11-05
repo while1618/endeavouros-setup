@@ -49,7 +49,7 @@ echo "## Update system. ##"
 echo "####################"
 sudo pacman -Syyu
 paru -Syu --noconfirm
-yay -Su
+yay -Su --noconfirm
 
 echo "#######################"
 echo "## Enable utilities. ##"
@@ -190,7 +190,7 @@ echo "#########################"
 echo "## Download wallpaper. ##"
 echo "#########################"
 wget -P ~/Pictures/ https://github.com/dracula/wallpaper/archive/master.zip
-unzip ~/Pictures/master.zip
+unzip ~/Pictures/master.zip -d ~/Pictures/
 mv ~/Pictures/wallpaper-master/arch.png ~/Pictures/
 rm ~/Pictures/master.zip
 rm -rf ~/Pictures/wallpaper-master/

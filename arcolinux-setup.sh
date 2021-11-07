@@ -237,7 +237,7 @@ echo "## bspwm config files. ##"
 echo "########################"
 if [[ $wms == *"bspwm"* ]]; then
     if [[ "$laptop" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-        sed -i "135s/.*/modules-right = cpu memory network updates pulseaudio battery date settings poweroff/" .config/polybar/config.ini
+        sed -i "135s/.*/modules-right = cpu memory network updates pulseaudio battery date settings poweroff arrow/" .config/polybar/config.ini
     fi
     sed -i "213s/.*/interface = $interface/" .config/polybar/modules.ini
     cp -rf .config/bspwm/autostart.sh ~/.config/bspwm/

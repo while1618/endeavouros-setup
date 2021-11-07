@@ -71,6 +71,12 @@ echo "########################"
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/oh-my-zsh/plugins/zsh-autosuggestions
 sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /usr/share/oh-my-zsh/themes/powerlevel10k
 
+echo "############################"
+echo "## Install file managers. ##"
+echo "############################"
+sudo pacman -Sy nemo
+sudo pacman -Sy nnn
+
 echo "#################"
 echo "## git config. ##"
 echo "#################"
@@ -80,7 +86,7 @@ git config --global user.email "${git_email}"
 echo "#########################################################"
 echo "## Install mysql - current password for root is empty. ##"
 echo "#########################################################"
-sudo pacman -S mariadb
+sudo pacman -Sy mariadb
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 sudo systemctl enable --now mariadb
 sudo mysql_secure_installation
@@ -89,7 +95,7 @@ sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
 echo "#########################"
 echo "## Install postgresql. ##"
 echo "#########################"
-sudo pacman -S postgresql
+sudo pacman -Sy postgresql
 sudo su - postgres -c "initdb -D '/var/lib/postgres/data'"
 sudo systemctl enable postgresql
 sudo systemctl start postgresql
@@ -98,7 +104,7 @@ sudo psql -U postgres -c "ALTER USER postgres PASSWORD 'root';"
 echo "####################"
 echo "## Install redis. ##"
 echo "####################"
-sudo pacman -S redis
+sudo pacman -Sy redis
 sudo systemctl enable redis
 sudo systemctl start redis
 redis-cli config set requirepass root
@@ -112,7 +118,7 @@ sudo systemctl enable --now mongodb
 echo "#####################"
 echo "## Install docker. ##"
 echo "#####################"
-sudo pacman -S docker
+sudo pacman -Sy docker
 sudo systemctl start docker.service
 sudo systemctl enable docker.service
 sudo usermod -aG docker $USER
@@ -120,9 +126,9 @@ sudo usermod -aG docker $USER
 echo "#################################################"
 echo "## Install java, maven and google-java-format. ##"
 echo "#################################################"
-sudo pacman -S jre-openjdk
-sudo pacman -S jdk-openjdk
-sudo pacman -S maven
+sudo pacman -Sy jre-openjdk
+sudo pacman -Sy jdk-openjdk
+sudo pacman -Sy maven
 yay google-java-format
 
 echo "###########################"
@@ -136,7 +142,7 @@ npm install -g @angular/cli nx
 echo "##################"
 echo "## Install pip. ##"
 echo "##################"
-sudo pacman -S python-pip
+sudo pacman -Sy python-pip
 
 echo "######################"
 echo "## Install postman. ##"
@@ -191,7 +197,7 @@ echo "## Download wallpaper. ##"
 echo "#########################"
 wget -P ~/Pictures/ https://github.com/dracula/wallpaper/archive/master.zip
 unzip ~/Pictures/master.zip -d ~/Pictures/
-mv ~/Pictures/wallpaper-master/arch.png ~/Pictures/
+mv ~/Pictures/wallpaper-master/arch.png /usr/share/backgrounds/
 rm ~/Pictures/master.zip
 rm -rf ~/Pictures/wallpaper-master/
 
@@ -206,6 +212,18 @@ else
     cp -rf fonts/* "$FDIR"
 fi
 
+echo "#################"
+echo "## Add themes. ##"
+echo "#################"
+mkdir ~/.icons
+mkdir ~/.themes
+# icons
+tar xf papirus-icon-theme-20211101.tar.gz ~/.icons
+# cursor
+tar xf volantes_light_cursors.tar.gz ~/.icons
+# gtk
+tar xf Qogir-dark.tar.xz ~/.themes
+
 echo "#######################"
 echo "## Edit config files. ##"
 echo "#######################"
@@ -213,17 +231,15 @@ cp -rf .bashrc ~/
 cp -rf .zshrc ~/
 cp -rf .p10k.zsh ~/
 cp -rf .config/alacritty/alacritty.yml ~/.config/alacritty/
-rm ~/.config/autostart/am-conky-session.desktop
-rm ~/.config/autostart/variety.desktop
 
 echo "########################"
 echo "## bspwm config files. ##"
 echo "########################"
 if [[ $wms == *"bspwm"* ]]; then
     if [[ "$laptop" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-        sed -i "135s/.*/modules-right = cpu memory network updates pulseaudio battery date settings poweroff/" config/polybar/config.ini
+        sed -i "135s/.*/modules-right = cpu memory network updates pulseaudio battery date settings poweroff/" .config/polybar/config.ini
     fi
-    sed -i "213s/.*/interface = $interface/" config/polybar/modules.ini
+    sed -i "213s/.*/interface = $interface/" .config/polybar/modules.ini
     cp -rf .config/bspwm/autostart.sh ~/.config/bspwm/
     cp -rf .config/bspwm/bspwmrc ~/.config/bspwm/
     cp -rf .config/bspwm/sxhkd/sxhkdrc ~/.config/bspwm/sxhkd/
@@ -232,8 +248,6 @@ if [[ $wms == *"bspwm"* ]]; then
     rm -rf ~/.config/rofi/*
     cp -rf .config/rofi/* ~/.config/rofi/
 fi
-
-# TODO: config for multiple tiling window managers
 
 echo "#####################"
 echo "## System cleanup. ##"

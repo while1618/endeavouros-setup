@@ -71,10 +71,9 @@ echo "########################"
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/oh-my-zsh/plugins/zsh-autosuggestions
 sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /usr/share/oh-my-zsh/themes/powerlevel10k
 
-echo "############################"
-echo "## Install file managers. ##"
-echo "############################"
-sudo pacman -Sy nemo
+echo "###########################"
+echo "## Install file manager. ##"
+echo "###########################"
 sudo pacman -Sy nnn
 
 echo "#################"
@@ -183,7 +182,8 @@ echo "####################################"
 echo "## Increase the size of swap file ##"
 echo "####################################"
 sudo swapoff -a
-sudo dd if=/dev/zero of=/swapfile bs=1G count=8 # 8gb
+# set swap file to 8gb
+sudo dd if=/dev/zero of=/swapfile bs=1G count=8
 sudo mkswap /swapfile
 sudo swapon /swapfile
 
@@ -191,15 +191,6 @@ echo "########################"
 echo "## Generate ssh keys. ##"
 echo "########################"
 ssh-keygen
-
-echo "#########################"
-echo "## Download wallpaper. ##"
-echo "#########################"
-wget -P ~/Pictures/ https://github.com/dracula/wallpaper/archive/master.zip
-unzip ~/Pictures/master.zip -d ~/Pictures/
-mv ~/Pictures/wallpaper-master/arch.png /usr/share/backgrounds/
-rm ~/Pictures/master.zip
-rm -rf ~/Pictures/wallpaper-master/
 
 echo "####################"
 echo "## Install fonts. ##"
@@ -212,17 +203,22 @@ else
     cp -rf fonts/* "$FDIR"
 fi
 
-echo "#################"
-echo "## Add themes. ##"
-echo "#################"
+echo "#################################"
+echo "## Add themes and backgrounds. ##"
+echo "#################################"
 mkdir ~/.icons
 mkdir ~/.themes
 # icons
-tar xf papirus-icon-theme-20211101.tar.gz ~/.icons
+tar xf .icons/papirus-icon-theme-20211101.tar.gz -C ~/.icons/
 # cursor
-tar xf volantes_light_cursors.tar.gz ~/.icons
+tar xf .icons/volantes_light_cursors.tar.gz -C ~/.icons/
 # gtk
-tar xf Qogir-dark.tar.xz ~/.themes
+tar xf .themes/Qogir-dark.tar.xz -C ~/.themes/
+# apply themes
+cp -rf .gtkrc-2.0.mine ~/
+cp -rf .config/gtk-3.0/settings.ini ~/.config/gtk-3.0/
+# background
+sudo cp backgrounds/arch.png /usr/share/backgrounds/
 
 echo "#######################"
 echo "## Edit config files. ##"
@@ -236,29 +232,30 @@ echo "########################"
 echo "## bspwm config files. ##"
 echo "########################"
 if [[ $wms == *"bspwm"* ]]; then
-    if [[ "$laptop" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-        sed -i "135s/.*/modules-right = cpu memory network updates pulseaudio battery date settings poweroff arrow/" .config/polybar/config.ini
-    fi
-    sed -i "213s/.*/interface = $interface/" .config/polybar/modules.ini
     cp -rf .config/bspwm/autostart.sh ~/.config/bspwm/
     cp -rf .config/bspwm/bspwmrc ~/.config/bspwm/
     cp -rf .config/bspwm/sxhkd/sxhkdrc ~/.config/bspwm/sxhkd/
-    rm -rf ~/.config/polybar/*
-    cp -rf .config/polybar/* ~/.config/polybar/
     rm -rf ~/.config/rofi/*
     cp -rf .config/rofi/* ~/.config/rofi/
+    rm -rf ~/.config/polybar/*
+    cp -rf .config/polybar/* ~/.config/polybar/
+    chmod +x ~/.config/polybar/*
+    if [[ "$laptop" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+        sed -i "135s/.*/modules-right = cpu memory network updates pulseaudio battery date settings poweroff arrow/" ~/.config/polybar/config.ini
+    fi
+    sed -i "213s/.*/interface = $interface/" ~/.config/polybar/modules.ini
 fi
 
 echo "#####################"
 echo "## System cleanup. ##"
 echo "#####################"
 sudo pacman -Rns $(pacman -Qtdq)
-paru -Sc
-yay -Sc
+paru -Sc --noconfirm
+yay -Sc --noconfirm
 
-echo "##############################################################################"
-echo "## Done! You should customize your theme and change default apps if needed. ##"
-echo "##############################################################################"
+echo "#########################################################"
+echo "## Done! You should change the default apps if needed. ##"
+echo "#########################################################"
 
 read -r -p "Do you want to reboot now? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then

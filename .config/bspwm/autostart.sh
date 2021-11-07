@@ -14,9 +14,8 @@ function run {
 #xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
 #autorandr horizontal
 
-if [[ $(xrandr -q | grep 'HDMI1 connected') ]]; then
-  xrandr --output eDP1 --primary --mode 1920x1080 --rotate normal --output HDMI1 --mode 1920x1080 --rotate normal --same-as eDP1
-fi
+# enable mirror monitor if on laptop
+# xrandr --output eDP1 --primary --mode 1920x1080 --rotate normal --output HDMI1 --mode 1920x1080 --rotate normal --same-as eDP1
 
 $HOME/.config/polybar/launch.sh &
 
@@ -27,11 +26,11 @@ run sxhkd -c ~/.config/bspwm/sxhkd/sxhkdrc &
 
 #Some ways to set your wallpaper besides variety or nitrogen
 #feh --bg-scale ~/.config/bspwm/wall.png &
-feh --bg-fill ~/Pictures/arch.png &
+feh --bg-fill /usr/share/backgrounds/arch.png &
 #feh --randomize --bg-fill ~/Képek/*
 #feh --randomize --bg-fill ~/Dropbox/Apps/Desktoppr/*
 
-dex $HOME/.config/autostart/arcolinux-welcome-app.desktop
+# dex $HOME/.config/autostart/arcolinux-welcome-app.desktop
 xsetroot -cursor_name left_ptr &
 
 # conky -c $HOME/.config/bspwm/system-overview &

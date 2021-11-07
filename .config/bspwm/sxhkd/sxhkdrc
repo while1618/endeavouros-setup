@@ -6,17 +6,17 @@
 super + Return
 	alacritty
 
-# program launcher
+# rufi drun
 super + @space
 	rofi -modi drun -show drun -show-icons
 
-# app finder
+# rufi run
 super + shift + @space
-	xfce4-appfinder
+	rofi -show run
 
 # file explorer
-super + e
-	dolphin ~/
+super + shift + Return
+	thunar
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -26,13 +26,9 @@ super + Escape
 super + x
 	arcolinux-logout
 
-#
-# bspwm hotkeys
-#
-
-# quit/restart bspwm
-super + shift + {q,r}
-	bspc {quit,wm -r}
+# restart bspwm
+super + shift + r
+	bspc wm -r
 
 # close
 super + q
@@ -49,6 +45,26 @@ super + y
 # swap the current node and the biggest window
 super + g
 	bspc node -s biggest.window
+
+#
+# apps
+#
+
+# browser
+super + w
+	firefox
+
+# vscode
+super + c
+	code
+
+# idea
+super + i
+	idea
+
+# pycharm
+super + p
+	pychamr
 
 #
 # state/flags
@@ -87,7 +103,7 @@ super + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
-super + {o,i}
+super + {o,n}
 	bspc wm -h off; \
 	bspc node {older,newer} -f; \
 	bspc wm -h on

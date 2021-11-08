@@ -1,8 +1,8 @@
 # Arcolinux Setup
 
 ## About
-This is a script to automatically setup my environment in Arcolinux.
-Script will work with any desktop environment but currently have additional configs only for bspwm.
+This is a script to automatically setup my environment in arcolinux.
+The script will work with any desktop environment but currently have additional configs only for bspwm.
 
 __Run it with care, I'm not responsible for any damage you deal with it.__
 
@@ -40,8 +40,8 @@ Choose "Advance installation" when asked.
 After the installation is done, boot to your system, and run following commands:
 
 ``` 
-$ git clone https://github.com/while1618/linux-setup-scripts.git 
-$ cd linux-setup-scripts 
+$ git clone https://github.com/while1618/arcolinux-setup.git 
+$ cd arcolinux-setup/ 
 $ chmod +x arcolinux-setup.sh
 $ ./arcolinux-setup.sh
 ```

@@ -22,22 +22,17 @@ if [[ "$check" =~ ^([nN][eE][sS]|[nN])$ ]]; then
     echo "######################"
     exit 1
 fi
-read -r -p "Are you on tiling window manager? (e.g. bspwm, xmonad...) [y/N]" wm
+read -r -p "Are you on tiling window manager? (e.g. bspwm, xmonad...) [y/N] " wm
 if [[ "$wm" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     read -r -p "On witch? If you have multiple, divide them with 'space'. (e.g. bspwm xmonad): " wms
 fi
-read -r -p "Are you on NVIDIA gpu? [y/N]" nvidia
-read -r -p "Are you on laptop? [y/N]" laptop
+read -r -p "Are you on NVIDIA gpu? [y/N] " nvidia
+read -r -p "Are you on laptop? [y/N] " laptop
 echo "Your interfaces: "
 ip -o link show | awk -F': ' '{print $2}' | paste -sd ' '
 read -r -p "Enter interface name: " interface
 read -r -p "Enter your name for git: " git_name
 read -r -p "Enter your email for git: " git_email
-
-echo "####################################"
-echo "## Load custom arcolinux scripts. ##"
-echo "####################################"
-[ -d ~/.config ] || mkdir ~/.config && cp -rf /etc/skel/* ~
 
 echo "#####################"
 echo "## Update mirrors. ##"
@@ -205,9 +200,6 @@ tar xf .themes/Qogir-dark.tar.xz -C ~/.themes/
 tar xf .icons/papirus-icon-theme-20211101.tar.gz -C ~/.icons/
 # cursor
 tar xf .icons/volantes_light_cursors.tar.gz -C ~/.icons/
-# apply themes and icons
-cp -rf .gtkrc-2.0.mine ~/
-cp -rf .config/gtk-3.0/settings.ini ~/.config/gtk-3.0/
 # fonts
 cp -rf .fonts/ ~/
 # backgrounds
@@ -234,10 +226,11 @@ if [[ $wms == *"bspwm"* ]]; then
     rm -rf ~/.config/polybar/*
     cp -rf .config/polybar/* ~/.config/polybar/
     chmod +x ~/.config/polybar/*
+    chmod +x ~/.config/polybar/scripts/*
     if [[ "$laptop" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-        sed -i "135s/.*/modules-right = cpu memory network updates pulseaudio battery date settings poweroff arrow/" ~/.config/polybar/config.ini
+        sed -i "133s/.*/modules-right = cpu memory network updates pulseaudio battery date settings poweroff arrow/" ~/.config/polybar/config.ini
     fi
-    sed -i "213s/.*/interface = $interface/" ~/.config/polybar/modules.ini
+    sed -i "209s/.*/interface = $interface/" ~/.config/polybar/modules.ini
 fi
 
 echo "#####################"
@@ -247,9 +240,9 @@ sudo pacman -Rns $(pacman -Qtdq)
 paru -Sc --noconfirm
 yay -Sc --noconfirm
 
-echo "#########################################################"
-echo "## Done! You should change the default apps if needed. ##"
-echo "#########################################################"
+echo "#####################################################################################################################################"
+echo "## Done! You should apply qogir theme, papirus-dark icons, volantes cursor in lxappearance, and change the default apps if needed. ##"
+echo "#####################################################################################################################################"
 
 read -r -p "Do you want to reboot now? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then

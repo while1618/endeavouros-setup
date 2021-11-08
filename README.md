@@ -40,6 +40,7 @@ Choose "Advance installation" when asked.
 After the installation is done, boot to your system, and run following commands:
 
 ``` 
+$ skel
 $ git clone https://github.com/while1618/arcolinux-setup.git 
 $ cd arcolinux-setup/ 
 $ chmod +x arcolinux-setup.sh

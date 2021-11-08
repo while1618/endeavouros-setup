@@ -178,9 +178,9 @@ echo "## RGB config. -> (r: 200, g: 140: b:255) ##"
 echo "############################################"
 yay openrgb
 
-echo "####################################"
-echo "## Increase the size of swap file ##"
-echo "####################################"
+echo "#########################################"
+echo "## Increase the size of the swap file. ##"
+echo "#########################################"
 sudo swapoff -a
 # set swap file to 8gb
 sudo dd if=/dev/zero of=/swapfile bs=1G count=8
@@ -192,36 +192,27 @@ echo "## Generate ssh keys. ##"
 echo "########################"
 ssh-keygen
 
-echo "####################"
-echo "## Install fonts. ##"
-echo "####################"
-FDIR="~/.local/share/fonts"
-if [[ -d "$FDIR" ]]; then
-    cp -rf fonts/* "$FDIR"
-else
-    mkdir -p "$FDIR"
-    cp -rf fonts/* "$FDIR"
-fi
-
-echo "#################################"
-echo "## Add themes and backgrounds. ##"
-echo "#################################"
-mkdir ~/.icons
+echo "########################################"
+echo "## Add themes, fonts and backgrounds. ##"
+echo "########################################"
 mkdir ~/.themes
+mkdir ~/.icons
+# gtk
+tar xf .themes/Qogir-dark.tar.xz -C ~/.themes/
 # icons
 tar xf .icons/papirus-icon-theme-20211101.tar.gz -C ~/.icons/
 # cursor
 tar xf .icons/volantes_light_cursors.tar.gz -C ~/.icons/
-# gtk
-tar xf .themes/Qogir-dark.tar.xz -C ~/.themes/
-# apply themes
+# apply themes and icons
 cp -rf .gtkrc-2.0.mine ~/
 cp -rf .config/gtk-3.0/settings.ini ~/.config/gtk-3.0/
-# background
-sudo cp backgrounds/arch.png /usr/share/backgrounds/
+# fonts
+cp -rf .fonts/ ~/
+# backgrounds
+cp -rf .backgrounds ~/
 
 echo "#######################"
-echo "## Edit config files. ##"
+echo "## Add config files. ##"
 echo "#######################"
 cp -rf .bashrc ~/
 cp -rf .zshrc ~/

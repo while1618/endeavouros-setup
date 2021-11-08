@@ -127,6 +127,8 @@ echo "## Install java, maven and google-java-format. ##"
 echo "#################################################"
 sudo pacman -Sy jre-openjdk
 sudo pacman -Sy jdk-openjdk
+sudo pacman -Sy jre11-openjdk
+sudo pacman -Sy jdk11-openjdk
 sudo pacman -Sy maven
 yay google-java-format
 

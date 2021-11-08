@@ -60,11 +60,11 @@ super + c
 
 # idea
 super + i
-	idea
+	intellij-idea-ultimate-edition
 
 # pycharm
 super + p
-	pychamr
+	pycharm
 
 #
 # state/flags

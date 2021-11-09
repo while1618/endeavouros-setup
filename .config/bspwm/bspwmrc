@@ -37,6 +37,7 @@ bspc config presel_feedback_color	"#6272a4"
 #Single monitor
 bspc monitor -d 1 2 3 4 5
 
+
 #Dual monitor
 #find out names with arandr or xrandr
 #bspc monitor DP-2 -d 1 2 3 4 5 6 7 8 9

@@ -2,7 +2,7 @@
 
 ## About
 This script is used to automatically set my arcolinux env with bspwm as window manager. Keep in mind that the script will work 
-for most users, but it has some specific configs only for my setup (e.g. monitor resolution and refresh rate, rgb, gpu)
+for most users, but it has some specific configs only for my setup (e.g. monitor resolution and refresh rate, rgb, gpu).
 
 __Run it with care, I'm not responsible for any damage you deal with it.__
 

@@ -22,13 +22,13 @@ if [[ "$check" =~ ^([nN][eE][sS]|[nN])$ ]]; then
     echo "######################"
     exit 1
 fi
-read -r -p "Are you on laptop? [y/n] " laptop
+read -r -p "Are you on laptop? [y/N] " laptop
 echo "Your interfaces: "
 ip -o link show | awk -F': ' '{print $2}' | paste -sd ' '
 read -r -p "Enter interface name: " interface
 read -r -p "Enter the size of the swap file (e.g. 8 for 8gb): " swap
-read -r -p "Enter your name for git: " git_name
-read -r -p "Enter your email for git: " git_email
+read -r -p "Enter git name: " git_name
+read -r -p "Enter git email: " git_email
 
 echo "#####################"
 echo "## Update mirrors. ##"
@@ -51,6 +51,14 @@ sudo ufw enable
 sudo hardcode-fixer
 echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.d/100-arcolinux.conf
 
+echo "#########################################"
+echo "## Increase the size of the swap file. ##"
+echo "#########################################"
+sudo swapoff -a
+sudo dd if=/dev/zero of=/swapfile bs=1G count=$swap
+sudo mkswap /swapfile
+sudo swapon /swapfile
+
 echo "##################################"
 echo "## Change default shell to zsh. ##"
 echo "##################################"
@@ -62,11 +70,6 @@ echo "########################"
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/oh-my-zsh/plugins/zsh-autosuggestions
 sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /usr/share/oh-my-zsh/themes/powerlevel10k
 
-echo "###########################"
-echo "## Install file manager. ##"
-echo "###########################"
-sudo pacman -Sy nnn --noconfirm
-
 echo "#################"
 echo "## git config. ##"
 echo "#################"
@@ -77,6 +80,11 @@ echo "########################"
 echo "## Generate ssh keys. ##"
 echo "########################"
 ssh-keygen
+
+echo "###########################"
+echo "## Install file manager. ##"
+echo "###########################"
+sudo pacman -Sy nnn --noconfirm
 
 echo "#########################################################"
 echo "## Install mysql - current password for root is empty. ##"
@@ -156,18 +164,10 @@ echo "## Install pycharm. ##"
 echo "######################"
 yay pycharm-professional
 
-echo "###################################################################"
-echo "## Fix for not starting java based apps in tiling window manager ##"
-echo "###################################################################"
+echo "###################################################"
+echo "## Fix for not starting java based apps in bspwm ##"
+echo "###################################################"
 echo "export _JAVA_AWT_WM_NONREPARENTING=1" | sudo tee -a /etc/profile
-
-echo "#########################################"
-echo "## Increase the size of the swap file. ##"
-echo "#########################################"
-sudo swapoff -a
-sudo dd if=/dev/zero of=/swapfile bs=1G count=$swap
-sudo mkswap /swapfile
-sudo swapon /swapfile
 
 echo "########################################"
 echo "## Add themes, fonts and backgrounds. ##"
@@ -220,7 +220,7 @@ fi
 echo "#####################"
 echo "## System cleanup. ##"
 echo "#####################"
-sudo pacman -Rns $(pacman -Qtdq)
+sudo pacman -Rns $(pacman -Qtdq) --noconfirm
 paru -Sc --noconfirm
 yay -Sc --noconfirm
 

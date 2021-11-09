@@ -15,7 +15,7 @@ Choose "Advance installation" when asked.
 
 | Area             | Choose                                                            |
 | ---------------- | ----------------------------------------------------------------- |
-| Kernel           | default, zen, amd (pc) or intel (laptop) ucode                    |
+| Kernel           | default, zen, amd-ucode (pc) or intel-ucode (laptop)              |
 | Drivers          | nvidia and nvidia-dkms (pc) or intel (laptop)                     |
 | Login            | sddm                                                              |
 | Desktop          | bspwm                                                             |

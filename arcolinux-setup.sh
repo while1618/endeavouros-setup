@@ -75,6 +75,7 @@ echo "## git config. ##"
 echo "#################"
 git config --global user.name "${git_name}"
 git config --global user.email "${git_email}"
+git config --global pull.ff only
 
 echo "########################"
 echo "## Generate ssh keys. ##"
@@ -206,6 +207,7 @@ if [[ "$laptop" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sed -i "133s/.*/modules-right = cpu memory network updates pulseaudio battery date settings poweroff arrow/" ~/.config/polybar/config.ini
     sed -i "355s/.*/label-maxlen = 75/" ~/.config/polybar/modules.ini
     sed -i "17s/.*/xrandr --output eDP1 --primary --mode 1920x1080 --rotate normal --output HDMI1 --mode 1920x1080 --rotate normal --same-as eDP1 \&/" ~/.config/bspwm/autostart.sh
+    xinput --set-prop "SYNA2B2C:01 06CB:7F27 Touchpad" "libinput Natural Scrolling Enabled" 1
 else 
     echo "################"
     echo "## PC config. ##"

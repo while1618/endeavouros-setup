@@ -22,7 +22,7 @@ if [[ "$check" =~ ^([nN][eE][sS]|[nN])$ ]]; then
     echo "######################"
     exit 1
 fi
-read -r -p "Are you on laptop? [y/N] " laptop
+read -r -p "On which platform are you runinng? [laptop/pc/do not specify] " platform
 echo "Your interfaces: "
 ip -o link show | awk -F': ' '{print $2}' | paste -sd ' '
 read -r -p "Enter interface name: " interface
@@ -200,7 +200,7 @@ chmod +x ~/.config/polybar/*
 chmod +x ~/.config/polybar/scripts/*
 sed -i "209s/.*/interface = $interface/" ~/.config/polybar/modules.ini
 
-if [[ "$laptop" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+if [[ "$platform" == "laptop" ]]; then
     echo "####################"
     echo "## Laptop config. ##"
     echo "####################"
@@ -208,7 +208,7 @@ if [[ "$laptop" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     sed -i "355s/.*/label-maxlen = 75/" ~/.config/polybar/modules.ini
     sed -i "17s/.*/xrandr --output eDP1 --primary --mode 1920x1080 --rotate normal --output HDMI1 --mode 1920x1080 --rotate normal --same-as eDP1 \&/" ~/.config/bspwm/autostart.sh
     xinput --set-prop "SYNA2B2C:01 06CB:7F27 Touchpad" "libinput Natural Scrolling Enabled" 1
-else 
+elif [[ "$platform" == "pc" ]]; then
     echo "################"
     echo "## PC config. ##"
     echo "################"
@@ -217,6 +217,10 @@ else
     sudo nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
     yay gwe
     yay openrgb
+else
+    echo "#########################"
+    echo "## No specific config. ##"
+    echo "#########################"
 fi
 
 echo "#####################"

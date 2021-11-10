@@ -201,26 +201,32 @@ chmod +x ~/.config/polybar/scripts/*
 sed -i "209s/.*/interface = $interface/" ~/.config/polybar/modules.ini
 
 if [[ "$platform" == "laptop" ]]; then
-    echo "####################"
-    echo "## Laptop config. ##"
-    echo "####################"
+    echo "#############"
+    echo "## Laptop. ##"
+    echo "#############"
     sed -i "133s/.*/modules-right = cpu memory network updates pulseaudio battery date settings poweroff arrow/" ~/.config/polybar/config.ini
+    sed -i "243s/.*/width = 20/" ~/.config/polybar/config.ini
     sed -i "355s/.*/label-maxlen = 75/" ~/.config/polybar/modules.ini
+    sed -i "187s/.*/  size: 7.0/" ~/.config/polybar/modules.ini
+    sed -i "28s/.*/feh --bg-fill ~/.backgrounds/1920x1080.jpg \&/" ~/.config/bspwm/autostart.sh
     sed -i "17s/.*/xrandr --output eDP1 --primary --mode 1920x1080 --rotate normal --output HDMI1 --mode 1920x1080 --rotate normal --same-as eDP1 \&/" ~/.config/bspwm/autostart.sh
+    sed -i '37d' ~/.config/bspwm/autostart.sh
+    sed -i '39d' ~/.config/bspwm/bspwmrc
     xinput --set-prop "SYNA2B2C:01 06CB:7F27 Touchpad" "libinput Natural Scrolling Enabled" 1
 elif [[ "$platform" == "pc" ]]; then
-    echo "################"
-    echo "## PC config. ##"
-    echo "################"
-    xrandr --output DP-4 --mode 3440x1440 --rate 144.00
-    sed -i "39s/.*/bspc config pointer_motion_interval 7/" ~/.config/bspwm/bspwmrc
+    echo "#########"
+    echo "## PC. ##"
+    echo "#########"
+    sudo nvidia-xconfig
     sudo nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
+    # gpu fan config -> (50-0, 54-8, 58-18, 60-60, 65-80, 70-100)
     yay gwe
+    # rgb config -> (r: 200, g: 140: b:255)
     yay openrgb
 else
-    echo "#########################"
-    echo "## No specific config. ##"
-    echo "#########################"
+    echo "####################"
+    echo "## Not specified. ##"
+    echo "####################"
 fi
 
 echo "#####################"

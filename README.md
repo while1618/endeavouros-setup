@@ -17,7 +17,7 @@ Choose "Advance installation" when asked.
 
 | Area             | Choose                                                            |
 | ---------------- | ----------------------------------------------------------------- |
-| Kernel           | default, zen, amd-ucode (pc) or intel-ucode (laptop)              |
+| Kernel           | linux, zen, amd-ucode (pc) or intel-ucode (laptop)                |
 | Drivers          | nvidia and nvidia-dkms (pc) or intel (laptop)                     |
 | Login            | sddm                                                              |
 | Desktop          | bspwm                                                             |
@@ -34,7 +34,7 @@ Choose "Advance installation" when asked.
 | Terminals        | alacritty                                                         |
 | Filemanagers     | nemo, nemo-fileroller                                             |
 | Usb Utilites     | etcher-bin, woeusb                                                |
-| Utilities        | flatpak, snapd, htop, lm_sensors, galculator, gufw, stacer-bin    |
+| Utilities        | flatpak, snapd, htop, lm_sensors, galculator, gufw                |
 | Applications     | bitwarden, tor-browser, tor, virtualbox for linux kernel          |
 | Arcolinux Dev    | none                                                              |
 | Partitions       | swap to file                                                      |

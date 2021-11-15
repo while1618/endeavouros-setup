@@ -134,7 +134,7 @@ sudo pacman -Sy jre11-openjdk --noconfirm
 sudo pacman -Sy jdk11-openjdk --noconfirm
 sudo pacman -Sy jre-openjdk --noconfirm
 sudo pacman -Sy jdk-openjdk --noconfirm
-sudo pacman -Sy maven -noconfirm
+sudo pacman -Sy maven --noconfirm
 yay google-java-format
 
 echo "###########################"

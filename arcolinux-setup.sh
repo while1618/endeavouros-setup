@@ -87,6 +87,11 @@ echo "## Install file manager. ##"
 echo "###########################"
 sudo pacman -Sy nnn --noconfirm
 
+echo "#########################"
+echo "## Install woeusb gui. ##"
+echo "#########################"
+yay woeusb-gui
+
 echo "#########################################################"
 echo "## Install mysql - current password for root is empty. ##"
 echo "#########################################################"
@@ -207,8 +212,8 @@ if [[ "$platform" == "laptop" ]]; then
     sed -i "133s/.*/modules-right = cpu memory network updates pulseaudio battery date settings poweroff arrow/" ~/.config/polybar/config.ini
     sed -i "243s/.*/width = 20/" ~/.config/polybar/config.ini
     sed -i "355s/.*/label-maxlen = 75/" ~/.config/polybar/modules.ini
-    sed -i "187s/.*/  size: 7.0/" ~/.config/polybar/modules.ini
-    sed -i "28s/.*/feh --bg-fill ~/.backgrounds/1920x1080.jpg \&/" ~/.config/bspwm/autostart.sh
+	sed -i "183s/.*/  size: 7.0/" ~/.config/alacritty/alacritty.yml
+    sed -i "28s/.*/feh --bg-fill ~\/.backgrounds\/1920x1080.jpg \&/" ~/.config/bspwm/autostart.sh
     sed -i "17s/.*/xrandr --output eDP1 --primary --mode 1920x1080 --rotate normal --output HDMI1 --mode 1920x1080 --rotate normal --same-as eDP1 \&/" ~/.config/bspwm/autostart.sh
     sed -i "18s/.*/xinput --set-prop 'SYNA2B2C:01 06CB:7F27 Touchpad' 'libinput Natural Scrolling Enabled' 1 \&/" ~/.config/bspwm/autostart.sh
     sed -i '37d' ~/.config/bspwm/autostart.sh

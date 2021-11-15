@@ -33,7 +33,7 @@ Choose "Advance installation" when asked.
 | Gaming (pc only) | lutris, steam-buddy, steam-tweaks                                 |
 | Terminals        | alacritty                                                         |
 | Filemanagers     | nemo, nemo-fileroller                                             |
-| Usb Utilites     | etcher-bin, woeusb                                                |
+| Usb Utilites     | etcher-bin                                                        |
 | Utilities        | flatpak, snapd, htop, lm_sensors, galculator, gufw                |
 | Applications     | bitwarden, tor-browser, tor, virtualbox for linux kernel          |
 | Arcolinux Dev    | none                                                              |

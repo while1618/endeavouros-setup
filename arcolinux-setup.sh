@@ -226,6 +226,7 @@ elif [[ "$platform" == "pc" ]]; then
     sudo nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
     # gpu fan config -> (50-0, 54-8, 58-18, 60-60, 65-80, 70-100)
     yay gwe
+    sudo pacman -Sy psensor --noconfirm 
     # rgb config -> (r: 200, g: 140: b:255)
     yay openrgb
 else

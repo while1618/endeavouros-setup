@@ -209,7 +209,7 @@ if [[ "$platform" == "laptop" ]]; then
     echo "#############"
     echo "## Laptop. ##"
     echo "#############"
-    sed -i "133s/.*/modules-right = cpu memory network updates pulseaudio battery date settings poweroff arrow/" ~/.config/polybar/config.ini
+    sed -i "133s/.*/modules-right = cpu memory network updates pulseaudio battery date/" ~/.config/polybar/config.ini
     sed -i "243s/.*/width = 20/" ~/.config/polybar/config.ini
     sed -i "355s/.*/label-maxlen = 75/" ~/.config/polybar/modules.ini
     sed -i "183s/.*/  size: 7.0/" ~/.config/alacritty/alacritty.yml

@@ -72,6 +72,12 @@ echo "########################"
 sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/oh-my-zsh/plugins/zsh-autosuggestions
 sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /usr/share/oh-my-zsh/themes/powerlevel10k
 
+echo "##################"
+echo "## install vim. ##"
+echo "##################"
+sudo pacman -Sy neovim --noconfirm
+yay vim-plug
+
 echo "#################"
 echo "## git config. ##"
 echo "#################"

@@ -416,3 +416,8 @@ source /usr/share/nvm/init-nvm.sh
 
 alias update_os="update;upall;yay -Su --noconfirm"
 alias clean_os="cleanup;yay -Sc --noconfirm;paru -Sc --noconfirm"
+
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m'
+fi

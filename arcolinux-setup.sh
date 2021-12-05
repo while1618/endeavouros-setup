@@ -50,6 +50,8 @@ sudo systemctl enable fstrim.timer
 sudo ufw enable
 sudo hardcode-fixer
 echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.d/100-arcolinux.conf
+sudo pacman -Sy fzf --noconfirm
+sudo pacman -Sy ripgrep --noconfirm
 
 echo "#########################################"
 echo "## Increase the size of the swap file. ##"

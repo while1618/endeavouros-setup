@@ -24,9 +24,9 @@ Choose "Advance installation" when asked.
 | ArcoLinux Tools  | fun, sddm-themes, utilites, steam (pc only), wine (pc only) |
 | Communication    | discord, signal, skype (laptop only)                        |
 | Development      | visual-studio-code-bin                                      |
-| Office           | WPS, okular                                                 |
+| Office           | OnlyOffice, okular                                          |
 | Fonts            | all                                                         |
-| Multimedia       | obs-studio, vlc, youtube-dl                                 |
+| Multimedia       | obs-studio, vlc, mpv, youtube-dl                            |
 | Internet         | firefox, brave, qbittorrent, mailspring                     |
 | Theming          | none                                                        |
 | Graphics         | none                                                        |

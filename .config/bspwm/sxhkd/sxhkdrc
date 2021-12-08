@@ -52,7 +52,7 @@ super + g
 
 # browser
 super + w
-	google-chrome-stable
+	firefox
 
 # vscode
 super + c

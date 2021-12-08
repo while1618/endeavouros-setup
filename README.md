@@ -15,29 +15,29 @@ Choose "Advance installation" when asked.
 
 ### What to pick during the installation:
 
-| Area             | Choose                                                            |
-| ---------------- | ----------------------------------------------------------------- |
-| Kernel           | linux, zen, amd-ucode (pc) or intel-ucode (laptop)                |
-| Drivers          | nvidia and nvidia-dkms (pc) or intel (laptop)                     |
-| Login            | sddm                                                              |
-| Desktop          | bspwm                                                             |
-| ArcoLinux Tools  | fun, sddm-themes, utilites, steam (pc only), wine (pc only)       |
-| Communication    | discord, signal, skype (laptop only)                              |
-| Development      | visual-studio-code-bin                                            |
-| Office           | WPS, okular                                                       |
-| Fonts            | all                                                               |
-| Multimedia       | obs-studio, vlc, youtube-dl                                       |
-| Internet         | firefox, ublock-origin, chromium, chrome, qbittorrent, mailspring |
-| Theming          | none                                                              |
-| Graphics         | none                                                              |
-| Gaming (pc only) | lutris, steam-buddy, steam-tweaks                                 |
-| Terminals        | alacritty                                                         |
-| Filemanagers     | nemo, nemo-fileroller                                             |
-| Usb Utilites     | etcher-bin                                                        |
-| Utilities        | flatpak, snapd, htop, lm_sensors, galculator, gufw                |
-| Applications     | bitwarden, tor-browser, tor, virtualbox for linux kernel          |
-| Arcolinux Dev    | none                                                              |
-| Partitions       | swap to file                                                      |
+| Area             | Choose                                                      |
+| ---------------- | ----------------------------------------------------------- |
+| Kernel           | linux, zen, amd-ucode (pc) or intel-ucode (laptop)          |
+| Drivers          | nvidia and nvidia-dkms (pc) or intel (laptop)               |
+| Login            | sddm                                                        |
+| Desktop          | bspwm                                                       |
+| ArcoLinux Tools  | fun, sddm-themes, utilites, steam (pc only), wine (pc only) |
+| Communication    | discord, signal, skype (laptop only)                        |
+| Development      | visual-studio-code-bin                                      |
+| Office           | WPS, okular                                                 |
+| Fonts            | all                                                         |
+| Multimedia       | obs-studio, vlc, youtube-dl                                 |
+| Internet         | firefox, brave, qbittorrent, mailspring                     |
+| Theming          | none                                                        |
+| Graphics         | none                                                        |
+| Gaming (pc only) | lutris, steam-buddy, steam-tweaks                           |
+| Terminals        | alacritty                                                   |
+| Filemanagers     | nemo, nemo-fileroller                                       |
+| Usb Utilites     | etcher-bin                                                  |
+| Utilities        | flatpak, snapd, htop, lm_sensors, galculator, gufw          |
+| Applications     | bitwarden, tor-browser, tor, virtualbox for linux kernel    |
+| Arcolinux Dev    | none                                                        |
+| Partitions       | swap to file                                                |
 
 After the installation is done, boot to your system, and run following commands:
 

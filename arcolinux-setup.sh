@@ -251,9 +251,11 @@ sudo pacman -Rns $(pacman -Qtdq) --noconfirm
 paru -Sc --noconfirm
 yay -Sc --noconfirm
 
-echo "###############################################################################################################################################"
-echo "## Done! You should apply qogir or nordic theme, papirus-dark icons, volantes cursor in lxappearance, and change the default apps if needed. ##"
-echo "###############################################################################################################################################"
+echo "########################################################################################################################"
+echo "Done!"
+echo "Apply qogir or nordic theme, papirus-dark icons, volantes cursor in lxappearance, and change the default apps if needed."
+echo "Go to ~/.mozilla/firefox/random-str.default-release, delete everything in there and copy firefox-settings/prefs.js file."
+echo "########################################################################################################################"
 
 read -r -p "Do you want to reboot now? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then

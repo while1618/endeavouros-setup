@@ -189,6 +189,7 @@ echo "########################################"
 mkdir ~/.themes
 mkdir ~/.icons
 tar xf .themes/Qogir-dark.tar.xz -C ~/.themes/
+tar xf .themes/Nordic-darker-v40.tar.xz -C ~/.themes/
 tar xf .icons/papirus-icon-theme-20211101.tar.gz -C ~/.icons/
 tar xf .icons/volantes_light_cursors.tar.gz -C ~/.icons/
 cp -rf .fonts/ ~/
@@ -250,9 +251,9 @@ sudo pacman -Rns $(pacman -Qtdq) --noconfirm
 paru -Sc --noconfirm
 yay -Sc --noconfirm
 
-echo "#####################################################################################################################################"
-echo "## Done! You should apply qogir theme, papirus-dark icons, volantes cursor in lxappearance, and change the default apps if needed. ##"
-echo "#####################################################################################################################################"
+echo "###############################################################################################################################################"
+echo "## Done! You should apply qogir or nordic theme, papirus-dark icons, volantes cursor in lxappearance, and change the default apps if needed. ##"
+echo "###############################################################################################################################################"
 
 read -r -p "Do you want to reboot now? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then

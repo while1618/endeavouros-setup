@@ -22,7 +22,7 @@ Choose "Advance installation" when asked.
 | Login            | sddm                                                        |
 | Desktop          | bspwm                                                       |
 | ArcoLinux Tools  | fun, sddm-themes, utilites, steam (pc only), wine (pc only) |
-| Communication    | discord, signal, skype (laptop only)                        |
+| Communication    | discord, signal                                             |
 | Development      | visual-studio-code-bin                                      |
 | Office           | OnlyOffice, okular                                          |
 | Fonts            | all                                                         |

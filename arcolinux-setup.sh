@@ -53,11 +53,6 @@ echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.d/100-arcolinux.conf
 sudo pacman -Sy fzf --noconfirm
 sudo pacman -Sy ripgrep --noconfirm
 
-echo "################################"
-echo "## Install protonmail bridge. ##"
-echo "################################"
-yay protonmail-bridge
-
 echo "#########################################"
 echo "## Increase the size of the swap file. ##"
 echo "#########################################"

@@ -53,6 +53,11 @@ echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.d/100-arcolinux.conf
 sudo pacman -Sy fzf --noconfirm
 sudo pacman -Sy ripgrep --noconfirm
 
+echo "################################"
+echo "## Install protonmail bridge. ##"
+echo "################################"
+yay protonmail-bridge
+
 echo "#########################################"
 echo "## Increase the size of the swap file. ##"
 echo "#########################################"
@@ -73,7 +78,7 @@ sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/oh-my
 sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /usr/share/oh-my-zsh/themes/powerlevel10k
 
 echo "##################"
-echo "## install vim. ##"
+echo "## Install vim. ##"
 echo "##################"
 sudo pacman -Sy neovim --noconfirm
 yay vim-plug

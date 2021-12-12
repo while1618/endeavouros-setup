@@ -238,6 +238,7 @@ elif [[ "$platform" == "pc" ]]; then
     sudo pacman -Sy psensor --noconfirm
     # rgb config -> (r: 200, g: 140: b:255)
     yay openrgb
+    sudo pacman -Sy piper --noconfirm
 else
     echo "####################"
     echo "## Not specified. ##"

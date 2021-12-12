@@ -210,6 +210,7 @@ rm -rf ~/.config/rofi/*
 cp -rf .config/rofi/* ~/.config/rofi/
 rm -rf ~/.config/polybar/*
 cp -rf .config/polybar/* ~/.config/polybar/
+cp -rf .Xresources ~/.Xresources
 chmod +x ~/.config/polybar/*
 chmod +x ~/.config/polybar/scripts/*
 sed -i "209s/.*/interface = $interface/" ~/.config/polybar/modules.ini

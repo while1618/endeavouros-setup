@@ -190,7 +190,7 @@ mkdir ~/.themes
 mkdir ~/.icons
 tar xf .themes/Qogir-dark.tar.xz -C ~/.themes/
 tar xf .themes/Nordic-darker-v40.tar.xz -C ~/.themes/
-tar xf .icons/papirus-icon-theme-20211101.tar.gz -C ~/.icons/
+tar xf .icons/papirus-icon-theme-nordic-folders.tar.gz -C ~/.icons/
 tar xf .icons/volantes_light_cursors.tar.gz -C ~/.icons/
 cp -rf .fonts/ ~/
 cp -rf .backgrounds ~/

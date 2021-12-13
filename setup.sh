@@ -11,9 +11,9 @@ if [ "$(id -u)" = 0 ]; then
     exit 1
 fi
 
-echo "###########################################################################################################################################"
-echo "## Before running check the installation script and the following link: https://arcolinux.com/things-to-do-after-arcolinux-installation/ ##"
-echo "###########################################################################################################################################"
+echo "###################################################"
+echo "## Before running check the installation script. ##"
+echo "###################################################"
 
 read -r -p "Have you checked? [Y/n] " check
 if [[ "$check" =~ ^([nN][eE][sS]|[nN])$ ]]; then
@@ -22,10 +22,7 @@ if [[ "$check" =~ ^([nN][eE][sS]|[nN])$ ]]; then
     echo "######################"
     exit 1
 fi
-read -r -p "On which platform are you runinng? [laptop/pc/do not specify] " platform
-echo "Your interfaces: "
-ip -o link show | awk -F': ' '{print $2}' | paste -sd ' '
-read -r -p "Enter interface name: " interface
+read -r -p "On which platform are you runinng? [laptop/pc] " platform
 read -r -p "Enter the size of the swap file (e.g. 8 for 8gb): " swap
 read -r -p "Enter git name: " git_name
 read -r -p "Enter git email: " git_email
@@ -39,47 +36,30 @@ echo "####################"
 echo "## Update system. ##"
 echo "####################"
 sudo pacman -Syyu --noconfirm
-paru -Syu --noconfirm
 yay -Su --noconfirm
 
-echo "#######################"
-echo "## Enable utilities. ##"
-echo "#######################"
-hblock
-sudo systemctl enable fstrim.timer
+echo "######################"
+echo "## Enable firewall. ##"
+echo "######################"
+sudo pacman -Sy ufw --noconfirm
 sudo ufw enable
-sudo hardcode-fixer
-echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.d/100-arcolinux.conf
-sudo pacman -Sy fzf --noconfirm
-sudo pacman -Sy ripgrep --noconfirm
 
-echo "#########################################"
-echo "## Increase the size of the swap file. ##"
-echo "#########################################"
+echo "###############"
+echo "## SSD Trim. ##"
+echo "###############"
+sudo systemctl enable fstrim.timer
+
+echo "###########"
+echo "## Swap. ##"
+echo "###########"
+echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.d/100-arcolinux.conf
 sudo swapoff -a
 sudo dd if=/dev/zero of=/swapfile bs=1G count=$swap
 sudo mkswap /swapfile
 sudo swapon /swapfile
 
-echo "##################################"
-echo "## Change default shell to zsh. ##"
-echo "##################################"
-chsh -s $(which zsh)
-
-echo "########################"
-echo "## zsh customization. ##"
-echo "########################"
-sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/oh-my-zsh/plugins/zsh-autosuggestions
-sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /usr/share/oh-my-zsh/themes/powerlevel10k
-
-echo "##################"
-echo "## Install vim. ##"
-echo "##################"
-sudo pacman -Sy neovim --noconfirm
-yay vim-plug
-
 echo "#################"
-echo "## git config. ##"
+echo "## Git config. ##"
 echo "#################"
 git config --global user.name "${git_name}"
 git config --global user.email "${git_email}"
@@ -89,16 +69,6 @@ echo "########################"
 echo "## Generate ssh keys. ##"
 echo "########################"
 ssh-keygen
-
-echo "###########################"
-echo "## Install file manager. ##"
-echo "###########################"
-sudo pacman -Sy nnn --noconfirm
-
-echo "#########################"
-echo "## Install woeusb gui. ##"
-echo "#########################"
-yay woeusb-gui
 
 echo "#########################################################"
 echo "## Install mysql - current password for root is empty. ##"
@@ -156,6 +126,10 @@ echo "###########################"
 yay nvm
 source /usr/share/nvm/init-nvm.sh
 nvm install --lts
+
+echo "##########################################"
+echo "## Install angular cli and nx globally. ##"
+echo "##########################################"
 npm install -g @angular/cli nx
 
 echo "##################"
@@ -163,101 +137,117 @@ echo "## Install pip. ##"
 echo "##################"
 sudo pacman -Sy python-pip --noconfirm
 
-echo "######################"
-echo "## Install postman. ##"
-echo "######################"
-yay postman-bin
-
-echo "#######################"
-echo "## Install intellij. ##"
-echo "#######################"
-yay intellij-idea-ultimate-edition
-
-echo "######################"
-echo "## Install pycharm. ##"
-echo "######################"
-yay pycharm-professional
+echo "##################"
+echo "## Install zsh. ##"
+echo "##################"
+sudo pacman -Sy zsh
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/themes/powerlevel10k
 
 echo "###################################################"
 echo "## Fix for not starting java based apps in bspwm ##"
 echo "###################################################"
 echo "export _JAVA_AWT_WM_NONREPARENTING=1" | sudo tee -a /etc/profile
 
+echo "###################"
+echo "## Install apps. ##"
+echo "###################"
+sudo pacman -Sy signal-desktop --noconfirm
+sudo pacman -Sy discord --noconfirm
+yay onlyoffice
+sudo pacman -Sy okular --noconfirm
+sudo pacman -Sy mpv --noconfirm
+yay brave
+sudo pacman -Sy tor --noconfirm
+yay tor-browser
+sudo pacman -Sy qbittorrent --noconfirm
+sudo pacman -Sy bitwaredn --noconfirm
+sudo pacman -Sy alacritty --noconfirm
+yay vscode
+yay postman-bin
+yay intellij-idea-ultimate-edition
+yay pycharm-professional
+sudo pacman -Sy vim --noconfirm
+sudo pacman -Sy neovim --noconfirm
+yay vim-plug
+sudo pacman -Sy fzf --noconfirm
+sudo pacman -Sy ripgrep --noconfirm
+sudo pacman -Sy nnn --noconfirm
+sudo pacman -Sy virtualbox --noconfirm
+sudo pacman -Sy qalculate-gtk --noconfirm
+yay etcher-bin
+yay woeusb-gui
+
 echo "########################################"
 echo "## Add themes, fonts and backgrounds. ##"
 echo "########################################"
 mkdir ~/.themes
 mkdir ~/.icons
-tar xf .themes/Qogir-dark.tar.xz -C ~/.themes/
-tar xf .themes/Nordic-darker-v40.tar.xz -C ~/.themes/
-tar xf .icons/papirus-icon-theme-nordic-folders.tar.gz -C ~/.icons/
-tar xf .icons/volantes_light_cursors.tar.gz -C ~/.icons/
-cp -rf .fonts/ ~/
-cp -rf .backgrounds ~/
+mkdir ~/.fonts
+mkdir ~/.backgrounds
+tar xf themes/Nordic-darker-v40.tar.xz -C ~/.themes/
+tar xf icons/papirus-icon-theme-nordic-folders.tar.gz -C ~/.icons/
+tar xf icons/volantes_light_cursors.tar.gz -C ~/.icons/
+cp -rf fonts/** ~/.fonts/
+cp -rf backgrounds ~/.backgrounds/
 
 echo "#######################"
 echo "## Add config files. ##"
 echo "#######################"
-cp -rf .bashrc ~/
-cp -rf .zshrc ~/
-cp -rf .p10k.zsh ~/
-cp -rf .config/alacritty/alacritty.yml ~/.config/alacritty/
-cp -rf .config/bspwm/autostart.sh ~/.config/bspwm/
-cp -rf .config/bspwm/bspwmrc ~/.config/bspwm/
-cp -rf .config/bspwm/picom.conf ~/.config/bspwm/
-cp -rf .config/bspwm/sxhkd/sxhkdrc ~/.config/bspwm/sxhkd/
-rm -rf ~/.config/rofi/*
-cp -rf .config/rofi/* ~/.config/rofi/
-rm -rf ~/.config/polybar/*
-cp -rf .config/polybar/* ~/.config/polybar/
-cp -rf .Xresources ~/.Xresources
-chmod +x ~/.config/polybar/*
-chmod +x ~/.config/polybar/scripts/*
-sed -i "209s/.*/interface = $interface/" ~/.config/polybar/modules.ini
+cp -rf config/alacritty/** ~/.config/alacritty/
+cp -rf config/bspwm/** ~/.config/bspwm/
+cp -rf config/polybar/** ~/.config/polybar/
+cp -rf config/rofi/** ~/.config/rofi/
+cp -rf config/sxhkd/** ~/.config/sxhkd/
+cp -r config/shell/** ~/
 
 if [[ "$platform" == "laptop" ]]; then
     echo "#############"
     echo "## Laptop. ##"
     echo "#############"
-    sed -i "133s/.*/modules-right = cpu memory network updates pulseaudio battery date/" ~/.config/polybar/config.ini
-    sed -i "243s/.*/width = 20/" ~/.config/polybar/config.ini
-    sed -i "355s/.*/label-maxlen = 75/" ~/.config/polybar/modules.ini
-    sed -i "183s/.*/  size: 7.0/" ~/.config/alacritty/alacritty.yml
-    sed -i "28s/.*/feh --bg-fill ~\/.backgrounds\/1920x1080.jpg \&/" ~/.config/bspwm/autostart.sh
-    sed -i "17s/.*/xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal --output HDMI-1 --mode 1920x1080 --rotate normal --same-as eDP-1 \&/" ~/.config/bspwm/autostart.sh
-    sed -i "18s/.*/xinput --set-prop 'SYNA2B2C:01 06CB:7F27 Touchpad' 'libinput Natural Scrolling Enabled' 1 \&/" ~/.config/bspwm/autostart.sh
-    sed -i '37d' ~/.config/bspwm/autostart.sh
-    sed -i '39d' ~/.config/bspwm/bspwmrc
+    sed -i "62s/.*/modules-right = cpu sps memory sps pulseaudio sps brightness sps battery sps updates sps date/" ~/.config/polybar/config.ini
+    sed -i "227s/.*/label-maxlen = 75/" ~/.config/polybar/config.ini
+    sed -i "187s/.*/  size: 7.0/" ~/.config/alacritty/alacritty.yml
+    sed -i "56s/.*/xinput --set-prop 'SYNA2B2C:01 06CB:7F27 Touchpad' 'libinput Natural Scrolling Enabled' 1 \&/" ~/.config/bspwm/bspwmrc
 elif [[ "$platform" == "pc" ]]; then
     echo "#########"
     echo "## PC. ##"
     echo "#########"
     sudo nvidia-xconfig
     sudo nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
-    # gpu fan config -> (50-0, 54-8, 58-18, 60-60, 65-80, 70-100)
-    yay gwe
     sudo pacman -Sy psensor --noconfirm
-    # rgb config -> (r: 200, g: 140: b:255)
-    yay openrgb
     sudo pacman -Sy piper --noconfirm
+    sudo pacman -Sy steam --noconfirm
+    sudo pacman -Sy wine --noconfirm
+    sudo pacman -Sy lutris --noconfirm
+    yay gwe         # gpu fan config -> (50-0, 54-8, 58-18, 60-60, 65-80, 70-100)
+    yay openrgb     # rgb config -> (r: 200, g: 140: b:255)
 else
-    echo "####################"
-    echo "## Not specified. ##"
-    echo "####################"
+    echo "#######################"
+    echo "## Unknown platform. ##"
+    echo "#######################"
 fi
+
+echo "##################################"
+echo "## Change default shell to zsh. ##"
+echo "##################################"
+chsh -s $(which zsh)
 
 echo "#####################"
 echo "## System cleanup. ##"
 echo "#####################"
 sudo pacman -Rns $(pacman -Qtdq) --noconfirm
-paru -Sc --noconfirm
 yay -Sc --noconfirm
 
-echo "########################################################################################################################"
+echo "###########################################################################"
 echo "Done!"
-echo "Apply qogir or nordic theme, papirus-dark icons, volantes cursor in lxappearance, and change the default apps if needed."
-echo "Go to ~/.mozilla/firefox/random-str.default-release, delete everything in there and copy firefox-settings/prefs.js file."
-echo "########################################################################################################################"
+echo "Change the default apps if needed."
+echo "Apply nordic theme, papirus-dark icons and volantes cursor in lxappearance." 
+echo "Go to ~/.mozilla/firefox/<random-str>.default-release."
+echo "Delete everything and copy config/firefox-settings/prefs.js in there."
+echo "###########################################################################"
 
 read -r -p "Do you want to reboot now? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then

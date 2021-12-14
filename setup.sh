@@ -207,6 +207,7 @@ if [[ "$platform" == "laptop" ]]; then
     sed -i "227s/.*/label-maxlen = 75/" ~/.config/polybar/config.ini
     sed -i "187s/.*/  size: 7.0/" ~/.config/alacritty/alacritty.yml
     echo "xinput --set-prop 'SYNA2B2C:01 06CB:7F27 Touchpad' 'libinput Natural Scrolling Enabled' 1 &" | tee -a ~/.config/bspwm/bspwmrc
+    echo "HandleLidSwitch=ignore" | sudo tee -a /etc/systemd/logind.conf
 elif [[ "$platform" == "pc" ]]; then
     echo "#########"
     echo "## PC. ##"
@@ -246,7 +247,6 @@ echo "Change the default apps if needed."
 echo "Apply nordic theme, papirus-dark icons and volantes cursor in lxappearance." 
 echo "Go to ~/.mozilla/firefox/<random-str>.default-release."
 echo "Delete everything and copy config/firefox-settings/prefs.js in there."
-echo "If on laptop, set HandleLidSwitch=ignore in /etc/systemd/logind.conf."
 echo "###########################################################################"
 
 read -r -p "Do you want to reboot now? [y/N] " response

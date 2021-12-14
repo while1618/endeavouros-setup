@@ -244,6 +244,7 @@ yay -Sc --noconfirm
 echo "###########################################################################"
 echo "Done!"
 echo "Change the default apps if needed."
+echo "Change background."
 echo "Apply nordic theme, papirus-dark icons and volantes cursor in lxappearance." 
 echo "Go to ~/.mozilla/firefox/<random-str>.default-release."
 echo "Delete everything and copy config/firefox-settings/prefs.js in there."

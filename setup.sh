@@ -215,6 +215,7 @@ elif [[ "$platform" == "pc" ]]; then
     echo "#########"
     echo "## PC. ##"
     echo "#########"
+    sudo nvidia-installer-dkms
     sudo nvidia-xconfig
     sudo nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
     sudo pacman -Sy psensor --noconfirm

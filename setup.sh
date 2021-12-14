@@ -27,11 +27,6 @@ read -r -p "Enter the size of the swap file (e.g. 8 for 8gb): " swap
 read -r -p "Enter git name: " git_name
 read -r -p "Enter git email: " git_email
 
-echo "#####################"
-echo "## Update mirrors. ##"
-echo "#####################"
-sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist
-
 echo "####################"
 echo "## Update system. ##"
 echo "####################"
@@ -140,7 +135,7 @@ sudo pacman -Sy python-pip --noconfirm
 echo "##################"
 echo "## Install zsh. ##"
 echo "##################"
-sudo pacman -Sy zsh
+sudo pacman -Sy zsh --noconfirm
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
@@ -163,7 +158,7 @@ yay brave
 sudo pacman -Sy tor --noconfirm
 yay tor-browser
 sudo pacman -Sy qbittorrent --noconfirm
-sudo pacman -Sy bitwaredn --noconfirm
+sudo pacman -Sy bitwarden --noconfirm
 sudo pacman -Sy alacritty --noconfirm
 yay vscode
 yay postman-bin
@@ -184,7 +179,7 @@ echo "########################################"
 echo "## Add themes, fonts and backgrounds. ##"
 echo "########################################"
 mkdir -p ~/.themes && tar xf themes/Nordic-darker-v40.tar.xz -C ~/.themes/
-mkdir -p ~/.icons && tar xf icons/papirus-icon-theme-nordic-folders.tar.gz -C ~/.icons/
+mkdir -p ~/.icons && tar xf icons/papirus-icon-theme-nordic-folders.tar.xz -C ~/.icons/
 tar xf icons/volantes_light_cursors.tar.gz -C ~/.icons/
 mkdir -p ~/.fonts && cp -rf fonts/** ~/.fonts/
 mkdir -p ~/.backgrounds && cp -rf backgrounds/** ~/.backgrounds/
@@ -197,7 +192,9 @@ cp -rf config/bspwm/** ~/.config/bspwm/
 cp -rf config/polybar/** ~/.config/polybar/
 cp -rf config/rofi/** ~/.config/rofi/
 cp -rf config/sxhkd/** ~/.config/sxhkd/
-cp -r config/shell/** ~/
+cp -rf config/shell/.bashrc ~/
+cp -rf config/shell/.zshrc ~/
+cp -rf config/shell/.p10k.zsh ~/
 
 if [[ "$platform" == "laptop" ]]; then
     echo "#############"

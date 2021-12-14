@@ -183,20 +183,16 @@ yay woeusb-gui
 echo "########################################"
 echo "## Add themes, fonts and backgrounds. ##"
 echo "########################################"
-mkdir ~/.themes
-mkdir ~/.icons
-mkdir ~/.fonts
-mkdir ~/.backgrounds
-tar xf themes/Nordic-darker-v40.tar.xz -C ~/.themes/
-tar xf icons/papirus-icon-theme-nordic-folders.tar.gz -C ~/.icons/
+mkdir -p ~/.themes && tar xf themes/Nordic-darker-v40.tar.xz -C ~/.themes/
+mkdir -p ~/.icons && tar xf icons/papirus-icon-theme-nordic-folders.tar.gz -C ~/.icons/
 tar xf icons/volantes_light_cursors.tar.gz -C ~/.icons/
-cp -rf fonts/** ~/.fonts/
-cp -rf backgrounds/** ~/.backgrounds/
+mkdir -p ~/.fonts && cp -rf fonts/** ~/.fonts/
+mkdir -p ~/.backgrounds && cp -rf backgrounds/** ~/.backgrounds/
 
 echo "#######################"
 echo "## Add config files. ##"
 echo "#######################"
-cp -rf config/alacritty/** ~/.config/alacritty/
+mkdir -p ~/.config/alacritty/ && cp -rf config/alacritty/** ~/.config/alacritty/
 cp -rf config/bspwm/** ~/.config/bspwm/
 cp -rf config/polybar/** ~/.config/polybar/
 cp -rf config/rofi/** ~/.config/rofi/

@@ -191,7 +191,7 @@ tar xf themes/Nordic-darker-v40.tar.xz -C ~/.themes/
 tar xf icons/papirus-icon-theme-nordic-folders.tar.gz -C ~/.icons/
 tar xf icons/volantes_light_cursors.tar.gz -C ~/.icons/
 cp -rf fonts/** ~/.fonts/
-cp -rf backgrounds ~/.backgrounds/
+cp -rf backgrounds/** ~/.backgrounds/
 
 echo "#######################"
 echo "## Add config files. ##"

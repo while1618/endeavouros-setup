@@ -248,6 +248,7 @@ echo "Change the default apps if needed."
 echo "Apply nordic theme, papirus-dark icons and volantes cursor in lxappearance." 
 echo "Go to ~/.mozilla/firefox/<random-str>.default-release."
 echo "Delete everything and copy config/firefox-settings/prefs.js in there."
+echo "If on laptop, set HandleLidSwitch=ignore in /etc/systemd/logind.conf."
 echo "###########################################################################"
 
 read -r -p "Do you want to reboot now? [y/N] " response

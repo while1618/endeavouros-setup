@@ -175,19 +175,28 @@ sudo pacman -Sy qalculate-gtk --noconfirm
 yay etcher-bin
 yay woeusb-gui
 
-echo "########################################"
-echo "## Add themes, fonts and backgrounds. ##"
-echo "########################################"
+echo "#################"
+echo "## Add themes. ##"
+echo "#################"
 mkdir -p ~/.themes && tar xf themes/Nordic-darker-v40.tar.xz -C ~/.themes/
 mkdir -p ~/.icons && tar xf icons/papirus-icon-theme-nordic-folders.tar.xz -C ~/.icons/
 tar xf icons/volantes_light_cursors.tar.gz -C ~/.icons/
-mkdir -p ~/.fonts && cp -rf fonts/** ~/.fonts/
-sudo mkdir -p /usr/share/endeavouros/backgrounds/while1618_wallpapers/
-sudo cp backgrounds/** /usr/share/endeavouros/backgrounds/while1618_wallpapers/
 cp -rf config/theme/.gtkrc-2.0 ~/
 cp -rf config/theme/gtk-3.0/settings.ini ~/.config/gtk-3.0/
 cp config/theme/.Xresources ~/
 xrdb ~/.Xresources
+
+echo "################"
+echo "## Add fonts. ##"
+echo "################"
+mkdir -p ~/.fonts && cp -rf fonts/** ~/.fonts/
+
+echo "######################"
+echo "## Add backgrounds. ##"
+echo "######################"
+sudo mkdir -p /usr/share/endeavouros/backgrounds/while1618_wallpapers/
+sudo cp backgrounds/** /usr/share/endeavouros/backgrounds/while1618_wallpapers/
+nitrogen
 
 echo "#######################"
 echo "## Add config files. ##"
@@ -238,11 +247,6 @@ echo "##################################"
 echo "## Change default shell to zsh. ##"
 echo "##################################"
 chsh -s $(which zsh)
-
-echo "########################"
-echo "## Change background. ##"
-echo "########################"
-nitrogen
 
 echo "#####################"
 echo "## System cleanup. ##"

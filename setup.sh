@@ -184,6 +184,8 @@ tar xf icons/volantes_light_cursors.tar.gz -C ~/.icons/
 mkdir -p ~/.fonts && cp -rf fonts/** ~/.fonts/
 sudo mkdir -p /usr/share/endeavouros/backgrounds/while1618_wallpapers/
 sudo cp backgrounds/** /usr/share/endeavouros/backgrounds/while1618_wallpapers/
+cp -rf config/gtk/.gtkrc-2.0 ~/
+cp -rf config/gtk/settings.ini ~/.config/gtk-3.0/
 
 echo "#######################"
 echo "## Add config files. ##"
@@ -246,10 +248,9 @@ echo "#####################"
 sudo pacman -Rns $(pacman -Qtdq) --noconfirm
 yay -Sc --noconfirm
 
-echo "###########################################################################"
-echo "Done!"
-echo "Apply nordic theme, papirus-dark icons and volantes cursor in lxappearance."
-echo "###########################################################################"
+echo "###########"
+echo "## Done! ##"
+echo "###########"
 
 read -r -p "Do you want to reboot now? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then

@@ -195,8 +195,8 @@ cp -rf config/bspwm/** ~/.config/bspwm/
 cp -rf config/polybar/** ~/.config/polybar/
 cp -rf config/rofi/** ~/.config/rofi/
 cp -rf config/sxhkd/** ~/.config/sxhkd/
-rm -rf ~/.mozilla/firefox/********.default-release/**
-cp config/firefox/prefs.js ~/.mozilla/firefox/********.default-release/
+rm -rf ~/.mozilla/firefox/*.default-release/**
+cp config/firefox/prefs.js ~/.mozilla/firefox/*.default-release/
 cp -rf config/shell/.bashrc ~/
 cp -rf config/shell/.zshrc ~/
 cp -rf config/shell/.p10k.zsh ~/

@@ -192,6 +192,8 @@ cp -rf config/bspwm/** ~/.config/bspwm/
 cp -rf config/polybar/** ~/.config/polybar/
 cp -rf config/rofi/** ~/.config/rofi/
 cp -rf config/sxhkd/** ~/.config/sxhkd/
+rm -rf ~/.mozilla/firefox/********.default-release/**
+cp config/firefox/prefs.js ~/.mozilla/firefox/********.default-release/
 cp -rf config/shell/.bashrc ~/
 cp -rf config/shell/.zshrc ~/
 cp -rf config/shell/.p10k.zsh ~/
@@ -242,9 +244,7 @@ echo "##########################################################################
 echo "Done!"
 echo "Change the default apps if needed."
 echo "Change background."
-echo "Apply nordic theme, papirus-dark icons and volantes cursor in lxappearance." 
-echo "Go to ~/.mozilla/firefox/<random-str>.default-release."
-echo "Delete everything and copy config/firefox-settings/prefs.js in there."
+echo "Apply nordic theme, papirus-dark icons and volantes cursor in lxappearance."
 echo "###########################################################################"
 
 read -r -p "Do you want to reboot now? [y/N] " response

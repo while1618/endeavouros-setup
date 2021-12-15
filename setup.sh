@@ -182,7 +182,8 @@ mkdir -p ~/.themes && tar xf themes/Nordic-darker-v40.tar.xz -C ~/.themes/
 mkdir -p ~/.icons && tar xf icons/papirus-icon-theme-nordic-folders.tar.xz -C ~/.icons/
 tar xf icons/volantes_light_cursors.tar.gz -C ~/.icons/
 mkdir -p ~/.fonts && cp -rf fonts/** ~/.fonts/
-mkdir -p ~/.backgrounds && cp -rf backgrounds/** ~/.backgrounds/
+sudo mkdir -p /usr/share/endeavouros/backgrounds/while1618_wallpapers/
+sudo cp backgrounds/** /usr/share/endeavouros/backgrounds/while1618_wallpapers/
 
 echo "#######################"
 echo "## Add config files. ##"
@@ -234,6 +235,11 @@ echo "## Change default shell to zsh. ##"
 echo "##################################"
 chsh -s $(which zsh)
 
+echo "########################"
+echo "## Change background. ##"
+echo "########################"
+nitrogen
+
 echo "#####################"
 echo "## System cleanup. ##"
 echo "#####################"
@@ -242,8 +248,6 @@ yay -Sc --noconfirm
 
 echo "###########################################################################"
 echo "Done!"
-echo "Change the default apps if needed."
-echo "Change background."
 echo "Apply nordic theme, papirus-dark icons and volantes cursor in lxappearance."
 echo "###########################################################################"
 

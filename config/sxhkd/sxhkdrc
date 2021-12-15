@@ -12,8 +12,8 @@ super + @space
 
 # rofi open window
 super + ctrl + @space
-	rofi -modi drun -show window -show-icons 
-               
+	rofi -modi drun -show window -show-icons
+
 # rofi run
 super + shift + @space
 	rofi -show run
@@ -150,7 +150,7 @@ XF86AudioLowerVolume
 # still
 XF86AudioMute
   amixer -D pulse sset Master toggle-mute
-  
+
 # amixer -q set Master toggle
 # Simple amixer command seems to have problems unmuting device
 
@@ -170,7 +170,7 @@ super+Print
   ~/.config/bspwm/scripts/screenshot.sh
 
 # Shortcuts
-super + w 
+super + w
   firefox
 
 super + c

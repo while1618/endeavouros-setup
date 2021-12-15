@@ -41,7 +41,7 @@ launched=0
 
 # Run only if battery is detected
 if ls -1qA /sys/class/power_supply/ | grep -q BAT
-then 
+then
 
     kill_running
 

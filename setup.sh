@@ -184,8 +184,10 @@ tar xf icons/volantes_light_cursors.tar.gz -C ~/.icons/
 mkdir -p ~/.fonts && cp -rf fonts/** ~/.fonts/
 sudo mkdir -p /usr/share/endeavouros/backgrounds/while1618_wallpapers/
 sudo cp backgrounds/** /usr/share/endeavouros/backgrounds/while1618_wallpapers/
-cp -rf config/gtk/.gtkrc-2.0 ~/
-cp -rf config/gtk/settings.ini ~/.config/gtk-3.0/
+cp -rf config/theme/.gtkrc-2.0 ~/
+cp -rf config/theme/gtk-3.0/settings.ini ~/.config/gtk-3.0/
+cp config/theme/.Xresources ~/
+xrdb ~/.Xresources
 
 echo "#######################"
 echo "## Add config files. ##"

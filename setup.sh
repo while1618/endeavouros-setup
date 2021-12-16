@@ -153,7 +153,6 @@ echo "###################"
 sudo pacman -Sy signal-desktop --noconfirm
 sudo pacman -Sy discord --noconfirm
 yay onlyoffice
-sudo pacman -Sy gnome-calendar
 sudo pacman -Sy okular --noconfirm
 sudo pacman -Sy mpv --noconfirm
 yay brave

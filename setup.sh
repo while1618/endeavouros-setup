@@ -188,6 +188,7 @@ cp -rf config/theme/.gtkrc-2.0 ~/
 cp -rf config/theme/gtk-3.0/settings.ini ~/.config/gtk-3.0/
 cp config/theme/.Xresources ~/
 xrdb ~/.Xresources
+cp config/theme/qbittorrent.qbtheme ~/.config/qBittorrent
 
 echo "################"
 echo "## Add fonts. ##"

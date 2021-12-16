@@ -239,6 +239,8 @@ elif [[ "$platform" == "pc" ]]; then
     yay gwe         # gpu fan config -> (50-0, 54-8, 58-18, 60-60, 65-80, 70-100)
     yay openrgb     # rgb config -> (r: 200, g: 140: b:255)
     sudo sensors-detect
+    sudo pacman -Sy numlockx --noconfirm
+    echo "numlockx on &" | tee -a ~/.config/bspwm/bspwmrc
     echo "xrandr --output DP-4 --mode 3440x1440 --rate 144.00 &" | tee -a ~/.config/bspwm/bspwmrc
     echo "run gwe --hide-window &" | tee -a ~/.config/bspwm/bspwmrc
 else

@@ -242,7 +242,7 @@ elif [[ "$platform" == "pc" ]]; then
     sudo pacman -Sy numlockx --noconfirm
     echo "numlockx on &" | tee -a ~/.config/bspwm/bspwmrc
     echo "xrandr --output DP-4 --mode 3440x1440 --rate 144.00 &" | tee -a ~/.config/bspwm/bspwmrc
-    echo "run gwe --hide-window &" | tee -a ~/.config/bspwm/bspwmrc
+    echo "gwe --hide-window &" | tee -a ~/.config/bspwm/bspwmrc
 else
     echo "#######################"
     echo "## Unknown platform. ##"

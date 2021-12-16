@@ -228,17 +228,17 @@ elif [[ "$platform" == "pc" ]]; then
     echo "#########"
     echo "## PC. ##"
     echo "#########"
-    sudo nvidia-installer-dkms
     sudo nvidia-xconfig
     sudo nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
     sudo pacman -Sy psensor --noconfirm
-    sudo pacman -Sy cpu-x --noconfirm
+    yay cpu-x
     sudo pacman -Sy piper --noconfirm
     sudo pacman -Sy steam --noconfirm
     sudo pacman -Sy wine --noconfirm
     sudo pacman -Sy lutris --noconfirm
     yay gwe         # gpu fan config -> (50-0, 54-8, 58-18, 60-60, 65-80, 70-100)
     yay openrgb     # rgb config -> (r: 200, g: 140: b:255)
+    sudo sensors-detect
     echo "xrandr --output DP-4 --mode 3440x1440 --rate 144.00 &" | tee -a ~/.config/bspwm/bspwmrc
     echo "run gwe --hide-window &" | tee -a ~/.config/bspwm/bspwmrc
 else

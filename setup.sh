@@ -174,6 +174,7 @@ sudo pacman -Sy ripgrep --noconfirm
 sudo pacman -Sy nnn --noconfirm
 sudo pacman -Sy virtualbox --noconfirm
 sudo pacman -Sy qalculate-gtk --noconfirm
+sudo pacman -Sy gparted --noconfirm
 yay etcher-bin
 yay woeusb-gui
 
@@ -231,6 +232,7 @@ elif [[ "$platform" == "pc" ]]; then
     sudo nvidia-xconfig
     sudo nvidia-xconfig -a --cool-bits=28 --allow-empty-initial-configuration
     sudo pacman -Sy psensor --noconfirm
+    sudo pacman -Sy cpu-x --noconfirm
     sudo pacman -Sy piper --noconfirm
     sudo pacman -Sy steam --noconfirm
     sudo pacman -Sy wine --noconfirm

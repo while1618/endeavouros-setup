@@ -163,7 +163,7 @@ sudo pacman -Sy qbittorrent --noconfirm
 sudo pacman -Sy bitwarden --noconfirm
 sudo pacman -Sy alacritty --noconfirm
 yay vscode
-sudo pacman -Sy endeavouros-keyring
+sudo pacman -Sy gnome-keyring
 yay postman-bin
 yay intellij-idea-ultimate-edition
 yay pycharm-professional

@@ -23,6 +23,7 @@ if [[ "$check" =~ ^([nN][eE][sS]|[nN])$ ]]; then
     exit 1
 fi
 read -r -p "On which platform are you runinng? [laptop/pc] " platform
+read -r -p "Do you want to enable bluetooth? [y/N] " bluetooth
 read -r -p "Enter the size of the swap file (e.g. 8 for 8gb): " swap
 read -r -p "Enter git name: " git_name
 read -r -p "Enter git email: " git_email
@@ -242,6 +243,16 @@ else
     echo "#######################"
     echo "## Unknown platform. ##"
     echo "#######################"
+fi
+
+if [[ "$bluetooth" =~ ^([yN][eE][sS]|[yN])$ ]]; then
+    echo "#######################"
+    echo "## Enable bluetooth. ##"
+    echo "#######################"
+    sudo pacman -Sy --needed bluez bluez-utils --noconfirm
+    sudo systemctl enable --now bluetooth
+    sudo pacman -Sy blueberry --noconfirm
+    echo "blueberry-tray &" | tee -a ~/.config/bspwm/bspwmrc
 fi
 
 echo "##################################"

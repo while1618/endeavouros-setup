@@ -1,6 +1,6 @@
 # EndeavourOS Setup
 
-![Screenshot](/screenshots/screenshot.jpg?raw=true)
+![Screenshot](/screenshots/screenshot.png?raw=true)
 
 ## About
 The script is used to automatically setup my [EndeavourOS](https://endeavouros.com/) with [bspwm](https://github.com/baskerville/bspwm) tiling window manager and [NordTheme](https://www.nordtheme.com/) flavor.

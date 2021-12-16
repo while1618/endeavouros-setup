@@ -5,7 +5,7 @@ lock="󰌾    Lock"
 logout="󰍃    Logout"
 shutdown="󰤆    Shutdown"
 reboot="󰜉    Reboot"
-sleep="󰤄   Sleep"
+sleep="󰤄    Sleep"
 
 # Get answer from user via rofi
 selected_option=$(echo "$lock

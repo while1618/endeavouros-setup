@@ -219,7 +219,7 @@ ex ()
 
 source /usr/share/nvm/init-nvm.sh
 
-alias update_os="update;yay -Su --noconfirm"
+alias update_os="update;yay -Su"
 alias clean_os="cleanup;yay -Sc --noconfirm"
 
 if type rg &> /dev/null; then

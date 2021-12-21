@@ -303,7 +303,7 @@ source /usr/share/nvm/init-nvm.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-alias update_os="update;yay -Su --noconfirm"
+alias update_os="update;yay -Su"
 alias clean_os="cleanup;yay -Sc --noconfirm"
 
 if type rg &> /dev/null; then

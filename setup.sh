@@ -177,6 +177,7 @@ sudo pacman -Sy nnn --noconfirm
 sudo pacman -Sy virtualbox --noconfirm
 sudo pacman -Sy qalculate-gtk --noconfirm
 sudo pacman -Sy gparted --noconfirm
+yay ccrypt
 yay etcher-bin
 yay woeusb-gui
 

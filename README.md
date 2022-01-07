@@ -12,7 +12,7 @@ __Run it with care, I'm not responsible for any damage you deal with it.__
 ## Installation
 - [Download](https://endeavouros.com/latest-release/) EndeavourOS from official website.
 - Make a bootable usb.
-- Choose UEFI Default if on AMD or Intel GPU or UEFI NVIDIA if on NVIDIA GPU.
+- Choose UEFI Default if on AMD/Intel GPU or UEFI NVIDIA if on NVIDIA GPU.
 - Choose "Install community editions".
 
 ### What to pick during the installation:

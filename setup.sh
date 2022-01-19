@@ -197,6 +197,7 @@ echo "################"
 echo "## Add fonts. ##"
 echo "################"
 mkdir -p ~/.fonts && cp -rf fonts/** ~/.fonts/
+sudo pacman -Sy ttf-fira-code
 
 echo "######################"
 echo "## Add backgrounds. ##"

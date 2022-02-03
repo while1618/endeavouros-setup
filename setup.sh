@@ -179,7 +179,7 @@ sudo pacman -Sy qalculate-gtk --noconfirm
 sudo pacman -Sy gparted --noconfirm
 yay ccrypt
 yay etcher-bin
-yay woeusb-gui
+yay woeusb-ng
 
 echo "#################"
 echo "## Add themes. ##"

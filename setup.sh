@@ -156,7 +156,7 @@ yay onlyoffice
 sudo pacman -Sy okular --noconfirm
 sudo pacman -Sy feh --noconfirm
 sudo pacman -Sy gwenview --noconfirm
-sudo pacman -Sy mpv --noconfirm
+sudo pacman -Sy vlc --noconfirm
 yay brave
 sudo pacman -Sy tor --noconfirm
 yay tor-browser

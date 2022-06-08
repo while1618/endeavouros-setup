@@ -242,7 +242,7 @@ elif [[ "$platform" == "pc" ]]; then
     sudo pacman -Sy wine --noconfirm
     sudo pacman -Sy lutris --noconfirm
     yay gwe         # gpu fan config -> (50-0, 54-8, 58-18, 60-60, 65-80, 70-100)
-    yay openrgb     # rgb config -> (r: 200, g: 140: b:255)
+    yay openrgb     # rgb config -> mb: (r: 200, g: 140: b:255), gpu: (r: 100, g: 50, b: 100)
     sudo sensors-detect
     sudo pacman -Sy numlockx --noconfirm
     echo "numlockx on &" | tee -a ~/.config/bspwm/bspwmrc

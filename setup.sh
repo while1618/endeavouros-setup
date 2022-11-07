@@ -218,6 +218,7 @@ rm -rf ~/.mozilla/firefox/*.default-release/**
 cp config/firefox/prefs.js ~/.mozilla/firefox/*.default-release/
 cp -rf config/shell/.bashrc ~/
 cp -rf config/shell/.zshrc ~/
+cp -rf config/shell/.nanorc ~/
 cp -rf config/shell/.p10k.zsh ~/
 
 if [[ "$platform" == "laptop" ]]; then

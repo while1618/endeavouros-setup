@@ -181,3 +181,6 @@ super + i
 
 super + p
 	pycharm
+
+alt + @space
+        ~/.config/sxhkd/toggle-keyboard-layout.sh

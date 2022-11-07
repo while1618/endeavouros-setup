@@ -225,7 +225,7 @@ if [[ "$platform" == "laptop" ]]; then
     echo "#############"
     echo "## Laptop. ##"
     echo "#############"
-    sed -i "62s/.*/modules-right = cpu sps memory sps pulseaudio sps brightness sps battery sps updates sps date/" ~/.config/polybar/config.ini
+    sed -i "62s/.*/modules-right = keyboard sps cpu sps memory sps pulseaudio sps brightness sps battery sps updates sps date/" ~/.config/polybar/config.ini
     sed -i "227s/.*/label-maxlen = 75/" ~/.config/polybar/config.ini
     sed -i "187s/.*/  size: 7.0/" ~/.config/alacritty/alacritty.yml
     echo "xinput --set-prop 'SYNA2B2C:01 06CB:7F27 Touchpad' 'libinput Natural Scrolling Enabled' 1 &" | tee -a ~/.config/bspwm/bspwmrc

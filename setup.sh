@@ -137,6 +137,7 @@ echo "######################"
 echo "## Install Haskell. ##"
 echo "######################"
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+yay -S hlint-bin
 
 echo "##################"
 echo "## Install zsh. ##"

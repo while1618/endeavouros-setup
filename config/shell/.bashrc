@@ -29,9 +29,6 @@ if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
 fi
 
-#ignore upper and lowercase when TAB completion
-bind "set completion-ignore-case on"
-
 #list
 alias ls='ls --color=auto'
 alias la='ls -a'
@@ -226,3 +223,5 @@ if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files'
   export FZF_DEFAULT_OPTS='-m'
 fi
+
+[ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env

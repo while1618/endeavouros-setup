@@ -224,4 +224,4 @@ if type rg &> /dev/null; then
   export FZF_DEFAULT_OPTS='-m'
 fi
 
-[ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env
+source ~/.ghcup/env # ghcup-env

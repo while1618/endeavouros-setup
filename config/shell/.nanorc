@@ -26,13 +26,13 @@ include "/usr/share/nano/xml.nanorc"
 include "/usr/share/nano/autoconf.nanorc"
 include "/usr/share/nano/extra/haskell.nanorc"
 include "/usr/share/nano/go.nanorc"
-include "/usr/share/nano/.nanorc"
+include "/usr/share/nano/nanorc.nanorc"
 include "/usr/share/nano/javascript.nanorc"
 include "/usr/share/nano/json.nanorc"
 include "/usr/share/nano/markdown.nanorc"
 include "/usr/share/nano/rust.nanorc"
 include "/usr/share/nano/sql.nanorc"
-include "/usr/share/nano/yml.nanorc"
+include "/usr/share/nano/yaml.nanorc"
 
 
 ###########################################

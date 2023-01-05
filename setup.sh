@@ -190,8 +190,8 @@ yay woeusb-ng
 echo "#################"
 echo "## Add themes. ##"
 echo "#################"
-mkdir -p ~/.themes && tar xf themes/Nordic-darker-v40.tar.xz -C ~/.themes/
-mkdir -p ~/.icons && tar xf icons/papirus-icon-theme-nordic-folders.tar.xz -C ~/.icons/
+mkdir -p ~/.themes && tar xf themes/Nordic-darker.tar.xz -C ~/.themes/
+mkdir -p ~/.icons && tar xf icons/Nordic-Folders.tar.xz -C ~/.icons/
 tar xf icons/volantes_light_cursors.tar.gz -C ~/.icons/
 cp -rf config/theme/.gtkrc-2.0 ~/
 cp -rf config/theme/gtk-3.0/settings.ini ~/.config/gtk-3.0/

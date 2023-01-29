@@ -3,7 +3,6 @@
 ##
 
 set linenumbers
-set mouse
 set softwrap
 set autoindent
 set tabsize 2

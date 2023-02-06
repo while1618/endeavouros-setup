@@ -229,4 +229,5 @@ source ~/.ghcup/env # ghcup-env
 # Maven
 alias mvn-ci="mvn clean install"
 alias mvn-ci-sk="mvn clean install -DskipTests"
+alias mvn-it="mvn failsafe:integration-test"
 alias mvn-check-updates="mvn versions:display-property-updates"

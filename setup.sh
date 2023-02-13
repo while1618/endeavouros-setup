@@ -105,6 +105,7 @@ sudo pacman -Sy docker --noconfirm
 sudo systemctl start docker.service
 sudo systemctl enable docker.service
 sudo usermod -aG docker $USER
+sudo pacman -Sy docker-compose --noconfirm
 
 echo "#################################################"
 echo "## Install java, maven and google-java-format. ##"

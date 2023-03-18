@@ -124,11 +124,6 @@ yay nvm
 source /usr/share/nvm/init-nvm.sh
 nvm install --lts
 
-echo "##########################################"
-echo "## Install angular cli and nx globally. ##"
-echo "##########################################"
-npm install -g @angular/cli nx
-
 echo "##################"
 echo "## Install pip. ##"
 echo "##################"

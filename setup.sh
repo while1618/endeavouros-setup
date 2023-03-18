@@ -186,8 +186,7 @@ sudo pacman -Sy qalculate-gtk --noconfirm
 sudo pacman -Sy gparted --noconfirm
 sudo pacman -Sy veracrypt --noconfirm
 yay ccrypt
-yay etcher-bin
-yay woeusb-ng
+yay ventoy-bin
 
 echo "#################"
 echo "## Add themes. ##"

@@ -169,7 +169,7 @@ sudo pacman -Sy bitwarden --noconfirm
 sudo pacman -Sy alacritty --noconfirm
 yay vscode
 sudo pacman -Sy gnome-keyring
-yay insomnia
+yay insomnia-bin
 yay intellij-idea-ultimate-edition
 yay pycharm-professional
 sudo pacman -Sy vim --noconfirm

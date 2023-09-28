@@ -163,10 +163,7 @@ XF86MonBrightnessDown
   xbacklight -dec 5
 
 # Screenshot
-Print
-  scrot ~/Pictures/Screenshot-$(date +%F_%T).png
-
-super+Print
+super + p
   ~/.config/bspwm/scripts/screenshot.sh
 
 # Shortcuts
@@ -179,8 +176,5 @@ super + c
 super + i
 	intellij-idea-ultimate-edition
 
-super + p
-	pycharm
-
 alt + @space
-        ~/.config/bspwm/scripts/toggle-keyboard-layout.sh
+	~/.config/bspwm/scripts/toggle-keyboard-layout.sh

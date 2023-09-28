@@ -2,7 +2,6 @@
 ##  .nanorc
 ##
 
-set linenumbers
 set softwrap
 set autoindent
 set tabsize 2

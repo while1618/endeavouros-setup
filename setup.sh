@@ -176,6 +176,7 @@ sudo pacman -Sy qalculate-gtk --noconfirm
 sudo pacman -Sy gparted --noconfirm
 sudo pacman -Sy veracrypt --noconfirm
 yay ventoy-bin
+yay unified-remote-server
 
 echo "#################"
 echo "## Add themes. ##"

@@ -156,8 +156,6 @@ sudo pacman -Sy feh --noconfirm
 sudo pacman -Sy gwenview --noconfirm
 sudo pacman -Sy vlc --noconfirm
 yay brave
-sudo pacman -Sy tor --noconfirm
-yay tor-browser
 sudo pacman -Sy qbittorrent --noconfirm
 sudo pacman -Sy bitwarden --noconfirm
 sudo pacman -Sy alacritty --noconfirm
@@ -238,9 +236,9 @@ elif [[ "$platform" == "pc" ]]; then
     sudo pacman -Sy piper --noconfirm
     yay openrgb     # rgb config -> mb: (r: 200, g: 140: b:255), gpu: (r: 100, g: 50, b: 100)
     sudo sensors-detect
-    sudo pacman -Sy numlockx --noconfirm
-    echo "numlockx on &" | tee -a ~/.config/bspwm/bspwmrc
     echo "xrandr --output DP-4 --mode 3440x1440 --rate 144.00 &" | tee -a ~/.config/bspwm/bspwmrc
+    # sudo pacman -Sy numlockx --noconfirm
+    # echo "numlockx on &" | tee -a ~/.config/bspwm/bspwmrc
     # yay gwe         # gpu fan config -> (50-0, 54-8, 58-18, 60-60, 65-80, 70-100)
     # echo "gwe --hide-window &" | tee -a ~/.config/bspwm/bspwmrc
 else

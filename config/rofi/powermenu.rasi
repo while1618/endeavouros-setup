@@ -6,10 +6,10 @@
 configuration {
     font:                           "Sourcecode Pro Regular 10";
     show-icons:                     false;
-    icon-theme: 		    "Arc-X-D";
+    icon-theme: 		            "Arc-X-D";
     scroll-method:                  0;
     disable-history:                false;
-    sidebar-mode: 		    false;
+    sidebar-mode: 		            false;
 }
 
 @import "~/.config/rofi/arc_dark_transparent_colors.rasi"
@@ -21,14 +21,14 @@ window {
     transparency:                   "real";
     width:                          180px;
     location:                       northwest;
-y-offset:                       30;
-/*x-offset:	                    850;*/
+    y-offset:                       30;
+    /*x-offset:	                    850;*/
     transparency:                   "real";
 }
 listview {
-    lines:                          6;
+    lines:                          5;
     columns:                        1;
-    scrollbar:			false;
+    scrollbar:			            false;
 }
 element {
     border:  0;

@@ -175,6 +175,7 @@ sudo pacman -Sy gparted --noconfirm
 sudo pacman -Sy veracrypt --noconfirm
 yay ventoy-bin
 yay unified-remote-server
+sudo pacman -Sy picom --noconfirm
 
 echo "#################"
 echo "## Add themes. ##"

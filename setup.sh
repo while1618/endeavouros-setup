@@ -108,8 +108,8 @@ sudo pacman -Sy jre11-openjdk --noconfirm
 sudo pacman -Sy jdk11-openjdk --noconfirm
 sudo pacman -Sy jre17-openjdk --noconfirm
 sudo pacman -Sy jdk17-openjdk --noconfirm
-sudo pacman -Sy jre-openjdk --noconfirm
-sudo pacman -Sy jdk-openjdk --noconfirm
+sudo pacman -Sy jre21-openjdk --noconfirm
+sudo pacman -Sy jdk21-openjdk --noconfirm
 sudo pacman -Sy maven --noconfirm
 yay google-java-format
 
@@ -155,7 +155,7 @@ sudo pacman -Sy okular --noconfirm
 sudo pacman -Sy feh --noconfirm
 sudo pacman -Sy gwenview --noconfirm
 sudo pacman -Sy vlc --noconfirm
-yay brave
+yay brave-bin
 sudo pacman -Sy qbittorrent --noconfirm
 sudo pacman -Sy bitwarden --noconfirm
 sudo pacman -Sy alacritty --noconfirm

@@ -231,3 +231,8 @@ alias mvn-ci="mvn clean install"
 alias mvn-ci-sk="mvn clean install -DskipTests"
 alias mvn-it="mvn failsafe:integration-test"
 alias mvn-check-updates="mvn versions:display-property-updates"
+
+# neovim
+alias nvchad="NVIM_APPNAME=nvchad nvim"
+alias lazyvim="NVIM_APPNAME=lazyvim nvim"
+alias astronvim="NVIM_APPNAME=astronvim nvim"

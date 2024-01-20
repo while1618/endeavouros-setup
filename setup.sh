@@ -217,6 +217,9 @@ cp -rf config/shell/.bashrc ~/
 cp -rf config/shell/.zshrc ~/
 cp -rf config/shell/.nanorc ~/
 cp -rf config/shell/.p10k.zsh ~/
+git clone https://github.com/NvChad/NvChad ~/.config/nvchad --depth
+git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/astrovim
+git clone https://github.com/LazyVim/starter ~/.config/lazyvim
 
 if [[ "$platform" == "laptop" ]]; then
     echo "#############"

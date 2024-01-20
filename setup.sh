@@ -169,6 +169,7 @@ sudo pacman -Sy neovim --noconfirm
 yay vim-plug
 sudo pacman -Sy fzf --noconfirm
 sudo pacman -Sy ripgrep --noconfirm
+sudo pacman -Sy fd --noconfirm
 sudo pacman -Sy nnn --noconfirm
 sudo pacman -Sy qalculate-gtk --noconfirm
 sudo pacman -Sy gparted --noconfirm

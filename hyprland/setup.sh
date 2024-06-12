@@ -205,7 +205,8 @@ git clone https://github.com/NvChad/NvChad ~/.config/nvchad --depth
 git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/astrovim
 git clone https://github.com/LazyVim/starter ~/.config/lazyvim
 
-# SDDM theme
+# SDDM config
+sudo systemctl enable --now sddm
 sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git /usr/share/sddm/themes/sddm-astronaut-theme
 sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
 echo "[Theme]

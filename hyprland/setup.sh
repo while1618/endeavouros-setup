@@ -102,8 +102,8 @@ figlet "Installation"
 echo -e "${NONE}"
 echo "This script will install the following packages:"
 echo "hyprland waybar rofi-wayland alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock "
-echo "ttf-font-awesome vim nwg-look brightnessctl cliphist thunar hypridle wlogout otf-font-awesome ttf-fira-sans ttf-fira-code "
-echo "ttf-firacode-nerd papirus-icon-theme breeze-icons bibata-cursor-theme haskell sddm network-manager-applet blueman pfetch ufw mariadb "
+echo "ttf-font-awesome vim nwg-look brightnessctl cliphist thunar hypridle wlogout otf-font-awesome ttf-fira-sans ttf-fira-code waypaper "
+echo "ttf-firacode-nerd papirus-icon-theme breeze-icons bibata-cursor-theme sddm network-manager-applet blueman fastfetch ufw mariadb "
 echo "postgresql redis docker jre11-openjdk jdk11-openjdk jre21-openjdk jdk21-openjdk maven google-java-format nvm python-pip zsh tmux "
 echo "discord onlyoffice okular feh gwenview vlc brave-bin qbittorrent bitwarden vscode gnome-keyring insomnia-bin intellij-idea-ultimate-edition "
 echo "pycharm-professional neovim vim-plug fzf ripgrep fd nnn qalculate-gtk gparted veracrypt ventoy-bin unified-remote-server picom"
@@ -126,18 +126,18 @@ fi
 
 # Install pacman packages
 sudo pacman -Sy hyprland waybar rofi-wayland alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper \
-                hyprlock ttf-font-awesome vim cliphist thunar hypridle otf-font-awesome ttf-fira-sans ttf-fira-code nwg-look \
+                hyprlock ttf-font-awesome vim cliphist thunar hypridle otf-font-awesome ttf-fira-sans ttf-fira-code nwg-look fastfetch \
                 ttf-firacode-nerd papirus-icon-theme breeze-icons sddm network-manager-applet blueman brightnessctl ufw mariadb postgresql \
                 redis docker jre11-openjdk jdk11-openjdk jre21-openjdk jdk21-openjdk maven python-pip zsh discord okular feh tmux \
                 gwenview vlc qbittorrent bitwarden gnome-keyring neovim fzf ripgrep fd nnn qalculate-gtk gparted veracrypt picom --noconfirm
 
 # Install yay packages
-yay -S pfetch wlogout bibata-cursor-theme google-java-format nvm onlyoffice brave-bin vscode insomnia-bin vim-plug \
+yay -S wlogout waypaper bibata-cursor-theme google-java-format nvm onlyoffice brave-bin vscode insomnia-bin vim-plug \
         intellij-idea-ultimate-edition pycharm-professional ventoy-bin unified-remote-server
 
 # Install haskell
-curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-yay -S hlint-bin
+# curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+# yay -S hlint-bin
 
 # Configure mysql
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
@@ -147,24 +147,24 @@ sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
 
 # Configure postgres
 sudo su - postgres -c "initdb -D '/var/lib/postgres/data'"
-sudo systemctl enable postgresql
-sudo systemctl start postgresql
+sudo systemctl enable --now postgresql
 sudo psql -U postgres -c "ALTER USER postgres PASSWORD 'root';"
 
 # Configure redis
-sudo systemctl enable redis
-sudo systemctl start redis
+sudo systemctl enable --now redis
 redis-cli config set requirepass root
 
 # Configure docker
-sudo systemctl start docker.service
-sudo systemctl enable docker.service
+sudo systemctl enable --now docker.service
 sudo usermod -aG docker $USER
 sudo pacman -Sy docker-compose --noconfirm
 
 # Configure node
 source /usr/share/nvm/init-nvm.sh
 nvm install --lts
+
+# Install starship
+curl -sS https://starship.rs/install.sh | sh
 
 # Configure zsh
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
@@ -181,24 +181,17 @@ git config --global pull.ff only
 # Generate ssh keys
 ssh-keygen
 
-# Swapfile
-sudo mkswap -U clear --size 8G --file /swapfile
-sudo swapon /swapfile
-# edit `/etc/fstab` and add the following line:
-# /swapfile none swap defaults 0 0
-
 # Enable bluetooth
 sudo systemctl enable --now bluetooth
 
 # Enable ssd trim
-sudo systemctl enable fstrim.timer
+sudo systemctl enable --now fstrim.timer
 
 # Copy configs
 cp -rf ./config/.gtkrc-2.0 ./config/.Xresources ./config/.bashrc ./config/.zshrc ~/
-cp -rf ./config/qbittorrent.qbtheme ~/.config/qBittorrent
-rm -rf ~/.mozilla/firefox/*.default-release/**
-cp ./config/prefs.js ~/.mozilla/firefox/*.default-release/
-rsync -a --include '*/' --exclude '*' ./config/ ~/.config
+mkdir -p ~/.config/qBittorrent && cp -rf ./config/qbittorrent/qbittorrent.qbtheme ~/.config/qBittorrent
+rm -rf ~/.mozilla/firefox/*.default-release/** && cp ./config/firefox/prefs.js ~/.mozilla/firefox/*.default-release/
+cp -rf alacritty dunst gtk-3.0 gtk-4.0 hypr picom scripts wal waybar wlogout ~/.config
 
 # nvim configs
 git clone https://github.com/NvChad/NvChad ~/.config/nvchad --depth
@@ -217,8 +210,11 @@ git clone --depth=1 https://github.com/adi1090x/rofi.git
 chmod +x rofi/setup.sh
 sh rofi/setup.sh
 
-# Copy wallpaper
-cp -r wallpapers ~/
+# Copy wallpapers
+cp -r wallpapers/** ~/Pictures
+
+# Install ML4W Hyprland Settings App
+bash <(curl -s "https://gitlab.com/stephan-raabe/ml4w-hyprland-settings/-/raw/main/setup.sh")
 
 # Default shell zsh
 chsh -s $(which zsh)
@@ -230,6 +226,16 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # system cleanup
 sudo pacman -Rns $(pacman -Qtdq) --noconfirm
 yay -Sc --noconfirm
+
+# Swapfile
+echo -e "${GREEN}"
+figlet "Swapfile"
+echo -e "${NONE}"
+sudo mkswap -U clear --size 8G --file /swapfile
+sudo swapon /swapfile
+echo "Required!"
+echo "edit `/etc/fstab` and add the following line:"
+echo "/swapfile swap swap defaults 0 0"
 
 echo -e "${GREEN}"
 figlet "Done"

@@ -71,7 +71,7 @@ alias merge="xrdb -merge ~/.Xresources"
 # Aliases for software managment
 # pacman or pm
 alias pacman='sudo pacman --color auto'
-alias update='sudo pacman -Syyu && yay -Su'
+alias update='sudo pacman -Syyu;yay -Su'
 
 #ps
 alias psa="ps auxf"
@@ -101,7 +101,7 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
 
 #Cleanup orphaned packages
-alias cleanup='sudo pacman -Rns $(pacman -Qtdq) && yay -Sc --noconfirm'
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq);yay -Sc --noconfirm'
 
 #search content with ripgrep
 alias rg="rg --sort path"
@@ -200,7 +200,7 @@ if type rg &> /dev/null; then
   export FZF_DEFAULT_OPTS='-m'
 fi
 
-source ~/.ghcup/env # ghcup-env
+# source ~/.ghcup/env # ghcup-env
 
 # Maven
 alias mvn-ci="mvn clean install"
@@ -212,3 +212,6 @@ alias mvn-check-updates="mvn versions:display-property-updates"
 alias nvchad="NVIM_APPNAME=nvchad nvim"
 alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 alias astronvim="NVIM_APPNAME=astronvim nvim"
+
+# starship
+eval "$(starship init bash)"

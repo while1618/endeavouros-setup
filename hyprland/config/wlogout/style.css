@@ -1,7 +1,7 @@
 /* ----------- 💫 https://github.com/JaKooLit 💫 -------- */
 /* Importing pywal colors */
 
-@import '~/.config/waybar/style.css';
+@import '../waybar/style.css';
 
 window {
     font-family: Fira Code Medium;

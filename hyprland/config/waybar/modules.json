@@ -30,6 +30,11 @@
         "separate-outputs": true
     },
 
+    // Keyboard layout
+    "hyprland/language": {
+        "format": "󰌌   {}"
+    },
+
     // Updates Count
     "custom/updates": {
         "format": "   {}",
@@ -46,7 +51,6 @@
     "custom/appmenuicon": {
         "format": "",
         "on-click": "rofi -show drun -replace -theme ~/.config/rofi/launchers/type-2/style-2.rasi",
-        "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
         "tooltip": false
     },    
 

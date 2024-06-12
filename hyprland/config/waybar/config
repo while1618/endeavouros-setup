@@ -33,6 +33,7 @@
 
     // Modules Right    
     "modules-right": [
+        "hyprland/language",
         "custom/updates",
         "pulseaudio",
         "battery", 

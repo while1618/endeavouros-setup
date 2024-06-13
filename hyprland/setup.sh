@@ -135,6 +135,9 @@ sudo pacman -Sy hyprland waybar rofi-wayland alacritty dunst dolphin xdg-desktop
 yay -S wlogout waypaper bibata-cursor-theme google-java-format nvm onlyoffice brave-bin vscode insomnia-bin vim-plug \
         intellij-idea-ultimate-edition pycharm-professional ventoy-bin unified-remote-server
 
+# Install ML4W Hyprland Settings App
+bash <(curl -s "https://gitlab.com/stephan-raabe/ml4w-hyprland-settings/-/raw/main/setup.sh")
+
 # Install haskell
 # curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 # yay -S hlint-bin
@@ -182,16 +185,16 @@ git config --global pull.ff only
 ssh-keygen
 
 # Enable bluetooth
-sudo systemctl enable --now bluetooth
+sudo systemctl enable bluetooth
 
 # Enable ssd trim
-sudo systemctl enable --now fstrim.timer
+sudo systemctl enable fstrim.timer
 
 # Copy configs
 cp -rf ./config/.gtkrc-2.0 ./config/.Xresources ./config/.bashrc ./config/.zshrc ~/
 mkdir -p ~/.config/qBittorrent && cp -rf ./config/qbittorrent/qbittorrent.qbtheme ~/.config/qBittorrent
 rm -rf ~/.mozilla/firefox/*.default-release/** && cp ./config/firefox/prefs.js ~/.mozilla/firefox/*.default-release/
-cp -rf alacritty dunst gtk-3.0 gtk-4.0 hypr picom scripts wal waybar wlogout ~/.config
+cp -rf ./config/alacritty ./config/dunst ./config/gtk-3.0 ./config/gtk-4.0 ./config/hypr ./config/picom ./config/scripts ./config/wal ./config/waybar ./config/wlogout ~/.config
 
 # nvim configs
 git clone https://github.com/NvChad/NvChad ~/.config/nvchad --depth
@@ -199,25 +202,21 @@ git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/astrovim
 git clone https://github.com/LazyVim/starter ~/.config/lazyvim
 
 # SDDM config
-sudo systemctl enable --now sddm
+sudo systemctl enable sddm
 sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git /usr/share/sddm/themes/sddm-astronaut-theme
 sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
 echo "[Theme]
 Current=sddm-astronaut-theme" | sudo tee /etc/sddm.conf
 
-# Rofi theme
-git clone --depth=1 https://github.com/adi1090x/rofi.git
-chmod +x rofi/setup.sh
-sh rofi/setup.sh
-
 # Copy wallpapers
 cp -r wallpapers/** ~/Pictures
 
-# Install ML4W Hyprland Settings App
-bash <(curl -s "https://gitlab.com/stephan-raabe/ml4w-hyprland-settings/-/raw/main/setup.sh")
-
-# Default shell zsh
-chsh -s $(which zsh)
+# Rofi theme
+git clone --depth=1 https://github.com/adi1090x/rofi.git ~/rofi
+cd ~/rofi
+chmod +x setup.sh
+sh setup.sh
+cd ~
 
 # Install zen kernel
 sudo pacman -Sy linux-zen linux-zen-headers --noconfirm

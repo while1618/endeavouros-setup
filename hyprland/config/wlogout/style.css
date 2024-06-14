@@ -16,18 +16,11 @@ button {
     background-size: 20%;
     background-color: rgba(200, 220, 255, 0);
     animation: gradient_f 20s ease-in infinite;
-    border-radius: 80px; /* Increased border radius for a more rounded look */
+    border-radius: 50px; /* Increased border radius for a more rounded look */
+    outline: none;
 }
 
-button:focus {
-    background-size: 25%;
-	border: 0px;
-}
-
-button:hover {
-    background-size: 25%;
-    margin: 30px;
-    border-radius: 80px; 
+button:active, button:focus {
     box-shadow: 0 0 10px #EBE1F0; 
 }
 

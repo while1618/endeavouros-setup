@@ -58,6 +58,18 @@ installer_packages=(
     "figlet"
 )
 
+if gum confirm "You should check the installation script before you continue? Have you?" ;then
+    echo
+    echo ":: Installing Hyprland and additional packages"
+    echo
+elif [ $? -eq 130 ]; then
+    exit 130
+else
+    echo
+    echo ":: Installation canceled."
+    exit;
+fi
+
 echo -e "${GREEN}"
 cat <<"EOF"
  _   _                  _                 _ 
@@ -69,6 +81,31 @@ cat <<"EOF"
 
 EOF
 echo -e "${NONE}"
+
+echo "What is the resolution and the frame rate of your monitor?"
+echo "Answare in the following format: 1920x1080@60"
+resolution=$(gum input --placeholder "Resolution and frame rate...")
+echo "Resolution and frame rate: ${resolution}"
+
+if gum confirm "Are you using Nvidia GPU?" ;then
+    nvidia=true
+    echo
+    echo ":: Nvidia GPU is not officially supported by Hyprland. If you face any problems, please check Hyprland Wiki"
+    echo ":: https://wiki.hyprland.org/Nvidia/"
+    echo
+    if gum confirm "Continue?" ;then
+        echo
+        echo ":: Installing Nvidia GPU Drivers"
+        echo
+        sudo pacman -Sy nvidia-inst --noconfirm
+    elif [ $? -eq 130 ]; then
+        exit 130
+    else
+        echo
+        echo ":: Installation canceled."
+        exit;
+    fi
+fi
 
 # ----------------------------------------------------- 
 # synchronizing package databases
@@ -120,8 +157,11 @@ curl -sS https://starship.rs/install.sh | sh
 # git
 echo -e "${GREEN}"
 figlet "Git"
-echo -e "${NONE}"git_name=$(gum input --placeholder "Enter git name")
-git_email=$(gum input --placeholder "Enter git email")
+echo -e "${NONE}"
+git_name=$(gum input --placeholder "Enter git name...")
+echo "Name: ${git_name}"
+git_email=$(gum input --placeholder "Enter git email...")
+echo "Email: ${git_email}"
 git config --global user.name "${git_name}"
 git config --global user.email "${git_email}"
 git config --global pull.ff only
@@ -236,6 +276,29 @@ sudo pacman -Sy tmux nnn fastfetch --noconfirm
 echo -e "${GREEN}"
 figlet "Dotfiles"
 echo -e "${NONE}"
+
+if $nvidia then;
+    echo "
+    # ----------------------------------------------------- 
+    # Environment Variables
+    # ----------------------------------------------------- 
+
+    https://wiki.hyprland.org/Nvidia/
+    env = LIBVA_DRIVER_NAME,nvidia
+    env = XDG_SESSION_TYPE,wayland
+    env = GBM_BACKEND,nvidia-drm
+    env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+    " > ./config/hypr/conf/environment.conf
+fi
+
+echo "
+# ----------------------------------------------------- 
+# Monitor Setup
+# ----------------------------------------------------- 
+
+monitor=,${resolution},auto,1
+" > ./config/hypr/conf/monitor.conf
+
 cp -rf ./config/.gtkrc-2.0 ./config/.Xresources ./config/.bashrc ./config/.zshrc ~/
 mkdir -p ~/.config/qBittorrent && cp -rf ./config/qbittorrent/qbittorrent.qbtheme ~/.config/qBittorrent
 rm -rf ~/.mozilla/firefox/*.default-release/** && cp ./config/firefox/prefs.js ~/.mozilla/firefox/*.default-release/
@@ -250,6 +313,7 @@ cd ~/rofi
 chmod +x setup.sh
 sh setup.sh
 cd -
+rm -rf ~/rofi
 
 # sddm
 echo -e "${GREEN}"

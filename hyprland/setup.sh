@@ -1,19 +1,12 @@
 #!/bin/bash
 
 if [ "$(id -u)" = 0 ]; then
-    echo "##################################################################"
-    echo "This script MUST NOT be run as root user since it makes changes"
-    echo "to the \$HOME directory of the \$USER executing this script."
-    echo "The \$HOME directory of the root user is, of course, '/root'."
-    echo "We don't want to mess around in there. So run this script as a"
-    echo "normal user. You will be asked for a sudo password when necessary."
-    echo "##################################################################"
+    echo ":: This script shouldn't be run as root."
     exit 1
 fi
 
 clear
 GREEN='\033[0;32m'
-RED="\e[31m"
 NONE='\033[0m'
 
 # ----------------------------------------------------- 
@@ -82,10 +75,10 @@ cat <<"EOF"
 EOF
 echo -e "${NONE}"
 
-echo "What is the resolution and the frame rate of your monitor?"
-echo "Answare in the following format: 1920x1080@60"
-resolution=$(gum input --placeholder "Resolution and frame rate...")
-echo "Resolution and frame rate: ${resolution}"
+echo "What is the resolution and refresh rate of your monitor?"
+echo "Answare in the following format eg. 3440x1440@144"
+resolution=$(gum input --placeholder "Resolution and refresh rate...")
+echo "Resolution and refresh rate: ${resolution}"
 
 if gum confirm "Are you using Nvidia GPU?" ;then
     nvidia=true
@@ -277,27 +270,25 @@ echo -e "${GREEN}"
 figlet "Dotfiles"
 echo -e "${NONE}"
 
-if $nvidia then;
-    echo "
-    # ----------------------------------------------------- 
-    # Environment Variables
-    # ----------------------------------------------------- 
+if $nvidia ;then
+    echo \
+"# ----------------------------------------------------- 
+# Environment Variables
+# ----------------------------------------------------- 
 
-    https://wiki.hyprland.org/Nvidia/
-    env = LIBVA_DRIVER_NAME,nvidia
-    env = XDG_SESSION_TYPE,wayland
-    env = GBM_BACKEND,nvidia-drm
-    env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-    " > ./config/hypr/conf/environment.conf
+https://wiki.hyprland.org/Nvidia/
+env = LIBVA_DRIVER_NAME,nvidia
+env = XDG_SESSION_TYPE,wayland
+env = GBM_BACKEND,nvidia-drm
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia" > ./config/hypr/conf/environment.conf
 fi
 
-echo "
-# ----------------------------------------------------- 
+echo \
+"# ----------------------------------------------------- 
 # Monitor Setup
 # ----------------------------------------------------- 
 
-monitor=,${resolution},auto,1
-" > ./config/hypr/conf/monitor.conf
+monitor=,${resolution},auto,1" > ./config/hypr/conf/monitor.conf
 
 cp -rf ./config/.gtkrc-2.0 ./config/.Xresources ./config/.bashrc ./config/.zshrc ~/
 mkdir -p ~/.config/qBittorrent && cp -rf ./config/qbittorrent/qbittorrent.qbtheme ~/.config/qBittorrent
@@ -344,11 +335,7 @@ figlet "Swapfile"
 echo -e "${NONE}"
 sudo mkswap -U clear --size 8G --file /swapfile
 sudo swapon /swapfile
-echo -e "${RED}"
-figlet "Required!"
-echo -e "${NONE}"
-echo "Add the following line to the '/etc/fstab':"
-echo "/swapfile swap swap defaults 0 0"
+echo "/swapfile				  swap		 swap	 defaults   0 0" | sudo tee -a /etc/fstab
 
 
 # -----------------------------------------------------

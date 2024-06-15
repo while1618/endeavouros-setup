@@ -10,7 +10,7 @@ export ZSH="/home/$USER/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # if you installed the package oh-my-zsh-powerline-theme-git then you type here "powerline" as zsh theme
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -302,6 +302,3 @@ alias mvn-check-updates="mvn versions:display-property-updates"
 alias nvchad="NVIM_APPNAME=nvchad nvim"
 alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 alias astronvim="NVIM_APPNAME=astronvim nvim"
-
-# starship
-eval "$(starship init zsh)"

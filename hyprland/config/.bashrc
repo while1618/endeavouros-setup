@@ -212,6 +212,3 @@ alias mvn-check-updates="mvn versions:display-property-updates"
 alias nvchad="NVIM_APPNAME=nvchad nvim"
 alias lazyvim="NVIM_APPNAME=lazyvim nvim"
 alias astronvim="NVIM_APPNAME=astronvim nvim"
-
-# starship
-eval "$(starship init bash)"

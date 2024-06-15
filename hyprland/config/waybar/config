@@ -33,10 +33,10 @@
 
     // Modules Right    
     "modules-right": [
-        "hyprland/language",
         "custom/updates",
         "pulseaudio",
         "battery", 
+        "hyprland/language",
         "group/hardware",
         "custom/cliphist",
         "custom/exit",

@@ -9,6 +9,13 @@
 // ----------------------------------------------------- 
 //
 {
+    // Rofi Application Launcher
+    "custom/appmenuicon": {
+        "format": "",
+        "on-click": "rofi -show drun -replace -theme ~/.config/rofi/launchers/type-2/style-2.rasi",
+        "tooltip": false
+    },
+
     // Workspaces
     "hyprland/workspaces" : {
         "on-click": "activate",
@@ -32,12 +39,12 @@
 
     // Keyboard layout
     "hyprland/language": {
-        "format": "󰌌   {}"
+        "format": "󰌌   {short} {variant}"
     },
 
     // Updates Count
     "custom/updates": {
-        "format": "   {}",
+        "format": "    {}",
         "tooltip-format": "{}",
         "escape": true,
         "return-type": "json",       
@@ -45,56 +52,41 @@
         "restart-interval": 60,
         "on-click": "alacritty -e ~/.config/scripts/installupdates.sh",
         "tooltip": false
-    },
-
-    // Rofi Application Launcher
-    "custom/appmenuicon": {
-        "format": "",
-        "on-click": "rofi -show drun -replace -theme ~/.config/rofi/launchers/type-2/style-2.rasi",
-        "tooltip": false
-    },    
-
-    // Power Menu
-    "custom/exit": {
-        "format": "",
-        "on-click": "wlogout",
-        "tooltip": false
-    },
-
-    // System tray
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
-
-    // Clock
-    "clock": {
-        "format": "{:%a %Od.%Om.%Y - %H:%M}",
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-
-    // System
-    "custom/system": {
-        "format": "",
-        "tooltip": false
-    },
-
-    // CPU
-    "cpu": {
-        "format": " 󰻠  {usage}% "
-    },
-
-    // Memory
-    "memory": {
-        "format": " 󰍛  {}%     "
-    },
-
-    // Harddisc space used
-    "disk": {
-        "interval": 30,
-        "format": "   {percentage_used}% "
     }, 
+
+    // Pulseaudio
+    "pulseaudio": {
+        "format": "{icon}    {volume}%",
+        "format-bluetooth": "{icon}    {volume}%",
+        "format-muted": " ",
+        "format-icons": {
+             "headphones": "",
+             "handsfree": "",
+             "headset": "",
+             "phone": "",
+             "portable": "",
+             "car": "",
+             "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol"
+   },
+
+    // Battery
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}   {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": "{icon}    {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
 
     // Group Hardware
     "group/hardware": {
@@ -112,6 +104,57 @@
         ]
     },
 
+    // System
+    "custom/system": {
+        "format": "",
+        "tooltip": false
+    },
+
+    // CPU
+    "cpu": {
+        "format": "󰻠  {usage}%"
+    },
+
+    // Memory
+    "memory": {
+        "format": "󰍛  {}%"
+    },
+
+    // Harddisc space used
+    "disk": {
+        "interval": 30,
+        "format": "  {percentage_used}%"
+    }, 
+
+    // Cliphist
+    "custom/cliphist": {
+        "format": "",
+        "on-click": "sleep 0.1 && ~/.config/scripts/cliphist.sh",
+        "on-click-right": "sleep 0.1 && ~/.config/scripts/cliphist.sh d",
+        "on-click-middle": "sleep 0.1 && ~/.config/scripts/cliphist.sh w",
+        "tooltip-format": "Clipboard Manager"
+    },
+
+    // Power Menu
+    "custom/exit": {
+        "format": "",
+        "on-click": "wlogout",
+        "tooltip": false
+    },
+
+    // Clock
+    "clock": {
+        "format": "{:%a %Od.%Om.%Y - %H:%M}",
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    // System tray
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+
     // Network
     "network": {
         "format": "{ifname}",
@@ -124,52 +167,6 @@
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50,
         "on-click": "~/.config/.settings/networkmanager.sh"
-    },
-
-    // Battery
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon}   {capacity}%",
-        "format-charging": "  {capacity}%",
-        "format-plugged": "  {capacity}%",
-        "format-alt": "{icon}  {time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": [" ", " ", " ", " ", " "]
-    },
-
-    // Pulseaudio
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{icon}   {volume}%",
-        "format-bluetooth": "{volume}%  {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": " ",
-            "hands-free": " ",
-            "headset": " ",
-            "phone": " ",
-            "portable": " ",
-            "car": " ",
-            "default": [" ", " ", " "]
-        },
-        "on-click": "pavucontrol"
-    },
-
-    // Cliphist
-    "custom/cliphist": {
-        "format": "",
-        "on-click": "sleep 0.1 && ~/.config/scripts/cliphist.sh",
-        "on-click-right": "sleep 0.1 && ~/.config/scripts/cliphist.sh d",
-        "on-click-middle": "sleep 0.1 && ~/.config/scripts/cliphist.sh w",
-        "tooltip-format": "Clipboard Manager"
     },
 
     // Other

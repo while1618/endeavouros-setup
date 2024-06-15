@@ -73,22 +73,6 @@ window#waybar {
 }
 
 /* -----------------------------------------------------
- * Tooltips
- * ----------------------------------------------------- */
-
-tooltip {
-    border-radius: 10px;
-    background-color: @backgroundlight;
-    opacity:0.8;
-    padding:20px;
-    margin:0px;
-}
-
-tooltip label {
-    color: @textcolor2;
-}
-
-/* -----------------------------------------------------
  * Window
  * ----------------------------------------------------- */
 
@@ -120,85 +104,17 @@ window#waybar.empty #window {
  * Custom Quicklinks
  * ----------------------------------------------------- */
 
-#custom-brave, 
-#custom-browser, 
-#custom-keybindings, 
-#custom-outlook, 
-#custom-filemanager, 
-#custom-teams, 
-#custom-chatgpt, 
-#custom-calculator, 
-#custom-windowsvm, 
+
 #custom-cliphist, 
-#custom-wallpaper, 
-#custom-settings, 
-#custom-wallpaper, 
-#custom-system,
-#custom-waybarthemes {
-    margin-right: 23px;
+#custom-system {
+    margin-right: 20px;
     font-size: 14px;
     font-weight: bold;
     color: @iconcolor;
 }
 
-#custom-settings {
-    margin-right: 15px;
-}
-
-#custom-browser {
-    margin-right: 16px;
-}
-
-#custom-wallpaper {
-    margin-right: 14px;
-}
-
-#custom-chatgpt {
-    margin-right: 10px;
-    background-image: url("../assets/ai-icon-20.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    padding-right: 23px;
-}
-
-#custom-waybarthemes,#custom-system {
+#custom-system {
     margin-right:15px;
-}
-
-
-#custom-ml4w-welcome {
-    margin-right: 15px;
-    background-image: url("../assets/ml4w-icon-20.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    padding-right: 24px;
-}
-
-#custom-ml4w-hyprland-settings {
-    margin-right: 12px;
-    background-image: url("../assets/hyprland-icon-20.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    padding-right: 16px;
-}
-
-
-/* -----------------------------------------------------
- * Idle Inhibator
- * ----------------------------------------------------- */
-
- #idle_inhibitor {
-    margin-right: 15px;
-    font-size: 16px;
-    font-weight: bold;
-    color: @iconcolor;
-}
-
-#idle_inhibitor.activated {
-    margin-right: 15px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #dc2f2f;
 }
 
 /* -----------------------------------------------------
@@ -216,7 +132,7 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #custom-exit {
-    margin: 0px 20px 0px 0px;
+    margin-right: 15px;
     padding:0px;
     font-size:16px;
     color: @iconcolor;
@@ -230,7 +146,7 @@ window#waybar.empty #window {
     font-size: 14px;
     color: @textcolor;
     border-radius: 15px;
-    margin: 0px 15px 0px 0px;
+    margin: 10px 15px 8px 0px;
 }
 
 #custom-updates.green {
@@ -245,30 +161,27 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
- * Custom Youtube
- * ----------------------------------------------------- */
-
-#custom-youtube {
-    background-color: @backgroundlight;
-    font-size: 14px;
-    color: @textcolor2;
-    border-radius: 15px;
-    margin: 0px 15px 0px 0px;
-}
-
-/* -----------------------------------------------------
  * Hardware Group
  * ----------------------------------------------------- */
 
- #disk,#memory,#cpu,#language {
-    margin:0px;
-    padding:0px;
-    font-size:14px;
-    color:@iconcolor;
+ #disk,#memory,#cpu {
+    margin: 10px 8px 8px 0px;
+    font-size: 14px;
+    font-weight: bold;
+    color: @iconcolor;
 }
 
+#memory {
+    margin: 10px 12px 8px 0px;
+}
+
+/* -----------------------------------------------------
+ * Language
+ * ----------------------------------------------------- */
+
 #language {
-    margin-right:10px;
+    font-size: 16px;
+    margin: 10px 15px 9px 0px;
 }
 
 /* -----------------------------------------------------
@@ -278,7 +191,7 @@ window#waybar.empty #window {
 #clock {
     font-size: 15px;
     color: @textcolor;
-    margin: 0px 15px 0px 0px;
+    margin-right: 12px;
 }
 
 /* -----------------------------------------------------
@@ -289,7 +202,7 @@ window#waybar.empty #window {
     font-size: 14px;
     color: @textcolor;
     border-radius: 15px;
-    margin: 0px 15px 0px 0px;
+    margin: 10px 15px 8px 0px;
 }
 
 #pulseaudio.muted {
@@ -316,23 +229,6 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
- * Bluetooth
- * ----------------------------------------------------- */
-
- #bluetooth, #bluetooth.on, #bluetooth.connected {
-    font-size: 14px;
-    color: @textcolor;
-    border-radius: 15px;
-    margin: 10px 15px 10px 0px;
-}
-
-#bluetooth.off {
-    background-color: transparent;
-    padding: 0px;
-    margin: 0px;
-}
-
-/* -----------------------------------------------------
  * Battery
  * ----------------------------------------------------- */
 
@@ -340,7 +236,7 @@ window#waybar.empty #window {
     font-size: 14px;
     color: @textcolor;
     border-radius: 15px;
-    margin: 10px 15px 10px 0px;
+    margin: 10px 15px 8px 0px;
 }
 
 #battery.charging, #battery.plugged {

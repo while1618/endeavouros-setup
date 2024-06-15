@@ -13,13 +13,14 @@ fi
 
 clear
 GREEN='\033[0;32m'
+RED="\e[31m"
 NONE='\033[0m'
 
 # ----------------------------------------------------- 
-# Functions
+# functions
 # ----------------------------------------------------- 
 
-# Check if package is installed
+# check if package is installed
 _isInstalledPacman() {
     package="$1";
     check="$(sudo pacman -Qs --color always "${package}" | grep "local" | grep "${package} ")";
@@ -31,7 +32,7 @@ _isInstalledPacman() {
     return; #false
 }
 
-# Install required packages
+# install required packages
 _installPackagesPacman() {
     toInstall=();
     for pkg; do
@@ -49,12 +50,11 @@ _installPackagesPacman() {
     sudo pacman --noconfirm -S "${toInstall[@]}";
 }
 
-# Required packages for the installer
+# required packages for the installer
 installer_packages=(
     "wget"
     "unzip"
     "gum"
-    "rsync"
     "figlet"
 )
 
@@ -71,170 +71,239 @@ EOF
 echo -e "${NONE}"
 
 # ----------------------------------------------------- 
-# Synchronizing package databases
+# synchronizing package databases
 # ----------------------------------------------------- 
 sudo pacman -Sy
 echo
 
 # ----------------------------------------------------- 
-# Install required packages
+# install required packages
 # ----------------------------------------------------- 
 echo ":: Checking that required packages are installed..."
 _installPackagesPacman "${installer_packages[@]}";
 echo
 
-# ----------------------------------------------------- 
-# Double check rsync
-# ----------------------------------------------------- 
-if ! command -v rsync &> /dev/null; then
-    echo ":: Force rsync installation"
-    sudo pacman -S rsync --noconfirm
-else
-    echo ":: rsync double checked"
-fi
-echo
 
 # ----------------------------------------------------- 
-# Confirm Start
+# core packages
 # ----------------------------------------------------- 
+
 echo -e "${GREEN}"
-figlet "Installation"
+figlet "CorePackages"
 echo -e "${NONE}"
-echo "This script will install the following packages:"
-echo "hyprland waybar rofi-wayland alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper hyprlock "
-echo "ttf-font-awesome vim nwg-look brightnessctl cliphist thunar hypridle wlogout otf-font-awesome ttf-fira-sans ttf-fira-code waypaper "
-echo "ttf-firacode-nerd papirus-icon-theme breeze-icons bibata-cursor-theme sddm network-manager-applet blueman fastfetch ufw mariadb "
-echo "postgresql redis docker jre11-openjdk jdk11-openjdk jre21-openjdk jdk21-openjdk maven google-java-format nvm python-pip zsh tmux "
-echo "discord onlyoffice okular feh gwenview vlc brave-bin qbittorrent bitwarden vscode gnome-keyring insomnia-bin intellij-idea-ultimate-edition "
-echo "pycharm-professional neovim vim-plug fzf ripgrep fd nnn qalculate-gtk gparted veracrypt ventoy-bin unified-remote-server picom"
-echo
-if gum confirm "DO YOU WANT TO START THE INSTALLATION NOW?" ;then
-    echo
-    echo ":: Installing Hyprland and additional packages"
-    echo
-elif [ $? -eq 130 ]; then
-    exit 130
-else
-    echo
-    echo ":: Installation canceled."
-    exit;
-fi
 
-# ----------------------------------------------------- 
-# Install packages 
-# ----------------------------------------------------- 
+# packages
+sudo pacman -Sy hyprland waybar rofi-wayland dunst hyprpaper hyprlock hypridle xdg-desktop-portal-hyprland sddm \
+                alacritty vim zsh picom qt5-wayland qt6-wayland cliphist thunar \
+                network-manager-applet blueman brightnessctl \
+                ttf-font-awesome otf-font-awesome ttf-fira-sans ttf-fira-code   \
+                ttf-firacode-nerd papirus-icon-theme breeze-icons nwg-look \
+                --noconfirm
+yay -S wlogout waypaper bibata-cursor-theme
 
-# Install pacman packages
-sudo pacman -Sy hyprland waybar rofi-wayland alacritty dunst dolphin xdg-desktop-portal-hyprland qt5-wayland qt6-wayland hyprpaper \
-                hyprlock ttf-font-awesome vim cliphist thunar hypridle otf-font-awesome ttf-fira-sans ttf-fira-code nwg-look fastfetch \
-                ttf-firacode-nerd papirus-icon-theme breeze-icons sddm network-manager-applet blueman brightnessctl ufw mariadb postgresql \
-                redis docker jre11-openjdk jdk11-openjdk jre21-openjdk jdk21-openjdk maven python-pip zsh discord okular feh tmux \
-                gwenview vlc qbittorrent bitwarden gnome-keyring neovim fzf ripgrep fd nnn qalculate-gtk gparted veracrypt picom --noconfirm
-
-# Install yay packages
-yay -S wlogout waypaper bibata-cursor-theme google-java-format nvm onlyoffice brave-bin vscode insomnia-bin vim-plug \
-        intellij-idea-ultimate-edition pycharm-professional ventoy-bin unified-remote-server
-
-# Install ML4W Hyprland Settings App
+# hyprland config app
 bash <(curl -s "https://gitlab.com/stephan-raabe/ml4w-hyprland-settings/-/raw/main/setup.sh")
 
-# Install haskell
+# zsh config
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+
+# starship
+curl -sS https://starship.rs/install.sh | sh
+
+
+# -----------------------------------------------------
+# development   
+# ----------------------------------------------------- 
+
+# git
+echo -e "${GREEN}"
+figlet "Git"
+echo -e "${NONE}"git_name=$(gum input --placeholder "Enter git name")
+git_email=$(gum input --placeholder "Enter git email")
+git config --global user.name "${git_name}"
+git config --global user.email "${git_email}"
+git config --global pull.ff only
+ssh-keygen
+
+# java
+echo -e "${GREEN}"
+figlet "Java"
+echo -e "${NONE}"
+sudo pacman -Sy jre21-openjdk jdk21-openjdk maven --noconfirm
+yay -S google-java-format intellij-idea-ultimate-edition
+
+# python
+echo -e "${GREEN}"
+figlet "Python"
+echo -e "${NONE}"
+sudo pacman -Sy python-pip --noconfirm
+yay -S pycharm-professional
+
+# haskell
+# echo -e "${GREEN}"
+# figlet "Haskell"
+# echo -e "${NONE}"
 # curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 # yay -S hlint-bin
 
-# Configure mysql
+# mysql
+echo -e "${GREEN}"
+figlet "Mysql"
+echo -e "${NONE}"
+sudo pacman -Sy mariadb --noconfirm
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 sudo systemctl enable --now mariadb
 sudo mysql_secure_installation
 sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
 
-# Configure postgres
+# postgres
+echo -e "${GREEN}"
+figlet "Postgres"
+echo -e "${NONE}"
+sudo pacman -Sy postgresql --noconfirm
 sudo su - postgres -c "initdb -D '/var/lib/postgres/data'"
 sudo systemctl enable --now postgresql
 sudo psql -U postgres -c "ALTER USER postgres PASSWORD 'root';"
 
-# Configure redis
+# redis
+echo -e "${GREEN}"
+figlet "Redis"
+echo -e "${NONE}"
+sudo pacman -Sy redis --noconfirm
 sudo systemctl enable --now redis
 redis-cli config set requirepass root
 
-# Configure docker
+# node
+echo -e "${GREEN}"
+figlet "Node"
+echo -e "${NONE}"
+yay -S nvm
+source /usr/share/nvm/init-nvm.sh
+nvm install --lts
+
+# docker
+echo -e "${GREEN}"
+figlet "Docker"
+echo -e "${NONE}"
+sudo pacman -Sy docker --noconfirm
 sudo systemctl enable --now docker.service
 sudo usermod -aG docker $USER
 sudo pacman -Sy docker-compose --noconfirm
 
-# Configure node
-source /usr/share/nvm/init-nvm.sh
-nvm install --lts
+# vscode
+echo -e "${GREEN}"
+figlet "VSCode"
+echo -e "${NONE}"
+sudo pacman -Sy gnome-keyring --noconfirm
+yay -S vscode insomnia-bin
 
-# Install starship
-curl -sS https://starship.rs/install.sh | sh
+# neovim
+echo -e "${GREEN}"
+figlet "Neovim"
+echo -e "${NONE}"
+sudo pacman -Sy neovim fzf ripgrep fd --noconfirm
+yay -S vim-plug
+git clone https://github.com/NvChad/NvChad ~/.config/nvchad --depth
+git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/astrovim
+git clone https://github.com/LazyVim/starter ~/.config/lazyvim
 
-# Configure zsh
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
 
-# Configure git
-git_name=$(gum input --placeholder "Enter git name")
-git_email=$(gum input --placeholder "Enter git email")
-git config --global user.name "${git_name}"
-git config --global user.email "${git_email}"
-git config --global pull.ff only
+# -----------------------------------------------------
+# apps
+# ----------------------------------------------------- 
 
-# Generate ssh keys
-ssh-keygen
+# gui
+echo -e "${GREEN}"
+figlet "GUI"
+echo -e "${NONE}"
+sudo pacman -Sy discord okular feh gwenview vlc qbittorrent bitwarden qalculate-gtk gparted veracrypt --noconfirm
+yay -S onlyoffice brave-bin ventoy-bin unified-remote-server
 
-# Enable bluetooth
-sudo systemctl enable bluetooth
+# terminal utils
+echo -e "${GREEN}"
+figlet "TerminalUtils"
+echo -e "${NONE}"
+sudo pacman -Sy tmux nnn fastfetch --noconfirm
 
-# Enable ssd trim
-sudo systemctl enable fstrim.timer
 
-# Copy configs
+# -----------------------------------------------------
+# configs and themes
+# ----------------------------------------------------- 
+
+# dotfiles
+echo -e "${GREEN}"
+figlet "Dotfiles"
+echo -e "${NONE}"
 cp -rf ./config/.gtkrc-2.0 ./config/.Xresources ./config/.bashrc ./config/.zshrc ~/
 mkdir -p ~/.config/qBittorrent && cp -rf ./config/qbittorrent/qbittorrent.qbtheme ~/.config/qBittorrent
 rm -rf ~/.mozilla/firefox/*.default-release/** && cp ./config/firefox/prefs.js ~/.mozilla/firefox/*.default-release/
 cp -rf ./config/alacritty ./config/dunst ./config/gtk-3.0 ./config/gtk-4.0 ./config/hypr ./config/picom ./config/scripts ./config/wal ./config/waybar ./config/wlogout ~/.config
 
-# nvim configs
-git clone https://github.com/NvChad/NvChad ~/.config/nvchad --depth
-git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/astrovim
-git clone https://github.com/LazyVim/starter ~/.config/lazyvim
+# rofi
+echo -e "${GREEN}"
+figlet "Rofi"
+echo -e "${NONE}"
+git clone --depth=1 https://github.com/adi1090x/rofi.git ~/rofi
+cd ~/rofi
+chmod +x setup.sh
+sh setup.sh
+cd -
 
-# SDDM config
+# sddm
+echo -e "${GREEN}"
+figlet "SDDM"
+echo -e "${NONE}"
 sudo systemctl enable sddm
 sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git /usr/share/sddm/themes/sddm-astronaut-theme
 sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
 echo "[Theme]
 Current=sddm-astronaut-theme" | sudo tee /etc/sddm.conf
 
-# Copy wallpapers
+# wallpapers
+echo -e "${GREEN}"
+figlet "Wallpapers"
+echo -e "${NONE}"
 cp -r wallpapers/** ~/Pictures
 
-# Rofi theme
-git clone --depth=1 https://github.com/adi1090x/rofi.git ~/rofi
-cd ~/rofi
-chmod +x setup.sh
-sh setup.sh
-cd ~
+# system configs
+echo -e "${GREEN}"
+figlet "SystemConfigs"
+echo -e "${NONE}"
+sudo systemctl enable bluetooth
+sudo systemctl enable fstrim.timer
 
-# Install zen kernel
-sudo pacman -Sy linux-zen linux-zen-headers --noconfirm
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-
-# system cleanup
-sudo pacman -Rns $(pacman -Qtdq) --noconfirm
-yay -Sc --noconfirm
-
-# Swapfile
+# swapfile
 echo -e "${GREEN}"
 figlet "Swapfile"
 echo -e "${NONE}"
 sudo mkswap -U clear --size 8G --file /swapfile
 sudo swapon /swapfile
-echo "Required!"
-echo "edit `/etc/fstab` and add the following line:"
+echo -e "${RED}"
+figlet "Required!"
+echo -e "${NONE}"
+echo "Add the following line to the '/etc/fstab':"
 echo "/swapfile swap swap defaults 0 0"
+
+
+# -----------------------------------------------------
+# kernel
+# -----------------------------------------------------
+
+# zen kernel
+echo -e "${GREEN}"
+figlet "ZenKernel"
+echo -e "${NONE}"
+sudo pacman -Sy linux-zen linux-zen-headers --noconfirm
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# cleanup
+echo -e "${GREEN}"
+figlet "Cleanup"
+echo -e "${NONE}"
+sudo pacman -Rns $(pacman -Qtdq) --noconfirm
+yay -Sc --noconfirm
 
 echo -e "${GREEN}"
 figlet "Done"

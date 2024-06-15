@@ -129,7 +129,7 @@ sudo pacman -Sy hyprland waybar rofi-wayland dunst hyprpaper hyprlock hypridle x
                 ttf-font-awesome otf-font-awesome ttf-fira-sans ttf-fira-code   \
                 ttf-firacode-nerd papirus-icon-theme breeze-icons nwg-look \
                 --noconfirm
-yay -S wlogout waypaper bibata-cursor-theme
+yay -S wlogout waypaper bibata-cursor-theme --noconfirm
 
 # hyprland config app
 bash <(curl -s "https://gitlab.com/stephan-raabe/ml4w-hyprland-settings/-/raw/main/setup.sh")
@@ -165,21 +165,21 @@ echo -e "${GREEN}"
 figlet "Java"
 echo -e "${NONE}"
 sudo pacman -Sy jre21-openjdk jdk21-openjdk maven --noconfirm
-yay -S google-java-format intellij-idea-ultimate-edition
+yay -S google-java-format intellij-idea-ultimate-edition --noconfirm
 
 # python
 echo -e "${GREEN}"
 figlet "Python"
 echo -e "${NONE}"
 sudo pacman -Sy python-pip --noconfirm
-yay -S pycharm-professional
+yay -S pycharm-professional --noconfirm
 
 # haskell
 # echo -e "${GREEN}"
 # figlet "Haskell"
 # echo -e "${NONE}"
 # curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-# yay -S hlint-bin
+# yay -S hlint-bin --noconfirm
 
 # mysql
 echo -e "${GREEN}"
@@ -212,7 +212,7 @@ redis-cli config set requirepass root
 echo -e "${GREEN}"
 figlet "Node"
 echo -e "${NONE}"
-yay -S nvm
+yay -S nvm --noconfirm
 source /usr/share/nvm/init-nvm.sh
 nvm install --lts
 
@@ -230,14 +230,14 @@ echo -e "${GREEN}"
 figlet "VSCode"
 echo -e "${NONE}"
 sudo pacman -Sy gnome-keyring --noconfirm
-yay -S vscode insomnia-bin
+yay -S vscode insomnia-bin --noconfirm
 
 # neovim
 echo -e "${GREEN}"
 figlet "Neovim"
 echo -e "${NONE}"
 sudo pacman -Sy neovim fzf ripgrep fd --noconfirm
-yay -S vim-plug
+yay -S vim-plug --noconfirm
 git clone https://github.com/NvChad/NvChad ~/.config/nvchad --depth
 git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/astrovim
 git clone https://github.com/LazyVim/starter ~/.config/lazyvim
@@ -252,7 +252,7 @@ echo -e "${GREEN}"
 figlet "GUI"
 echo -e "${NONE}"
 sudo pacman -Sy discord okular feh gwenview vlc qbittorrent bitwarden qalculate-gtk gparted veracrypt --noconfirm
-yay -S onlyoffice brave-bin ventoy-bin unified-remote-server
+yay -S onlyoffice brave-bin ventoy-bin unified-remote-server --noconfirm
 
 # terminal utils
 echo -e "${GREEN}"
@@ -292,7 +292,6 @@ monitor=,${resolution},auto,1" > ./config/hypr/conf/monitor.conf
 
 cp -rf ./config/.gtkrc-2.0 ./config/.Xresources ./config/.bashrc ./config/.zshrc ~/
 mkdir -p ~/.config/qBittorrent && cp -rf ./config/qbittorrent/qbittorrent.qbtheme ~/.config/qBittorrent
-rm -rf ~/.mozilla/firefox/*.default-release/** && cp ./config/firefox/prefs.js ~/.mozilla/firefox/*.default-release/
 cp -rf ./config/alacritty ./config/dunst ./config/gtk-3.0 ./config/gtk-4.0 ./config/hypr ./config/picom ./config/scripts ./config/wal ./config/waybar ./config/wlogout ~/.config
 
 # rofi

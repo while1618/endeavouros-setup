@@ -124,7 +124,7 @@ echo -e "${NONE}"
 
 # packages
 sudo pacman -Sy hyprland waybar rofi-wayland dunst hyprpaper hyprlock hypridle xdg-desktop-portal-hyprland sddm \
-                alacritty vim zsh picom qt5-wayland qt6-wayland cliphist thunar \
+                alacritty vim zsh picom qt5-wayland qt6-wayland cliphist thunar gvfs thunar-volman \
                 network-manager-applet blueman brightnessctl \
                 ttf-font-awesome otf-font-awesome ttf-fira-sans ttf-fira-code   \
                 ttf-firacode-nerd papirus-icon-theme gnome-themes-extra gtk-engine-murrine nwg-look \

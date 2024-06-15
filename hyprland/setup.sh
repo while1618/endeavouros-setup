@@ -235,8 +235,8 @@ figlet "Neovim"
 echo -e "${NONE}"
 sudo pacman -Sy neovim fzf ripgrep fd --noconfirm
 yay -S vim-plug --noconfirm
-git clone https://github.com/NvChad/NvChad ~/.config/nvchad --depth
-git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/astrovim
+git clone https://github.com/NvChad/starter ~/.config/nvchad
+git clone --depth 1 https://github.com/AstroNvim/template ~/.config/astronvim
 git clone https://github.com/LazyVim/starter ~/.config/lazyvim
 
 

@@ -127,9 +127,9 @@ sudo pacman -Sy hyprland waybar rofi-wayland dunst hyprpaper hyprlock hypridle x
                 alacritty vim zsh picom qt5-wayland qt6-wayland cliphist thunar \
                 network-manager-applet blueman brightnessctl \
                 ttf-font-awesome otf-font-awesome ttf-fira-sans ttf-fira-code   \
-                ttf-firacode-nerd papirus-icon-theme breeze-icons nwg-look \
+                ttf-firacode-nerd papirus-icon-theme gnome-themes-extra gtk-engine-murrine nwg-look \
                 --noconfirm
-yay -S wlogout waypaper bibata-cursor-theme --noconfirm
+yay -S wlogout waypaper bibata-cursor-theme orchis-theme --noconfirm
 
 # hyprland config app
 bash <(curl -s "https://gitlab.com/stephan-raabe/ml4w-hyprland-settings/-/raw/main/setup.sh")

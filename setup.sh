@@ -51,6 +51,19 @@ installer_packages=(
     "figlet"
 )
 
+# ----------------------------------------------------- 
+# synchronizing package databases
+# ----------------------------------------------------- 
+sudo pacman -Sy
+echo
+
+# ----------------------------------------------------- 
+# install required packages
+# ----------------------------------------------------- 
+echo ":: Checking that required packages are installed..."
+_installPackagesPacman "${installer_packages[@]}";
+echo
+
 if gum confirm "You should check the installation script before you continue? Have you?" ;then
     echo
     echo ":: Installing Hyprland and additional packages"
@@ -99,20 +112,6 @@ if gum confirm "Are you using Nvidia GPU?" ;then
         exit;
     fi
 fi
-
-# ----------------------------------------------------- 
-# synchronizing package databases
-# ----------------------------------------------------- 
-sudo pacman -Sy
-echo
-
-# ----------------------------------------------------- 
-# install required packages
-# ----------------------------------------------------- 
-echo ":: Checking that required packages are installed..."
-_installPackagesPacman "${installer_packages[@]}";
-echo
-
 
 # ----------------------------------------------------- 
 # core packages

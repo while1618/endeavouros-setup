@@ -103,7 +103,7 @@ if gum confirm "Are you using Nvidia GPU?" ;then
         echo
         echo ":: Installing Nvidia GPU Drivers"
         echo
-        sudo pacman -Sy nvidia-inst --noconfirm
+        nvidia-inst
     elif [ $? -eq 130 ]; then
         exit 130
     else

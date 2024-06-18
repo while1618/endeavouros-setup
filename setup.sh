@@ -231,7 +231,7 @@ echo -e "${GREEN}"
 figlet "VSCode"
 echo -e "${NONE}"
 sudo pacman -Sy gnome-keyring --noconfirm
-yay -S vscode --noconfirm
+yay -S visual-studio-code-bin --noconfirm
 
 # rest client
 yay -S insomnia-bin --noconfirm

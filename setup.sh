@@ -9,9 +9,9 @@ clear
 GREEN='\033[0;32m'
 NONE='\033[0m'
 
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 # functions
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 
 # check if package is installed
 _isInstalledPacman() {
@@ -51,15 +51,15 @@ installer_packages=(
     "figlet"
 )
 
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 # synchronizing package databases
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 sudo pacman -Sy
 echo
 
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 # install required packages
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 echo ":: Checking that required packages are installed..."
 _installPackagesPacman "${installer_packages[@]}";
 echo
@@ -78,12 +78,12 @@ fi
 
 echo -e "${GREEN}"
 cat <<"EOF"
- _   _                  _                 _ 
+ _   _                  _                 _
 | | | |_   _ _ __  _ __| | __ _ _ __   __| |
 | |_| | | | | '_ \| '__| |/ _` | '_ \ / _` |
 |  _  | |_| | |_) | |  | | (_| | | | | (_| |
 |_| |_|\__, | .__/|_|  |_|\__,_|_| |_|\__,_|
-       |___/|_|                             
+       |___/|_|
 
 EOF
 echo -e "${NONE}"
@@ -117,9 +117,9 @@ fi
 sudo sed -i "s/PKGEXT=.*/PKGEXT='.pkg.tar'/g" /etc/makepkg.conf
 sudo sed -i "s/SRCEXT=.*/SRCEXT='.src.tar'/g" /etc/makepkg.conf
 
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 # core packages
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 
 echo -e "${GREEN}"
 figlet "CorePackages"
@@ -145,8 +145,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/th
 
 
 # -----------------------------------------------------
-# development   
-# ----------------------------------------------------- 
+# development
+# -----------------------------------------------------
 
 # git
 echo -e "${GREEN}"
@@ -249,7 +249,7 @@ git clone https://github.com/LazyVim/starter ~/.config/lazyvim
 
 # -----------------------------------------------------
 # apps
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 
 # gui
 echo -e "${GREEN}"
@@ -257,6 +257,10 @@ figlet "GUI"
 echo -e "${NONE}"
 sudo pacman -Sy discord okular feh gwenview vlc qbittorrent bitwarden qalculate-gtk veracrypt --noconfirm
 yay -S onlyoffice brave-bin ventoy-bin unified-remote-server --noconfirm
+
+# return default browser to firefox from brave
+unset BROWSER
+xdg-settings set default-web-browser firefox.desktop
 
 # terminal utils
 echo -e "${GREEN}"
@@ -267,7 +271,7 @@ sudo pacman -Sy tmux nnn fastfetch --noconfirm
 
 # -----------------------------------------------------
 # configs and themes
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 
 # dotfiles
 echo -e "${GREEN}"
@@ -276,9 +280,9 @@ echo -e "${NONE}"
 
 if $nvidia ;then
     echo \
-"# ----------------------------------------------------- 
+"# -----------------------------------------------------
 # Environment Variables
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 
 # https://wiki.hyprland.org/Nvidia/
 env = LIBVA_DRIVER_NAME,nvidia
@@ -288,9 +292,9 @@ env = __GLX_VENDOR_LIBRARY_NAME,nvidia" > ./config/hypr/conf/environment.conf
 fi
 
 echo \
-"# ----------------------------------------------------- 
+"# -----------------------------------------------------
 # Monitor Setup
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 
 monitor=,${resolution},auto,1" > ./config/hypr/conf/monitor.conf
 

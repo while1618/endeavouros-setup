@@ -300,7 +300,7 @@ monitor=,${resolution},auto,1" > ./config/hypr/conf/monitor.conf
 
 cp -rf ./config/.gtkrc-2.0 ./config/.Xresources ./config/.bashrc ./config/.zshrc ./config/.p10k.zsh ~/
 mkdir -p ~/.config/qBittorrent && cp -rf ./config/qbittorrent/qbittorrent.qbtheme ~/.config/qBittorrent
-cp -rf ./config/alacritty ./config/dunst ./config/gtk-3.0 ./config/gtk-4.0 ./config/hypr ./config/picom ./config/scripts ./config/Thunar ./config/ml4w-hyprland-settings ./config/wal ./config/waybar ./config/wlogout ~/.config
+cp -rf ./config/alacritty ./config/dunst ./config/gtk-3.0 ./config/gtk-4.0 ./config/hypr ./config/picom ./config/scripts ./config/Thunar ./config/ml4w-hyprland-settings ./config/wal ./config/waybar ./config/wlogout ./config/electron-flags.conf ~/.config
 
 # rofi
 echo -e "${GREEN}"

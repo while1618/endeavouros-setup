@@ -275,7 +275,7 @@ if $nvidia ;then
 # Environment Variables
 # ----------------------------------------------------- 
 
-https://wiki.hyprland.org/Nvidia/
+# https://wiki.hyprland.org/Nvidia/
 env = LIBVA_DRIVER_NAME,nvidia
 env = XDG_SESSION_TYPE,wayland
 env = GBM_BACKEND,nvidia-drm

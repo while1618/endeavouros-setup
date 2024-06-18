@@ -113,6 +113,10 @@ if gum confirm "Are you using Nvidia GPU?" ;then
     fi
 fi
 
+# make yay faster - do not use compression
+sudo sed -i "s/PKGEXT=.*/PKGEXT='.pkg.tar'/g" /etc/makepkg.conf
+sudo sed -i "s/SRCEXT=.*/SRCEXT='.src.tar'/g" /etc/makepkg.conf
+
 # ----------------------------------------------------- 
 # core packages
 # ----------------------------------------------------- 

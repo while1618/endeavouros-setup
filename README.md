@@ -1,42 +1,28 @@
-# EndeavourOS Setup
+# EndeavourOS on Hyprland 
 
 ![Screenshot](/screenshots/screenshot.png?raw=true)
 
 ## About
-The script is used to automatically setup my [EndeavourOS](https://endeavouros.com/) with [bspwm](https://github.com/baskerville/bspwm) tiling window manager and [NordTheme](https://www.nordtheme.com/) flavor.
-
-The script will work for the most users, but keep in mind that it has some specific apps and configs only for my needs and hardware. Check the script before running and tweak it to your needs.
-
-__Run it with care, I'm not responsible for any damage you deal with it.__
+This script is used to automatically setup [EndeavourOS](https://endeavouros.com/) with [Hyprland](https://hyprland.org/) tiling window manager, [Qogir Theme](https://github.com/vinceliuice/Qogir-theme), my dotfiles and install additional software that I use.
 
 ## Installation
-- [Download](https://endeavouros.com/latest-release/) EndeavourOS from official website.
-- Make a bootable usb.
-- Choose UEFI Default if on AMD/Intel GPU or UEFI NVIDIA if on NVIDIA GPU.
-- Choose "Install community editions".
+- [Download](https://endeavouros.com/) EndeavourOS from the official website.
+- Follow the instructions on how to install it.
+- I recommend that you pick `Online` installation and go with `No Desktop`.
 
-### What to pick during the installation:
-
-| Area          | Choose                                   |
-| ------------- | ---------------------------------------- |
-| Partitions    | swap to file                             |
-| Editions      | bspwm                                    |
-| Base Packages | Base-devel + Common packages, Zen Kernel |
-
-After the installation is done, boot to your system, and do the following:
-
-- Update mirrors through welcome screen. (pick the closest locations to you)
-- Download EndeavourOS community wallpapers through welcome screen.
-- If on NVIDIA GPU run the following command. After the installation is completed, reboot your system.
-
-```
-$ sudo nvidia-installer-dkms
-```
-
-- Run the following commands to start the setup:
+After the installation is done, login to your system, and clone this repository:
 
 ``` 
 $ git clone https://github.com/while1618/endeavouros-setup.git 
 $ cd endeavouros-setup/ 
+```
+
+Before running the script, you should check `setup.sh` and configure it to you needs.
+
+_Be sure to know what you are doing, because changing `setup.sh` can break things._
+
+Once you are finished, start the setup with:
+
+``` 
 $ ./setup.sh
 ```

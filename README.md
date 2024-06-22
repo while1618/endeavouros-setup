@@ -1,6 +1,12 @@
 # EndeavourOS on Hyprland 
 
-![Screenshot](/screenshots/screenshot.png?raw=true)
+![Screenshot](/screenshots/screenshot_1.png?raw=true)
+
+![Screenshot](/screenshots/screenshot_2.png?raw=true)
+
+![Screenshot](/screenshots/screenshot_3.png?raw=true)
+
+![Screenshot](/screenshots/screenshot_4.png?raw=true)
 
 ## About
 This script is used to automatically setup [EndeavourOS](https://endeavouros.com/) with [Hyprland](https://hyprland.org/) tiling window manager, [Qogir Theme](https://github.com/vinceliuice/Qogir-theme), my dotfiles and install additional software that I use.

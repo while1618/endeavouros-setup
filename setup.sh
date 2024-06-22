@@ -127,8 +127,9 @@ echo -e "${NONE}"
 
 # packages
 sudo pacman -Sy hyprland waybar rofi-wayland dunst hyprpaper hyprlock hypridle xdg-desktop-portal-hyprland sddm \
-                alacritty vim zsh picom qt5-wayland qt6-wayland cliphist thunar gvfs thunar-volman \
+                alacritty vim zsh picom qt5-wayland qt6-wayland cliphist thunar gvfs thunar-volman tumbler \
                 network-manager-applet blueman brightnessctl \
+                slurp grim xclip swappy \
                 ttf-font-awesome otf-font-awesome ttf-fira-sans ttf-fira-code   \
                 ttf-firacode-nerd gnome-themes-extra gtk-engine-murrine nwg-look \
                 --noconfirm
@@ -326,10 +327,11 @@ sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
 echo "[Theme]
 Current=sddm-astronaut-theme" | sudo tee /etc/sddm.conf
 
-# wallpapers
+# wallpapers and screenshots
 echo -e "${GREEN}"
-figlet "Wallpapers"
+figlet "WallpapersScreenshots"
 echo -e "${NONE}"
+mkdir ~/Pictures/screenshots
 cp -r wallpapers/** ~/Pictures
 
 # system configs

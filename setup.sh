@@ -257,7 +257,7 @@ git clone https://github.com/LazyVim/starter ~/.config/lazyvim
 echo -e "${GREEN}"
 figlet "GUI"
 echo -e "${NONE}"
-sudo pacman -Sy discord okular feh gwenview vlc qbittorrent bitwarden qalculate-gtk veracrypt --noconfirm
+sudo pacman -Sy discord okular feh gwenview mpv qbittorrent bitwarden qalculate-gtk veracrypt --noconfirm
 yay -S onlyoffice brave-bin ventoy-bin unified-remote-server --noconfirm
 
 # return default browser to firefox from brave

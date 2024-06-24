@@ -101,9 +101,8 @@ if gum confirm "Are you using Nvidia GPU?" ;then
     echo
     if gum confirm "Continue?" ;then
         echo
-        echo ":: Installing Nvidia GPU Drivers"
+        echo ":: Starting the installation"
         echo
-        nvidia-inst
     elif [ $? -eq 130 ]; then
         exit 130
     else
@@ -290,7 +289,13 @@ if $nvidia ;then
 env = LIBVA_DRIVER_NAME,nvidia
 env = XDG_SESSION_TYPE,wayland
 env = GBM_BACKEND,nvidia-drm
-env = __GLX_VENDOR_LIBRARY_NAME,nvidia" > ./config/hypr/conf/environment.conf
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+env = NVD_BACKEND,direct
+env = ELECTRON_OZONE_PLATFORM_HINT,auto
+
+cursor {
+    no_hardware_cursors = true
+}" > ./config/hypr/conf/environment.conf
 fi
 
 echo \
@@ -352,7 +357,7 @@ echo "/swapfile				  swap		 swap	 defaults   0 0" | sudo tee -a /etc/fstab
 
 
 # -----------------------------------------------------
-# kernel
+# kernel and drivers
 # -----------------------------------------------------
 
 # zen kernel
@@ -361,6 +366,19 @@ figlet "ZenKernel"
 echo -e "${NONE}"
 sudo pacman -Sy linux-zen linux-zen-headers --noconfirm
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# nvidia drivers
+if $nvidia ;then
+    echo -e "${GREEN}"
+    figlet "Nvidia"
+    echo -e "${NONE}"
+    nvidia-inst
+    sudo pacman -Sy mkinitcpio libva-nvidia-driver --noconfirm
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+    sudo sed -i "s/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/g" /etc/mkinitcpio.conf
+    echo "options nvidia_drm modeset=1 fbdev=1" | sudo tee -a /etc/modprobe.d/nvidia.conf
+    sudo mkinitcpio -P
+fi
 
 # cleanup
 echo -e "${GREEN}"

@@ -268,7 +268,7 @@ xdg-settings set default-web-browser firefox.desktop
 echo -e "${GREEN}"
 figlet "TerminalUtils"
 echo -e "${NONE}"
-sudo pacman -Sy tmux nnn fastfetch --noconfirm
+sudo pacman -Sy tmux nnn fastfetch htop --noconfirm
 
 
 # -----------------------------------------------------

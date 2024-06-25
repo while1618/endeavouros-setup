@@ -110,6 +110,8 @@ if gum confirm "Are you using Nvidia GPU?" ;then
         echo ":: Installation canceled."
         exit;
     fi
+else
+    nvidia=false
 fi
 
 # make yay faster - do not use compression

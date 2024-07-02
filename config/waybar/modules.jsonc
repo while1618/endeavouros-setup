@@ -12,7 +12,7 @@
   // Rofi Application Launcher
   "custom/appmenuicon": {
     "format": "",
-    "on-click": "rofi -show drun -replace -theme ~/.config/rofi/launchers/type-2/style-2.rasi",
+    "on-click": "rofi -show drun -replace -theme ~/.config/rofi/launchers/type-1/style-6.rasi",
     "tooltip": false
   },
 

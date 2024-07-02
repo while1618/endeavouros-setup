@@ -124,9 +124,8 @@
   // Cliphist
   "custom/cliphist": {
     "format": "",
-    "on-click": "sleep 0.1 && ~/.config/scripts/cliphist.sh",
-    "on-click-right": "sleep 0.1 && ~/.config/scripts/cliphist.sh d",
-    "on-click-middle": "sleep 0.1 && ~/.config/scripts/cliphist.sh w",
+    "on-click": "~/.config/scripts/cliphist.sh",
+    "on-click-right": "cliphist wipe",
     "tooltip-format": "Clipboard Manager"
   },
 

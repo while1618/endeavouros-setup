@@ -148,104 +148,105 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/th
 # development
 # -----------------------------------------------------
 
-# git
-echo -e "${GREEN}"
-figlet "Git"
-echo -e "${NONE}"
-git_name=$(gum input --placeholder "Enter git name...")
-echo "Name: ${git_name}"
-git_email=$(gum input --placeholder "Enter git email...")
-echo "Email: ${git_email}"
-git config --global user.name "${git_name}"
-git config --global user.email "${git_email}"
-git config --global pull.ff only
-ssh-keygen
+if gum confirm "Do you need dev setup?" ;then
+  # git
+  echo -e "${GREEN}"
+  figlet "Git"
+  echo -e "${NONE}"
+  git_name=$(gum input --placeholder "Enter git name...")
+  echo "Name: ${git_name}"
+  git_email=$(gum input --placeholder "Enter git email...")
+  echo "Email: ${git_email}"
+  git config --global user.name "${git_name}"
+  git config --global user.email "${git_email}"
+  git config --global pull.ff only
+  ssh-keygen
 
-# java
-echo -e "${GREEN}"
-figlet "Java"
-echo -e "${NONE}"
-sudo pacman -Sy jre21-openjdk jdk21-openjdk maven --noconfirm
-yay -S google-java-format intellij-idea-ultimate-edition --noconfirm
+  # java
+  echo -e "${GREEN}"
+  figlet "Java"
+  echo -e "${NONE}"
+  sudo pacman -Sy jre21-openjdk jdk21-openjdk maven --noconfirm
+  yay -S google-java-format intellij-idea-ultimate-edition --noconfirm
 
-# python
-echo -e "${GREEN}"
-figlet "Python"
-echo -e "${NONE}"
-sudo pacman -Sy python-pip --noconfirm
-yay -S pycharm-professional --noconfirm
+  # python
+  echo -e "${GREEN}"
+  figlet "Python"
+  echo -e "${NONE}"
+  sudo pacman -Sy python-pip --noconfirm
+  yay -S pycharm-professional --noconfirm
 
-# haskell
-# echo -e "${GREEN}"
-# figlet "Haskell"
-# echo -e "${NONE}"
-# curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-# yay -S hlint-bin --noconfirm
+  # haskell
+  # echo -e "${GREEN}"
+  # figlet "Haskell"
+  # echo -e "${NONE}"
+  # curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+  # yay -S hlint-bin --noconfirm
 
-# mysql
-echo -e "${GREEN}"
-figlet "Mysql"
-echo -e "${NONE}"
-sudo pacman -Sy mariadb --noconfirm
-sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-sudo systemctl enable --now mariadb
-sudo mysql_secure_installation
-sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
+  # mysql
+  echo -e "${GREEN}"
+  figlet "Mysql"
+  echo -e "${NONE}"
+  sudo pacman -Sy mariadb --noconfirm
+  sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+  sudo systemctl enable --now mariadb
+  sudo mysql_secure_installation
+  sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
 
-# postgres
-echo -e "${GREEN}"
-figlet "Postgres"
-echo -e "${NONE}"
-sudo pacman -Sy postgresql --noconfirm
-sudo su - postgres -c "initdb -D '/var/lib/postgres/data'"
-sudo systemctl enable --now postgresql
-sudo psql -U postgres -c "ALTER USER postgres PASSWORD 'root';"
+  # postgres
+  echo -e "${GREEN}"
+  figlet "Postgres"
+  echo -e "${NONE}"
+  sudo pacman -Sy postgresql --noconfirm
+  sudo su - postgres -c "initdb -D '/var/lib/postgres/data'"
+  sudo systemctl enable --now postgresql
+  sudo psql -U postgres -c "ALTER USER postgres PASSWORD 'root';"
 
-# redis
-echo -e "${GREEN}"
-figlet "Redis"
-echo -e "${NONE}"
-sudo pacman -Sy redis --noconfirm
-sudo systemctl enable --now redis
-redis-cli config set requirepass root
+  # redis
+  echo -e "${GREEN}"
+  figlet "Redis"
+  echo -e "${NONE}"
+  sudo pacman -Sy redis --noconfirm
+  sudo systemctl enable --now redis
+  redis-cli config set requirepass root
 
-# node
-echo -e "${GREEN}"
-figlet "Node"
-echo -e "${NONE}"
-yay -S nvm --noconfirm
-source /usr/share/nvm/init-nvm.sh
-nvm install --lts
+  # node
+  echo -e "${GREEN}"
+  figlet "Node"
+  echo -e "${NONE}"
+  yay -S nvm --noconfirm
+  source /usr/share/nvm/init-nvm.sh
+  nvm install --lts
 
-# docker
-echo -e "${GREEN}"
-figlet "Docker"
-echo -e "${NONE}"
-sudo pacman -Sy docker --noconfirm
-sudo systemctl enable --now docker.service
-sudo usermod -aG docker $USER
-sudo pacman -Sy docker-compose --noconfirm
+  # docker
+  echo -e "${GREEN}"
+  figlet "Docker"
+  echo -e "${NONE}"
+  sudo pacman -Sy docker --noconfirm
+  sudo systemctl enable --now docker.service
+  sudo usermod -aG docker $USER
+  sudo pacman -Sy docker-compose --noconfirm
 
-# vscode
-echo -e "${GREEN}"
-figlet "VSCode"
-echo -e "${NONE}"
-sudo pacman -Sy gnome-keyring --noconfirm
-yay -S visual-studio-code-bin --noconfirm
+  # vscode
+  echo -e "${GREEN}"
+  figlet "VSCode"
+  echo -e "${NONE}"
+  sudo pacman -Sy gnome-keyring --noconfirm
+  yay -S visual-studio-code-bin --noconfirm
 
-# rest client
-yay -S insomnia-bin --noconfirm
+  # rest client
+  yay -S insomnia-bin --noconfirm
 
-# neovim
-echo -e "${GREEN}"
-figlet "Neovim"
-echo -e "${NONE}"
-sudo pacman -Sy neovim fzf ripgrep fd --noconfirm
-yay -S vim-plug --noconfirm
-git clone https://github.com/NvChad/starter ~/.config/nvchad
-git clone --depth 1 https://github.com/AstroNvim/template ~/.config/astronvim
-git clone https://github.com/LazyVim/starter ~/.config/lazyvim
-
+  # neovim
+  echo -e "${GREEN}"
+  figlet "Neovim"
+  echo -e "${NONE}"
+  sudo pacman -Sy neovim fzf ripgrep fd --noconfirm
+  yay -S vim-plug --noconfirm
+  git clone https://github.com/NvChad/starter ~/.config/nvchad
+  git clone --depth 1 https://github.com/AstroNvim/template ~/.config/astronvim
+  git clone https://github.com/LazyVim/starter ~/.config/lazyvim
+fi
 
 # -----------------------------------------------------
 # apps

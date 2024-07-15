@@ -372,8 +372,7 @@ if $nvidia ;then
     echo -e "${GREEN}"
     figlet "Nvidia"
     echo -e "${NONE}"
-    nvidia-inst
-    sudo pacman -Sy mkinitcpio libva-nvidia-driver --noconfirm
+    sudo pacman -Sy nvidia-dkms nvidia-utils lib32-nvidia-utils egl-wayland mkinitcpio libva-nvidia-driver --noconfirm
     sudo grub-mkconfig -o /boot/grub/grub.cfg
     sudo sed -i "s/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/g" /etc/mkinitcpio.conf
     echo "options nvidia_drm modeset=1 fbdev=1" | sudo tee -a /etc/modprobe.d/nvidia.conf

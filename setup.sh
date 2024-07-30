@@ -309,7 +309,7 @@ cp -rf ./config/.gtkrc-2.0 ./config/.Xresources ./config/.bashrc ./config/.zshrc
 mkdir -p ~/.config/qBittorrent && cp -rf ./config/qbittorrent/qbittorrent.qbtheme ~/.config/qBittorrent
 cp -rf ./config/alacritty ./config/dunst ./config/gtk-3.0 ./config/gtk-4.0 ./config/hypr ./config/picom \
     ./config/scripts ./config/Thunar ./config/wal ./config/waybar \
-    ./config/wlogout ./config/electron-flags.conf ./config/fastfetch \
+    ./config/wlogout ./config/fastfetch \
     ~/.config
 
 # rofi
@@ -372,7 +372,7 @@ if $nvidia ;then
     echo -e "${GREEN}"
     figlet "Nvidia"
     echo -e "${NONE}"
-    sudo pacman -Sy nvidia-dkms nvidia-utils lib32-nvidia-utils egl-wayland mkinitcpio libva-nvidia-driver --noconfirm
+    sudo pacman -Sy nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings libva-nvidia-driver mkinitcpio --noconfirm
     sudo grub-mkconfig -o /boot/grub/grub.cfg
     sudo sed -i "s/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/g" /etc/mkinitcpio.conf
     echo "options nvidia_drm modeset=1 fbdev=1" | sudo tee -a /etc/modprobe.d/nvidia.conf

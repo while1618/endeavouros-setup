@@ -5,7 +5,7 @@
 		<name>Open Terminal Here</name>
 		<submenu></submenu>
 		<unique-id>1718750558608207-1</unique-id>
-		<command>alacritty</command>
+		<command>kitty</command>
 		<description>Example for a custom action</description>
 		<range></range>
 		<patterns>*</patterns>

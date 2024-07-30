@@ -64,7 +64,7 @@ echo ":: Checking that required packages are installed..."
 _installPackagesPacman "${installer_packages[@]}";
 echo
 
-if gum confirm "You should check the installation script before you continue? Have you?" ;then
+if gum confirm "Have you checked the installation script before running?" ;then
     echo
     echo ":: Installing Hyprland and additional packages"
     echo
@@ -128,7 +128,7 @@ echo -e "${NONE}"
 
 # packages
 sudo pacman -Sy hyprland waybar rofi-wayland dunst hyprpaper hyprlock hypridle xdg-desktop-portal-hyprland sddm \
-                alacritty vim zsh picom qt5-wayland qt6-wayland cliphist \
+                alacritty kitty vim zsh picom qt5-wayland qt6-wayland cliphist \
                 thunar gvfs thunar-volman tumbler thunar-archive-plugin \
                 network-manager-applet blueman brightnessctl \
                 slurp grim xclip swappy \
@@ -148,7 +148,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/th
 # development
 # -----------------------------------------------------
 
-if gum confirm "Do you need dev setup?" ;then
+if gum confirm "Do you need development setup?" ;then
   # git
   echo -e "${GREEN}"
   figlet "Git"
@@ -252,9 +252,9 @@ fi
 # apps
 # -----------------------------------------------------
 
-# gui
+# gui apps
 echo -e "${GREEN}"
-figlet "GUI"
+figlet "GUI Apps"
 echo -e "${NONE}"
 sudo pacman -Sy discord okular feh gwenview mpv qbittorrent bitwarden qalculate-gtk veracrypt --noconfirm
 yay -S onlyoffice-bin brave-bin ventoy-bin unified-remote-server --noconfirm
@@ -267,7 +267,7 @@ xdg-settings set default-web-browser firefox.desktop
 echo -e "${GREEN}"
 figlet "TerminalUtils"
 echo -e "${NONE}"
-sudo pacman -Sy tmux nnn fastfetch htop --noconfirm
+sudo pacman -Sy tmux yazi fastfetch htop --noconfirm
 
 
 # -----------------------------------------------------
@@ -308,7 +308,7 @@ monitor=,${resolution},auto,1" > ./config/hypr/conf/monitor.conf
 cp -rf ./config/.gtkrc-2.0 ./config/.Xresources ./config/.bashrc ./config/.zshrc ./config/.p10k.zsh ~/
 mkdir -p ~/.config/qBittorrent && cp -rf ./config/qbittorrent/qbittorrent.qbtheme ~/.config/qBittorrent
 cp -rf ./config/alacritty ./config/dunst ./config/gtk-3.0 ./config/gtk-4.0 ./config/hypr ./config/picom \
-    ./config/scripts ./config/Thunar ./config/wal ./config/waybar \
+    ./config/kitty ./config/scripts ./config/Thunar ./config/wal ./config/waybar \
     ./config/wlogout ./config/fastfetch \
     ~/.config
 

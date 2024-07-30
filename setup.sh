@@ -257,7 +257,7 @@ echo -e "${GREEN}"
 figlet "GUI"
 echo -e "${NONE}"
 sudo pacman -Sy discord okular feh gwenview mpv qbittorrent bitwarden qalculate-gtk veracrypt --noconfirm
-yay -S onlyoffice brave-bin ventoy-bin unified-remote-server --noconfirm
+yay -S onlyoffice-bin brave-bin ventoy-bin unified-remote-server --noconfirm
 
 # return default browser to firefox from brave
 unset BROWSER
@@ -372,7 +372,7 @@ if $nvidia ;then
     echo -e "${GREEN}"
     figlet "Nvidia"
     echo -e "${NONE}"
-    sudo pacman -Sy nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings libva-nvidia-driver mkinitcpio --noconfirm
+    sudo pacman -S nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings libva-nvidia-driver mkinitcpio
     sudo grub-mkconfig -o /boot/grub/grub.cfg
     sudo sed -i "s/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/g" /etc/mkinitcpio.conf
     echo "options nvidia_drm modeset=1 fbdev=1" | sudo tee -a /etc/modprobe.d/nvidia.conf

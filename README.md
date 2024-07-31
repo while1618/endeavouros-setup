@@ -42,7 +42,7 @@ If you are on Nvidia GPU, some electron apps (vscode, discord...) might face som
 
 ## Credits
 
-Core projects used:
+Core projects:
 - https://github.com/hyprwm/Hyprland
 - https://github.com/Alexays/Waybar
 - https://github.com/lbonn/rofi

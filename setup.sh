@@ -138,7 +138,8 @@ sudo pacman -Sy hyprland waybar rofi-wayland dunst hyprpaper hyprlock hypridle x
 yay -S wlogout waypaper qogir-gtk-theme qogir-icon-theme --noconfirm
 
 # oh my zsh
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -) --unattended"
+chsh -s $(which zsh)
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/themes/powerlevel10k

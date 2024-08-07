@@ -1,4 +1,15 @@
-# EndeavourOS on Hyprland 
+<h1 style="text-align: center;">EndeavourOS on Hyprland</h1>
+
+<p align="center">
+  <a href="https://github.com/hyprwm/Hyprland" target="_blank"><img alt="Hyprland" src="https://img.shields.io/badge/hyprland-F8BBD0?style=for-the-badge"></a>
+  <a href="https://github.com/Alexays/Waybar" target="_blank"><img alt="Waybar" src="https://img.shields.io/badge/waybar-E1C6E7?style=for-the-badge"></a>
+  <a href="https://github.com/lbonn/rofi" target="_blank"><img alt="Rofi" src="https://img.shields.io/badge/rofi-FFC09F?style=for-the-badge"></a>
+  <a href="https://github.com/ArtsyMacaw/wlogout" target="_blank"><img alt="Wlogout" src="https://img.shields.io/badge/wlogout-FEEF93?style=for-the-badge"></a>
+  <a href="https://github.com/hyprwm/hyprlock" target="_blank"><img alt="Hyprlock" src="https://img.shields.io/badge/hyprlock-FCF5C7?style=for-the-badge"></a>
+  <a href="https://github.com/hyprwm/hyprpaper" target="_blank"><img alt="Hyprpaper" src="https://img.shields.io/badge/hyprpaper-A0CED9?style=for-the-badge"></a>
+  <a href="https://github.com/dunst-project/dunst" target="_blank"><img alt="Dunst" src="https://img.shields.io/badge/dunst-B5EAD7?style=for-the-badge"></a>
+  <a href="https://github.com/sddm/sddm" target="_blank"><img alt="SDDM" src="https://img.shields.io/badge/sddm-ADF7B6?style=for-the-badge"></a>
+</p>
 
 ![Screenshot](/screenshots/screenshot_1.png?raw=true)
 
@@ -42,16 +53,7 @@ If you are on Nvidia GPU, some electron apps (vscode, discord...) might face som
 
 ## Credits
 
-Core projects:
-- https://github.com/hyprwm/Hyprland
-- https://github.com/Alexays/Waybar
-- https://github.com/lbonn/rofi
-- https://github.com/ArtsyMacaw/wlogout
-- https://github.com/hyprwm/hyprlock
-- https://github.com/dunst-project/dunst
-- https://github.com/sddm/sddm
-
-The following projects were the main inspirations for this setup:
+The following projects were the main inspirations:
 - https://github.com/mylinuxforwork/dotfiles
 - https://github.com/JaKooLit/Arch-Hyprland
 - https://github.com/adi1090x/rofi

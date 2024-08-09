@@ -1,4 +1,4 @@
-<h1 align="center">EndeavourOS on Hyprland</h1>
+<h1 align="center">Hyprland on EndeavourOS</h1>
 
 <p align="center">
   <a href="https://github.com/hyprwm/Hyprland" target="_blank"><img alt="Hyprland" src="https://img.shields.io/badge/hyprland-F8BBD0?style=for-the-badge"></a>

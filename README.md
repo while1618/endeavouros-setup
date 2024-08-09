@@ -31,7 +31,7 @@ The script will install all the core packages that Hyprland requires, copy dotfi
 - Download [EndeavourOS](https://endeavouros.com/) from the official website and start the installation.
 - I recommend that you pick `Online` installation and go with `No Desktop`.
 
-Once the installation is done, login to your system, clone this repository and start the setup script
+Once the installation is done, login to your system, clone this repository and run `setup.sh`:
 
 ``` 
 $ git clone https://github.com/while1618/endeavouros-setup.git 
@@ -39,13 +39,13 @@ $ cd endeavouros-setup/
 $ ./setup.sh
 ```
 
-You'll need to answer some basic questions for your setup.
+You'll need to answer some questions about your setup.
 
 Once it's done, reboot and you are good to go.
 
-## Get Started
+## Getting Started
 
-When you login to your system, type `ctrl + super + H` to check all the keybindings, so that you know what you can do. If you want to do any additional customization, I suggest visiting Hyprland [wiki](https://wiki.hyprland.org/), and seek for inspiration on GitHub and Reddit.
+When you login for the first time, type `ctrl + super + H` to check all the keybindings, so that you know what you can do. If you want to do any additional customization, I suggest visiting Hyprland [wiki](https://wiki.hyprland.org/), and seek for inspiration on GitHub and Reddit.
 
 ## Known Issues
 

@@ -129,7 +129,7 @@ echo -e "${NONE}"
 # packages
 sudo pacman -Sy hyprland waybar rofi-wayland dunst hyprpaper hyprlock hypridle xdg-desktop-portal-hyprland sddm \
                 alacritty kitty vim zsh picom qt5-wayland qt6-wayland cliphist \
-                thunar gvfs thunar-volman tumbler thunar-archive-plugin \
+                thunar gvfs thunar-volman tumbler thunar-archive-plugin ark \
                 network-manager-applet blueman brightnessctl \
                 slurp grim xclip swappy \
                 ttf-font-awesome otf-font-awesome ttf-fira-sans ttf-fira-code   \

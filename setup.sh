@@ -257,8 +257,8 @@ fi
 echo -e "${GREEN}"
 figlet "GUI Apps"
 echo -e "${NONE}"
-sudo pacman -Sy discord okular feh gwenview mpv qbittorrent bitwarden qalculate-gtk veracrypt --noconfirm
-yay -S onlyoffice-bin brave-bin zen-browser-bin ventoy-bin unified-remote-server --noconfirm
+sudo pacman -Sy okular feh gwenview mpv qbittorrent bitwarden qalculate-gtk veracrypt --noconfirm
+yay -S onlyoffice-bin brave-bin zen-browser-bin ventoy-bin unified-remote-server webcord --noconfirm
 
 # return default browser to firefox from brave
 unset BROWSER

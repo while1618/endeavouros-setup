@@ -49,7 +49,8 @@ When you login for the first time, type `ctrl + super + H` to check all the keyb
 
 ## Known Issues
 
-If you are on Nvidia GPU, some electron apps (vscode, discord...) might face some flickering problems, if that's the case, run those apps with `--disable-gpu` flag as suggested in Hyprland [wiki](https://wiki.hyprland.org/Nvidia/#flickering-in-electron--cef-apps). You can add this flag to your `.desktop` files, or run the apps with a flag directly from terminal.
+- [db.lck is present](https://github.com/while1618/endeavouros-setup/issues/1)
+- If you are on Nvidia GPU, some electron apps (vscode, discord...) might face some flickering problems, if that's the case, run those apps with `--disable-gpu` flag as suggested in Hyprland [wiki](https://wiki.hyprland.org/Nvidia/#flickering-in-electron--cef-apps). You can add this flag to your `.desktop` files, or run the apps with a flag directly from terminal.
 
 ## Credits
 

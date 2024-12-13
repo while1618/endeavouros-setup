@@ -88,6 +88,8 @@ cat <<"EOF"
 EOF
 echo -e "${NONE}"
 
+echo "Are you using systemd boot or grub?"
+boot=$(gum choose systemd grub)
 echo "What is the resolution and refresh rate of your monitor?"
 echo "Answare in the following format eg. 3440x1440@144"
 resolution=$(gum input --placeholder "Resolution and refresh rate...")
@@ -356,18 +358,27 @@ echo -e "${GREEN}"
 figlet "ZenKernel"
 echo -e "${NONE}"
 sudo pacman -Sy linux-zen linux-zen-headers --noconfirm
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+if [[ "$boot" == "systemd" ]]; then
+  sudo reinstall-kernels
+elif [[ "$boot" == "grub" ]]; then
+  sudo dracut-rebuild
+  sudo grub-mkconfig -o /boot/grub/grub.cfg
+fi
 
 # nvidia drivers
 if $nvidia ;then
     echo -e "${GREEN}"
     figlet "Nvidia"
     echo -e "${NONE}"
-    sudo pacman -S nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings libva-nvidia-driver mkinitcpio
-    sudo grub-mkconfig -o /boot/grub/grub.cfg
-    sudo sed -i "s/MODULES=()/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/g" /etc/mkinitcpio.conf
+    sudo pacman -S nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings libva-nvidia-driver
+    echo "force_drivers+=\" nvidia nvidia_modeset nvidia_uvm nvidia_drm \"" | sudo tee -a /etc/dracut.conf.d/nvidia.conf
     echo "options nvidia_drm modeset=1 fbdev=1" | sudo tee -a /etc/modprobe.d/nvidia.conf
-    sudo mkinitcpio -P
+    if [[ "$boot" == "systemd" ]]; then
+      sudo reinstall-kernels
+    elif [[ "$boot" == "grub" ]]; then
+      sudo dracut-rebuild
+      sudo grub-mkconfig -o /boot/grub/grub.cfg
+    fi
 fi
 
 # cleanup

@@ -43,7 +43,9 @@ You'll need to answer some questions about your setup.
 
 Once it's done, reboot and you are good to go.
 
-## Getting Started
+## First Login
+
+On login screen (sddm) change `session` from `hyprland systemd` to `hyprland`.
 
 When you login for the first time, type `ctrl + super + H` to check all the keybindings, so that you know what you can do. If you want to do any additional customization, I suggest visiting Hyprland [wiki](https://wiki.hyprland.org/), and seek for inspiration on GitHub and Reddit.
 

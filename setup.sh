@@ -170,14 +170,16 @@ if gum confirm "Do you need development setup?" ;then
   figlet "Java"
   echo -e "${NONE}"
   sudo pacman -Sy jre21-openjdk jdk21-openjdk maven --noconfirm
-  yay -S google-java-format intellij-idea-ultimate-edition --noconfirm
+  yay -S google-java-format --noconfirm
 
   # python
   echo -e "${GREEN}"
   figlet "Python"
   echo -e "${NONE}"
   sudo pacman -Sy python-pip --noconfirm
-  yay -S pycharm-professional --noconfirm
+
+  # jetbrains
+  yay jetbrains-toolbox --noconfirm
 
   # haskell
   # echo -e "${GREEN}"

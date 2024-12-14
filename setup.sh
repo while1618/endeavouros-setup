@@ -179,7 +179,7 @@ if gum confirm "Do you need development setup?" ;then
   sudo pacman -Sy python-pip --noconfirm
 
   # jetbrains
-  yay jetbrains-toolbox --noconfirm
+  yay -S jetbrains-toolbox --noconfirm
 
   # haskell
   # echo -e "${GREEN}"

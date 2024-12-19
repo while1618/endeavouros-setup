@@ -51,7 +51,7 @@ Once it's done, reboot and you are good to go.
 
 ## Known Issues
 
-- Flickering in electron apps (vscode, discord...) on Nvidia GPUs should be resolved with setting [this config](https://github.com/hyprwm/Hyprland/issues/7252#issuecomment-2345792172) in `hyprland.conf`. The setup script will do that for you if you are on Nvidia GPU, and everything should work fine, but if you still face some flickering problems, run electron apps with `--disable-gpu-compositing` flag. You can add this flag to your `.desktop` files, or run the apps with a flag directly from terminal.
+- Flickering in electron apps (vscode, discord...) on Nvidia GPUs should be resolved with adding [this config](https://github.com/hyprwm/Hyprland/issues/7252#issuecomment-2345792172) to `hyprland.conf`. The setup script will do that for you if you are on Nvidia GPU, and everything should work fine, but if you still face some flickering problems, run electron apps with `--disable-gpu-compositing` flag. You can add this flag to your `.desktop` files, or run the apps with a flag directly from terminal.
 - [db.lck is present](https://github.com/while1618/endeavouros-setup/issues/1)
 
 ## Credits

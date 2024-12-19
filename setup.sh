@@ -291,6 +291,13 @@ env = ELECTRON_OZONE_PLATFORM_HINT,auto
 cursor {
     no_hardware_cursors = true
 }" > ./config/hypr/conf/environment.conf
+
+echo \
+"
+# -----------------------------------------------------
+# Electron flickering fix
+# -----------------------------------------------------
+source = ~/.config/hypr/conf/electron-flickering-fix.conf" >> ./config/hypr/hyprland.conf
 fi
 
 echo \

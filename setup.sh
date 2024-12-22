@@ -137,7 +137,7 @@ sudo pacman -Sy hyprland waybar rofi-wayland dunst hyprpaper hyprlock hypridle x
                 ttf-font-awesome otf-font-awesome ttf-fira-sans ttf-fira-code   \
                 ttf-firacode-nerd gnome-themes-extra gtk-engine-murrine nwg-look \
                 --noconfirm
-yay -S wlogout waypaper qogir-gtk-theme qogir-icon-theme --noconfirm
+yay -S wlogout waypaper hyprland-qtutils qogir-gtk-theme qogir-icon-theme --noconfirm
 
 # oh my zsh
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -) --unattended"

@@ -181,30 +181,6 @@ if gum confirm "Do you need development setup?" ;then
   # jetbrains
   yay -S jetbrains-toolbox --noconfirm
 
-  # haskell
-  # echo -e "${GREEN}"
-  # figlet "Haskell"
-  # echo -e "${NONE}"
-  # curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-  # yay -S hlint-bin --noconfirm
-
-  # postgres
-  echo -e "${GREEN}"
-  figlet "Postgres"
-  echo -e "${NONE}"
-  sudo pacman -Sy postgresql --noconfirm
-  sudo su - postgres -c "initdb -D '/var/lib/postgres/data'"
-  sudo systemctl enable --now postgresql
-  sudo psql -U postgres -c "ALTER USER postgres PASSWORD 'root';"
-
-  # redis
-  echo -e "${GREEN}"
-  figlet "Redis"
-  echo -e "${NONE}"
-  sudo pacman -Sy redis --noconfirm
-  sudo systemctl enable --now redis
-  redis-cli config set requirepass root
-
   # node
   echo -e "${GREEN}"
   figlet "Node"

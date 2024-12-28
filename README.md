@@ -23,23 +23,23 @@
 
 ## About
 
-This script is used to setup [Hyprland](https://hyprland.org/) on freshly installed [EndeavourOS](https://endeavouros.com/). It is tested only on EndeavourOS, but it will probably work on other Arch base distros.
+This script is used to install [Hyprland](https://hyprland.org/) on [EndeavourOS](https://endeavouros.com/). It is tested only with EndeavourOS, but it will probably work on other Arch base distros.
 
-The script will install all the core packages that Hyprland requires, copy dotfiles and wallpapers, install additional software that I use, and setup drivers if you are on Nvidia. You can change all of this in `setup.sh`, but be careful what you are doing there, because it can break things. 
+The script will install all the core packages that Hyprland requires, copy dotfiles and wallpapers, install additional software that I use, and install GPU drivers if you are using Nvidia GPU. You can change all of this in `install.sh`, but be careful what you are doing there, because it can break things. 
 
 ## Installation
 - Download [EndeavourOS](https://endeavouros.com/) from the official website and start the installation.
 - I recommend that you pick `Online` installation and go with `No Desktop`.
 
-Once the installation is done, login to your system, clone this repository and run `setup.sh`:
+Once the installation is done, login to your system, clone this repository and run `install.sh`:
 
 ``` 
-$ git clone https://github.com/while1618/endeavouros-setup.git 
-$ cd endeavouros-setup/ 
-$ ./setup.sh
+$ git clone https://github.com/while1618/hyprland-install-script.git 
+$ cd hyprland-install-script/ 
+$ ./install.sh
 ```
 
-You'll need to answer some questions about your setup.
+You'll need to answer some questions about your system.
 
 Once it's done, reboot and you are good to go.
 
@@ -51,8 +51,8 @@ Once it's done, reboot and you are good to go.
 
 ## Known Issues
 
-- Flickering in electron apps (vscode, discord...) on Nvidia GPUs should be resolved with adding [this config](https://github.com/hyprwm/Hyprland/issues/7252#issuecomment-2345792172) to `hyprland.conf`. The setup script will do that for you if you are on Nvidia GPU, and everything should work fine, but if you still face some flickering problems, run electron apps with `--disable-gpu-compositing` flag. You can add this flag to your `.desktop` files, or run the apps with a flag directly from terminal.
-- [db.lck is present](https://github.com/while1618/endeavouros-setup/issues/1)
+- Flickering in electron apps (vscode, discord...) on Nvidia GPUs should be resolved with adding [this config](https://github.com/hyprwm/Hyprland/issues/7252#issuecomment-2345792172) to `hyprland.conf`. The script will do that for you if you are on Nvidia GPU, and everything should work fine, but if you still face some flickering problems, run electron apps with `--disable-gpu-compositing` flag. You can add this flag to your `.desktop` files, or run the apps with a flag directly from terminal.
+- [db.lck is present](https://github.com/while1618/hyprland-install-script/issues/1)
 
 ## Credits
 

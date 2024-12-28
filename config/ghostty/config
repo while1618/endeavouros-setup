@@ -1,0 +1,16 @@
+background = #161718
+foreground = #b7bcb9
+selection-background = #F8F8F8
+selection-foreground = #161718
+cursor-color = #b7bcb9
+
+font-family = "FiraCode Nerd Font"
+font-size = 12
+
+cursor-style = block
+shell-integration-features = no-cursor
+
+background-opacity = 0.8
+window-decoration = false
+window-padding-x = 10
+window-padding-y = 10

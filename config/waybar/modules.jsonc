@@ -50,7 +50,6 @@
     "return-type": "json",
     "exec": "~/.config/scripts/updates.sh",
     "restart-interval": 60,
-    "on-click": "ghostty -e ~/.config/scripts/installupdates.sh",
     "tooltip": false
   },
 

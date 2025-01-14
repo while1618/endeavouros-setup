@@ -1,14 +1,4 @@
 #!/bin/bash
-#  _   _           _       _
-# | | | |_ __   __| | __ _| |_ ___  ___
-# | | | | '_ \ / _` |/ _` | __/ _ \/ __|
-# | |_| | |_) | (_| | (_| | ||  __/\__ \
-#  \___/| .__/ \__,_|\__,_|\__\___||___/
-#       |_|
-#
-# by Stephan Raabe (2023)
-# -----------------------------------------------------
-# Requires pacman-contrib trizen
 
 # -----------------------------------------------------
 # Define threshholds for color indicators
@@ -19,14 +9,14 @@ threshhold_yellow=25
 threshhold_red=100
 
 # -----------------------------------------------------
-# Calculate available updates pacman and aur (with trizen)
+# Calculate available updates pacman and aur
 # -----------------------------------------------------
 
 if ! updates_arch=$(checkupdates 2> /dev/null | wc -l ); then
     updates_arch=0
 fi
 
-if ! updates_aur=$(trizen -Su --aur --quiet | wc -l); then
+if ! updates_aur=$(yay -Qua | wc -l); then
     updates_aur=0
 fi
 

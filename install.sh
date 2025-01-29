@@ -206,7 +206,7 @@ if gum confirm "Do you need development setup?" ;then
   yay -S visual-studio-code-bin --noconfirm
 
   # rest client
-  yay -S insomnia-bin --noconfirm
+  yay -S bruno-bin --noconfirm
 
   # neovim
   echo -e "${GREEN}"

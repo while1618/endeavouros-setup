@@ -212,7 +212,7 @@ if gum confirm "Do you need development setup?" ;then
   echo -e "${GREEN}"
   figlet "Neovim"
   echo -e "${NONE}"
-  sudo pacman -Sy neovim fzf ripgrep fd --noconfirm
+  sudo pacman -Sy neovim fzf zoxide ripgrep fd --noconfirm
   yay -S vim-plug --noconfirm
   git clone https://github.com/NvChad/starter ~/.config/nvchad
   git clone --depth 1 https://github.com/AstroNvim/template ~/.config/astronvim

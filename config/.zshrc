@@ -16,6 +16,10 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
+export NVM_COMPLETION=true
+export NVM_SYMLINK_CURRENT="true"
+zinit wait lucid light-mode for lukechilds/zsh-nvm
+
 # Add in snippets
 zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
@@ -112,7 +116,6 @@ alias astronvim="NVIM_APPNAME=astronvim nvim"
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-source /usr/share/nvm/init-nvm.sh
 
 # Starship
 # https://github.com/starship/starship/issues/560#issuecomment-2339030231

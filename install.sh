@@ -130,7 +130,7 @@ echo -e "${NONE}"
 
 # packages
 sudo pacman -Sy hyprland waybar rofi-wayland dunst hyprpaper hyprlock hypridle xdg-desktop-portal-hyprland sddm \
-                alacritty kitty ghostty vim zsh picom qt5-wayland qt6-wayland cliphist \
+                alacritty kitty ghostty vim zsh starship picom qt5-wayland qt6-wayland cliphist \
                 thunar gvfs thunar-volman tumbler thunar-archive-plugin ark \
                 network-manager-applet blueman brightnessctl \
                 slurp grim xclip swappy \
@@ -275,11 +275,11 @@ echo \
 
 monitor=,${resolution},auto,1" > ./config/hypr/conf/monitor.conf
 
-cp -rf ./config/.gtkrc-2.0 ./config/.Xresources ./config/.bashrc ./config/.zshrc ./config/.p10k.zsh ~/
+cp -rf ./config/.gtkrc-2.0 ./config/.Xresources ./config/.bashrc ./config/.zshrc ~/
 mkdir -p ~/.config/qBittorrent && cp -rf ./config/qbittorrent/qbittorrent.qbtheme ~/.config/qBittorrent
 cp -rf ./config/alacritty ./config/dunst ./config/gtk-3.0 ./config/gtk-4.0 ./config/hypr ./config/picom \
     ./config/kitty ./config/scripts ./config/Thunar ./config/wal ./config/waybar \
-    ./config/wlogout ./config/fastfetch ./config/ghostty \
+    ./config/wlogout ./config/fastfetch ./config/ghostty ./config/starship.toml \
     ~/.config
 sudo sed -i "s/Inherits=.*/Inherits=Qogir-dark/g" /usr/share/icons/default/index.theme
 

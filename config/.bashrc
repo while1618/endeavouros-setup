@@ -64,3 +64,8 @@ alias astronvim="NVIM_APPNAME=astronvim nvim"
 eval "$(fzf --bash)"
 eval "$(zoxide init --cmd cd bash)"
 source /usr/share/nvm/init-nvm.sh
+
+# Starship
+# https://github.com/starship/starship/issues/560#issuecomment-2197994300
+PROMPT_COMMAND="export PROMPT_COMMAND=echo"
+eval "$(starship init bash)"
